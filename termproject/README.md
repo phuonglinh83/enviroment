@@ -54,7 +54,8 @@ If you look in our package.json file, there's some dependencies that I used to c
 
 ## Create The Database In Postgres
 1.  Open up terminal and access the psql UI, you should be at this screen:
-![](./assets/psqltest.png)
+    
+    ![](./assets/psqltest.png)
 
 2.  Once you are here, type in this command 
     
@@ -113,9 +114,11 @@ Luckily, I've already created a table (look in migrations/users.js), I can expla
     \dt
 
 6.  You should see this screen:   
+    
     ![](./assets/listoftables.png)
 
 7.  If you get to this point, you're good to go! You can also view the table using this command, although it will be empty because we haven't added any data into it. 
+    
     ![](./assets/userstable.png)
 
 8.  To quit psql just type 
@@ -131,11 +134,13 @@ All that's left to do now is start the program and make sure everything is runni
     npm run start:dev
 
     ![](./assets/terminalstart.png)
+
 3.  If no errors appear on the console open up a browser
 4.  Type this for the url and press enter:
     
     localhost:3000
 5.  On success, you should just see this:
+
     ![](./assets/successscreen.png)
 
 6.  To stop the server just press:
