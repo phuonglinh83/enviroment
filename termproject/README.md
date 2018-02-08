@@ -11,9 +11,12 @@ Be sure the following is downloaded first before cloning the github repo
 
 ## Tests To Check Downloads
 * For node testing, just check to see if you have a version of node installed 
-![](./termproject/assets/nodetest.png) 
+    
+    ![](./assets/nodetest.png) 
+
 * For postgres testing on linux this works for me:
-![](./termproject/assets/psqltest.png)
+    
+    ![](./assets/psqltest.png)
 
   replace "postgres" with the username you used when you downloaded postgres. If you get to this screen, it's downloaded correctly. 
 
@@ -39,7 +42,7 @@ Be sure the following is downloaded first before cloning the github repo
 
     it should look something like this, but the * should be next your branch name:
 
-    ![](./termproject/assets/gitexample.png)
+    ![](./assets/gitexample.png)
 
 ## Download Dependencies
 If you look in our package.json file, there's some dependencies that I used to create the initial project. You must download these dependencies before you run the project. Luckily, this is pretty simple: 
@@ -51,7 +54,8 @@ If you look in our package.json file, there's some dependencies that I used to c
 
 ## Create The Database In Postgres
 1.  Open up terminal and access the psql UI, you should be at this screen:
-![](./termproject/assets/psqltest.png)
+    
+    ![](./assets/psqltest.png)
 
 2.  Once you are here, type in this command 
     
@@ -63,7 +67,7 @@ If you look in our package.json file, there's some dependencies that I used to c
 
 4.  The UI should look like this now: 
 
-    ![](./termproject/assets/connectedToDatabase.png)
+    ![](./assets/connectedToDatabase.png)
 
 5. That's it for now, we'll be creating tables in our database shortly, but if you get to this point, you're in good shape.
 
@@ -110,10 +114,12 @@ Luckily, I've already created a table (look in migrations/users.js), I can expla
     \dt
 
 6.  You should see this screen:   
-    ![](./termproject/assets/listoftables.png)
+    
+    ![](./assets/listoftables.png)
 
 7.  If you get to this point, you're good to go! You can also view the table using this command, although it will be empty because we haven't added any data into it. 
-    ![](./termproject/assets/userstable.png)
+    
+    ![](./assets/userstable.png)
 
 8.  To quit psql just type 
 
@@ -127,13 +133,15 @@ All that's left to do now is start the program and make sure everything is runni
 
     npm run start:dev
 
-    ![](./termproject/assets/terminalstart.png)
+    ![](./assets/terminalstart.png)
+
 3.  If no errors appear on the console open up a browser
 4.  Type this for the url and press enter:
     
     localhost:3000
 5.  On success, you should just see this:
-    ![](./termproject/assets/successscreen.png)
+
+    ![](./assets/successscreen.png)
 
 6.  To stop the server just press:
     
