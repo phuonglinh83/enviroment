@@ -1,0 +1,47 @@
+body {
+  background-color: #fff9e6;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.5;
+    color: #323232;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.container {
+  position: relative;
+  width: 300px;
+  display: inline-block
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #99ff99;
+}
+
+.container:hover .overlay {
+  opacity: .7;
+}
+
+.text {
+  color: #000;
+  font-size: 17px;
+  margin-left: 20px;
+  margin-top: 20px;
+  top: 50%;
+  left: 50%;
+  text-align: left;
+}
