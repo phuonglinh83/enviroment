@@ -41,10 +41,27 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // res.locals.myname = 5;
+  // console.log(res.locals);
 
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
+
+//TEST CODE
+const usersTable = require('./db/users');
+const userObject = {
+  username: 'default',
+  password: '12345'
+}
+usersTable
+  .addUser(userObject)
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => conosle.log(error));
+
+//app.listen(8000);
 
 module.exports = app;
