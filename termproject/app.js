@@ -31,7 +31,7 @@ app.use('/', index);
 app.use('/users', users);
 // app.use('/about', about);
 app.get("/about", function(req, res) {
-    res.render("about");
+    res.render("about", {title: "About"});
 });
 
 // catch 404 and forward to error handler
