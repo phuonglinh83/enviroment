@@ -11,11 +11,11 @@ Be sure the following is downloaded first before cloning the github repo
 
 ## Tests To Check Downloads
 * For node testing, just check to see if you have a version of node installed 
-
-    ![](./assets/nodetest.png)
+    
+    ![](./assets/nodetest.png) 
 
 * For postgres testing on linux this works for me:
-
+    
     ![](./assets/psqltest.png)
 
   replace "postgres" with the username you used when you downloaded postgres. If you get to this screen, it's downloaded correctly. 

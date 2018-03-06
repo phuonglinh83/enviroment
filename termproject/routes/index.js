@@ -9,7 +9,8 @@ var router = express.Router();
 // });
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    console.log("index page loaded");
+  res.render('index', { title: 'Home' });
 });
 
 module.exports = router;
