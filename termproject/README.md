@@ -81,7 +81,7 @@ It is important to note that the .env file is a hidden file so if you're trying 
 1.  Make sure you are still in the termproject directory
 2.  Type in this command to create the .env file:
     
-    touch.env
+    touch .env
 
 3.  If the above doesn't work, just create a new file called .env 
 4.  Now we need to create the actual environment variable that will be referenced when we connect to the database in our program. You can do this by typing this command: 

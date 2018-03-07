@@ -13,6 +13,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var about = require('./routes/about');
 
+let search = require('./routes/search');
+
 var app = express();
 
 // view engine setup
@@ -29,10 +31,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-// app.use('/about', about);
-app.get("/about", function(req, res) {
-    res.render("about", {title: "About"});
-});
+app.use('/about', about);
+// app.get("/about", function(req, res) {
+//     res.render("about", {title: "About"});
+// });
+
+//RENDER SAMPLE SEARCH PAGE
+app.use('/search', search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
