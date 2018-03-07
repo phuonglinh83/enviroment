@@ -170,10 +170,10 @@ Here is a list of instructions if you just want to update your schema without kn
 ## Sequelize
 Below is information on how we will be using Sequelize in order to quickly modify our database schema. Initially the process will go as follows:
     
-    1. We run a sequelize command to create the file that tells our database to create a table with specific the attributes (columns) we want included in this table. This step is repeated to create each table. 
-    2. The files in the migrations and models folders store all of the code that essentially defines our database schema (think of schema as the tables in the database and what information each table will be responsible for holding).
-    3. We run what is called a "migration" to update the database with the changes specified in our migrations and models directory. What's essentially happening here is that we're telling our program to read our .js files contained in the migrations and models directories. The code in those files tells the database to create tables with columns that hold the specified data types. 
-    4. Once the migrations are ran, the new tables will be created/modified. 
+1. We run a sequelize command to create the file that tells our database to create a table with specific the attributes (columns) we want included in this table. This step is repeated to create each table. 
+2. The files in the migrations and models folders store all of the code that essentially defines our database schema (think of schema as the tables in the database and what information each table will be responsible for holding).
+3. We run what is called a "migration" to update the database with the changes specified in our migrations and models directory. What's essentially happening here is that we're telling our program to read our .js files contained in the migrations and models directories. The code in those files tells the database to create tables with columns that hold the specified data types. 
+4. Once the migrations are ran, the new tables will be created/modified. 
 
 ### Creating new tables
 NOTE: You don't need to do this step if you pulled from the gerren branch. I already did it, which is why there are migration and models files for users, location, and issues. I'm just documenting this for clarity.
