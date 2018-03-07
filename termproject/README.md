@@ -181,6 +181,10 @@ NOTE: You don't need to do this step if you pulled from the gerren branch. I alr
 First, we need to run the command to generate the code that will tell our database to create a table with certain columns. To do this I just use this command: 
 
         node_modules/.bin/sequelize model:create --name users --attributes       username:text,password:text,email:text,privilege:integer
+
+        node_modules/.bin/sequelize model:create --name locations --attributes city:text,state:text,zipcode:integer,numIssues:integer
+
+        node_modules/.bin/sequelize model:create --name issues --attributes location:integer,user:integer,resolved:text,category:text,img:text,comment:string,title:string
     
 Running that command generates a migration file (the file has a bunch of crazy numbers by default, but I re-named it to users.js) and a model file called users.js with code that tells the database to create a table called users and give it columns called username (which stores a string), password (which should stores a string)...etc in each of the files. I repeat this step for the location and issues tables. There are small modifications that need to be made to these files before running the migration, but it's a lot to type out. If you pulled from my branch, don't worry about it, I took care of the changes already. If you're curious about this, just ask me about it, it's easier to explain in person.
 
