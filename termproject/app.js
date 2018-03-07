@@ -55,17 +55,17 @@ app.use(function(err, req, res, next) {
 });
 
 //TEST CODE
-const usersTable = require('./db/users');
-const userObject = {
-  username: 'default',
-  password: '12345'
-}
-usersTable
-  .addUser(userObject)
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((error) => conosle.log(error));
+// const usersTable = require('./db/users');
+// const userObject = {
+//   username: 'default',
+//   password: '12345'
+// }
+// usersTable
+//   .addUser(userObject)
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((error) => conosle.log(error));
 
 //app.listen(8000);
 
