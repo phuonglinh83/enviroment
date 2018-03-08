@@ -32,11 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/about', about);
-// app.get("/about", function(req, res) {
-//     res.render("about", {title: "About"});
-// });
 
-//RENDER SAMPLE SEARCH PAGE
+//DELETE THIS AFTER PROTOTYPE TESTING IS DONE
 app.use('/search', search);
 
 // catch 404 and forward to error handler
@@ -59,19 +56,71 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//TEST CODE
 // const usersTable = require('./db/users');
+// const locationsTable = require('./db/locations');
+// const issuesTable = require('./db/issues');
+
 // const userObject = {
-//   username: 'default',
-//   password: '12345'
-// }
+//   username: "gerren",
+//   password: "password",
+//   email: "gpenalo1@mail.sfsu.edu",
+//   privilege: 2
+// };
+
 // usersTable
 //   .addUser(userObject)
-//   .then((result) => {
-//     console.log(result);
+//   .then(userResult => {
+//     console.log(userResult.user_id);
+//     console.log(userResult.username)
 //   })
-//   .catch((error) => conosle.log(error));
+//   .catch( error => console.log( "ERROR: ", error) );
 
-//app.listen(8000);
+
+// const locationsObject = {
+//   city: "san francisco",
+//   state: "california",
+//   zipcode: 94110,
+//   numIssues: 1
+// };
+
+// usersTable  
+//   .addUser( userObject )
+  // .then( ( userResult ) => {
+  //   locationsTable  
+  //     .addLocation( locationsObject )
+  //     .then( ( locationResult ) => {
+  //       const issueObject = {
+  //         location_id: locationResult.location_id,
+  //         user_id: userResult.user_id,
+  //         username: userResult.username,
+  //         title: "cat land",
+  //         resolved: "in progress",
+  //         category: "chemical",
+  //         img: "/images/tree.jpg",
+  //         comment: "wow what a big white person!"
+  //       };
+  //       issuesTable
+  //         .addIssue( issueObject )
+  //         .then( result => {
+  //           console.log( result );
+  //         })
+  //         //.catch( error => console.log(error));
+  //     })
+  //     //.catch( error => console.log(error));
+  // })
+  // .catch( error => console.log( "ERROR: ", error ) );
+
+// const searchQueries = require('./db/search');
+
+// searchQueries 
+//   .searchByCity("san francisco")
+//   .then((searchResult) => {
+//     //searchResult.length returns 3 because there's 3 issues
+//     //to access each element you can just say searchResult[0].location_id
+//     console.log( searchResult.length );
+//     console.log( searchResult[ 0 ].city );
+//     console.log(searchResult);
+//   })
+//   .catch( error => console.log( "Error: ", error ) );
 
 module.exports = app;
