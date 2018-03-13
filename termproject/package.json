@@ -9,6 +9,7 @@
     "db:migrate": "sequelize db:migrate",
     "db:rollback": "sequelize db:migrate:undo"
   },
+  
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",

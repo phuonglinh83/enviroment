@@ -81,7 +81,7 @@ It is important to note that the .env file is a hidden file so if you're trying 
 1.  Make sure you are still in the termproject directory
 2.  Type in this command to create the .env file:
     
-    touch.env
+    touch .env
 
 3.  If the above doesn't work, just create a new file called .env 
 4.  Now we need to create the actual environment variable that will be referenced when we connect to the database in our program. You can do this by typing this command: 
@@ -146,3 +146,99 @@ All that's left to do now is start the program and make sure everything is runni
 6.  To stop the server just press:
     
     ctrl+c
+
+# Milestone 2 
+
+## Quick Setup To Get Your Database Schema Up-To-Date
+Here is a list of instructions if you just want to update your schema without knowing the technical stuff. Please contact me if you'd like me go through it with you in person. I already merged with the development branch, so the code in my branch should be up-to-date. I advise that you just merge with my branch first and then go from there. So, first be sure when you type git branch, you are in your own branch then:
+
+        1. git checkout gerren
+        2. git pull origin gerren (if you get any weird conflicts contact me and we'll figure it out)
+        3. git checkout <your branch>
+        4. git merge gerren (If you're using VScode, and there are merge conflicts, I think you'll probably be fine by just clicking "accept incoming changes" on all conflicts)
+        5. cd bin
+        6. chmod +x dbReset.sh
+        7. cd ..
+        8. At this point, be sure if you are accessing the termproject database anywhere (ie. You have psql open on another terminal) you shut it down. 
+        9. bin/dbReset.sh
+        10. Open up psql and connect to the termproject database 
+        11. \dt
+        11. On success you should see the users, issues, and locations tables. 
+        12. If you want you can double check that the migration worked by typing in this to check out a table: 
+        select * from issues; 
+
+## Sequelize
+Below is information on how we will be using Sequelize in order to quickly modify our database schema. Initially the process will go as follows:
+    
+1. We run a sequelize command to create the file that tells our database to create a table with specific the attributes (columns) we want included in this table. This step is repeated to create each table. 
+2. The files in the migrations and models folders store all of the code that essentially defines our database schema (think of schema as the tables in the database and what information each table will be responsible for holding).
+3. We run what is called a "migration" to update the database with the changes specified in our migrations and models directory. What's essentially happening here is that we're telling our program to read our .js files contained in the migrations and models directories. The code in those files tells the database to create tables with columns that hold the specified data types. 
+4. Once the migrations are ran, the new tables will be created/modified. 
+
+### Creating new tables
+NOTE: You don't need to do this step if you pulled from the gerren branch. I already did it, which is why there are migration and models files for users, location, and issues. I'm just documenting this for clarity.
+
+First, we need to run the command to generate the code that will tell our database to create a table with certain columns. To do this I just use this command: 
+
+        node_modules/.bin/sequelize model:create --name users --attributes       username:text,password:text,email:text,privilege:integer
+
+        node_modules/.bin/sequelize model:create --name locations --attributes city:text,state:text,zipcode:integer,numIssues:integer
+
+        node_modules/.bin/sequelize model:create --name issues --attributes location:integer,user:integer,resolved:text,category:text,img:text,comment:string,title:string
+    
+Running that command generates a migration file (the file has a bunch of crazy numbers by default, but I re-named it to users.js) and a model file called users.js with code that tells the database to create a table called users and give it columns called username (which stores a string), password (which should stores a string)...etc in each of the files. I repeat this step for the location and issues tables. There are small modifications that need to be made to these files before running the migration, but it's a lot to type out. If you pulled from my branch, don't worry about it, I took care of the changes already. If you're curious about this, just ask me about it, it's easier to explain in person.
+
+### Running the migration   
+
+Throughout the course of the project we are going to run into some hiccups where we need to update the database schema due to various reasons. The quickest way to do this is by modifying files in the migrations and models folders. Once these files are modified to our liking we can simply use the following commands: 
+
+- This command is used to delete the database. We don't want the old version of the database anymore, because maybe we decided to completely remove a table or we completely remove a column from a table: 
+
+         node_modules/.bin/sequelize db:drop
+
+- This command is used to re-create the database. Note that the database will be re-created, but no tables will be stored in the database yet. This is why we need to run the migration: 
+        
+        node_modules/.bin/sequelize db:create
+
+- This command is used to run the migration files and update the database schema. On success, our database will now have the tables that we told it to create with the exact attributes (columns) for each table:
+        
+        node_modules/.bin/sequelize db:migrate
+
+NOTE: that once the database is deleted, so is all of the data previously stored inside of it. We'll implement a workaround for this later, but for now just be sure you remember this each time we do this process.
+        
+### Quick Database Reset
+Since it can be kind of annoying to type out the three commands above each time we want to destroy and rebuild the database I made a shell script that will run all three commands for us, it is located in the bin directory. Below are instructions on how to run it. 
+
+1. Before we can run the script we need to give the shell script executable privileges. To do so, run these commands:
+        
+        cd bin
+        chmod +x dbReset.sh
+
+2. Now that we've given the shell script executable privileges, you can cd back into termproject. You should able to run it no problem by using this one command: 
+
+        bin/dbReset.sh
+
+    On success you should see a message that says "Database termproject dropped" follwed by a message saying "Database termproject created"
+    followed by a series of messages indicating that certain tables have been created/migrated. 
+
+NOTE: If you are currently accessing the database anywhere (ex: you have psql running in a separate terminal) you must shut it down before running the shell script. The reason for this is because if the termproject database is being accessed anywhere, you will not be allowed to delete the database. 
+
+### Workflow Examples
+In this sections I'll just give some sample use cases based on certain scenarios. 
+
+#### Use case #1: 
+
+We're coding up some function that has to deal with an environmental issue. We suddenly realize that the issues table needs to also hold a column that indicates when the post was "last modified". We know that the last modfied will be a "date" data type. So here is how we handle the following situation: 
+
+        1. Go into the migrations/issues.js
+        2. Add in the attribute like so: 
+            lastModified: {
+                type: Sequelize.DATE
+            }
+        3. Save the file
+        4. Shut down any instances of psql that are accessing the database
+        5. Open up a terminal
+        6. cd into termproject
+        7. type bin/dbReset.sh
+        8. The above line of code with destroy the database, rebuild it, and update it.
+        9. Once the database is recreated and updated you can access the issues table and you will see that it now has a lastModified column.      

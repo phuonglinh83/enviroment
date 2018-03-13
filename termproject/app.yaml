@@ -1,0 +1,4 @@
+env: flex
+runtime: nodejs
+env_variables:
+        DATABASE_URL: "postgres://uzair:password@35.197.18.136/termdb"
