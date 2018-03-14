@@ -24,6 +24,10 @@ module.exports = {
           key:'user_id' 
         }
       },
+      username: {
+        allowNull: true,
+        type: Sequelize.TEXT
+      },
       title: {
         type: Sequelize.STRING
       },
