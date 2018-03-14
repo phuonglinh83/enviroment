@@ -56,63 +56,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const usersTable = require('./db/users');
-const categoriesTable = require('./db/categories');
-const issuesTable = require('./db/issues');
 const searchQueries = require('./db/search');
-
-const userObject = {
-  username: "Khanh",
-  password: "password",
-  email: "exampleName@mail.sfsu.edu",
-  privilege: 2
-};
-
-const categoryObject = {
-  type: "pollution"
-};
-
-usersTable  
-  .addUser( userObject )
-  .then( ( userResult ) => {
-    categoriesTable  
-      .addCategory( categoryObject )
-      .then( ( categoryResult ) => {
-        const issueObject = {
-          category_id: categoryResult.category_id,
-          user_id: userResult.user_id,
-          title: "Oil truck tipped over on market",
-          description: "There's oil everywhere!",
-          resolved: "resolved",
-          username: userResult.username,
-          streetAddress: "1234 market street",
-          city: "san francisco",
-          state: "california",
-          zipcode: 91440,
-          numberOfOccurrences: 1, 
-          imagePath: "/images/tree.jpg",
-          isFlagged: false
-        };
-        issuesTable
-          .addIssue( issueObject )
-          .then( issuesResult => {
-            console.log( issuesResult );
-          })
-          //.catch( error => console.log(error));
-      })
-      //.catch( error => console.log(error));
-  })
-  .catch( error => console.log( "ERROR ADDING IN SHIT: ", error ) );
-
-
-
 // searchQueries 
-//   .searchByCity("san francisco")
+//   .searchByCity(93536)
 //   .then((searchResult) => {
 //     //searchResult.length returns 3 because there's 3 issues
 //     //to access each element you can just say searchResult[0].location_id
-//     console.log( searchResult.length );
-//     console.log( searchResult[ 0 ].city );
+//     // console.log( searchResult.length );
+//     // console.log( searchResult[ 0 ].city );
 //     console.log(searchResult);
 //   })
 //   .catch( error => console.log( "Error: ", error ) );

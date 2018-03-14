@@ -47,7 +47,7 @@ module.exports = {
         type: Sequelize.TEXT
       }, 
       zipcode: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TEXT
       },
       numberOfOccurrences: {
         type: Sequelize.INTEGER
