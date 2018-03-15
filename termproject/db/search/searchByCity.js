@@ -1,9 +1,9 @@
 const database = require('../index');
 
-const SELECT_BY_CITY_QUERY = `SELECT * FROM locations
-  INNER JOIN issues 
-  ON locations.location_id = issues.location_id
-  WHERE city = ($1)`;
+const SELECT_BY_CITY_QUERY = `SELECT * FROM issues
+  INNER JOIN categories 
+  ON issues.category_id = categories.category_id
+  WHERE zipcode = $1`;
 
 const searchByCity = keyword => {
   const VALUES = keyword;
