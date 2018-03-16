@@ -8,12 +8,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      location_id: {
+      category_id: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
-          model:'locations',
-          key:'location_id' 
+          model:'categories',
+          key:'category_id' 
         }
       },
       user_id: {
@@ -31,18 +31,45 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      description: {
+        type: Sequelize.STRING
+      },
       resolved: {
         type: Sequelize.TEXT
       },
-      category: {
+      username: {
+        allowNull: true,
         type: Sequelize.TEXT
       },
-      img: {
+      streetAddress: {
         type: Sequelize.TEXT
       },
-      comment: {
-        type: Sequelize.STRING
-      }  
+      city: {
+        type: Sequelize.TEXT
+      },
+      state: {
+        type: Sequelize.TEXT
+      }, 
+      zipcode: {
+        type: Sequelize.TEXT
+      },
+      numberOfOccurrences: {
+        type: Sequelize.INTEGER
+      },
+      imagePath: {
+        type: Sequelize.TEXT
+      },
+      isFlagged: {
+        type: Sequelize.BOOLEAN
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      } 
     });
   },
   down: (queryInterface, Sequelize) => {
