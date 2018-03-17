@@ -1,4 +1,0 @@
-env: flex
-runtime: nodejs
-env_variables:
-        DATABASE_URL: "postgres://uzair:password@termdb.cp2dj2tkdtxu.us-west-1.rds.amazonaws.com"

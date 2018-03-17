@@ -13,7 +13,7 @@ router.get('/', function( request, response ) {
 router.post('/', function( request, response ) {
   console.log("hits the post for search!");
   //note that we are able to use .body because we have body parser installed
-  //this variable is whatever the user typed in when they searched 
+  //this variable is whatever the user typed in when they searched
   //throw this into the query for the database
   //for now just search based on city
   //console.log(request.body.keyword);
@@ -21,7 +21,9 @@ router.post('/', function( request, response ) {
   searchQuery
     .searchByCity( keyword )
     .then( searchResult => {
-      response  
+        console.log(searchResult);
+
+      response
         .send( searchResult );
     })
     .catch( error => console.log( "ERROR: ", error ) );
