@@ -56,9 +56,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const searchQueries = require('./db/search');
+// const searchQueries = require('./db/search');
 // searchQueries 
-//   .searchByCity(93536)
+//   .searchByCity("san francisco")
 //   .then((searchResult) => {
 //     //searchResult.length returns 3 because there's 3 issues
 //     //to access each element you can just say searchResult[0].location_id
