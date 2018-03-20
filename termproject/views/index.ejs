@@ -1,43 +1,27 @@
 <% include ./partials/header %>
-<!--
-extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
--->
 
-<!doctype html>
-<html>
-<head>
+<div class="container">
 <div class="container jumbotron" id="main-container">
 
   <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
   <h2 style="text-align: center">Site under construction</h2>
   <p class="container">
-    <!-- <form action="/search" method="GET" id="search-bar"> -->
+    <!-- <form action="/search" method="POST" id="issue-search"> -->
         <div class="input-group" id="search-bar">
-            <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search By City or Zipcode...">
+            <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
                 <span class="input-group-btn">
                     <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
                 </span>
         </div>
     <!-- </form> -->
-  <p>
-  <!-- <a href="/about" class="btn btn-primary" style="margin-left: 47%">About</a> -->
+</p>
+
 </div>
 
-<div class="container">
-  <div class="row" id="searchRow">
-    <div class="col-lg-12 my-4">
-    </div>
-    <!-- /.col-lg-6 -->
-
-  </div>
-  <!-- /.row -->
+<div id="results-grid" class="row text-center">
 </div>
-<!-- end outer container -->
+</div>
 
-</head>
-  <script src="/javascripts/search.js"></script>
+<script src="/javascripts/search.js"></script>
 </html>

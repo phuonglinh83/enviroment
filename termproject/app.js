@@ -57,7 +57,7 @@ app.use(function(err, req, res, next) {
 });
 
 // const searchQueries = require('./db/search');
-// searchQueries 
+// searchQueries
 //   .searchByCity("san francisco")
 //   .then((searchResult) => {
 //     //searchResult.length returns 3 because there's 3 issues
