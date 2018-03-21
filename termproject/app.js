@@ -9,11 +9,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var about = require('./routes/about');
+const passport = require("passport");
+const	local = require("passport-local");
+const	expSession = require("express-session");
+var bcrypt = require('bcrypt');
 
-let search = require('./routes/search');
+const index = require('./routes/index');
+const user = require('./routes/user');
+const about = require('./routes/about');
+const search = require('./routes/search');
+const getUser = require('./db/users/getUser');
 
 var app = express();
 
@@ -23,17 +28,51 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.use(function(err, req, res, next) {
+    console.log(err);
+});
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/about', about);
+app.use(expSession({
+  secret: 'bazinga',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new local({
+  passReqToCallback: true
+}, (req, username, password, done) => {
+  getUser(username, (user,err)=> {
+    // if (err) { return done(err); }
+    if (!user) { return done(null, false); }
+    return bcrypt.compare(req.body.password, user.password, function(err, res) {
+      if (!res) { console.log("Auth failed"); return done(null, false); }
+      return done(null, user);
+    });
+  });
+}));
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
-//DELETE THIS AFTER PROTOTYPE TESTING IS DONE
+app.use(function(req, res, next) {
+	res.locals.user = req.user;
+	next();
+});
+
+app.use('/', index);
+app.use('/user', user);
+app.use('/about', about);
 app.use('/search', search);
 
 // catch 404 and forward to error handler
@@ -48,24 +87,10 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // res.locals.myname = 5;
-  // console.log(res.locals);
 
-  // render the error page
+  console.log(err);
   res.status(err.status || 500);
   res.render('error');
 });
-
-// const searchQueries = require('./db/search');
-// searchQueries
-//   .searchByCity("san francisco")
-//   .then((searchResult) => {
-//     //searchResult.length returns 3 because there's 3 issues
-//     //to access each element you can just say searchResult[0].location_id
-//     // console.log( searchResult.length );
-//     // console.log( searchResult[ 0 ].city );
-//     console.log(searchResult);
-//   })
-//   .catch( error => console.log( "Error: ", error ) );
 
 module.exports = app;
