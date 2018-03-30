@@ -1,3 +1,4 @@
 module.exports = {
-  searchByCity : require('./search/searchByCity')
+  fuzzySearch : require('./search/fuzzySearch'),
+  defaultSearch: require( './search/defaultSearch')
 };

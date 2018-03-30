@@ -16,15 +16,15 @@ router.get('/', function(req, res, next) {
 });
 
 // FUTURE PLANS TO CORRECT SEARCH FROM POST TO GET
-router.get("/search", function(req, res) {
-    console.log("hits the post for search!");
-    if(req.query.search) {
-        const keyword = request.query.search;
-        searchQuery.searchByCity( keyword ).then( searchResult => {
-            console.log(searchResult);
-            response.send( searchResult );
-         }).catch( error => console.log( "ERROR: ", error ) );
-    }
-});
+// router.get("/search", function(req, res) {
+//     console.log("hits the post for search!");
+//     if(req.query.search) {
+//         const keyword = request.query.search;
+//         searchQuery.fuzzySearch( keyword ).then( searchResult => {
+//             console.log(searchResult);
+//             response.send( searchResult );
+//          }).catch( error => console.log( "ERROR: ", error ) );
+//     }
+// });
 
 module.exports = router;

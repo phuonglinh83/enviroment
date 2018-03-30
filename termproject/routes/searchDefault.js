@@ -11,14 +11,15 @@ router.get('/', function (request, response) {
 });
 
 router.post('/', function (request, response) {
-  const keyword = request.body.keyword;
+  console.log("hits search default");
   searchQuery
-    .fuzzySearch(keyword)
-    .then(searchResult => {
+    .defaultSearch()
+    .then(defaultSearchResult => {
+      console.log(defaultSearchResult);
       response
-        .send(searchResult);
+        .send(defaultSearchResult);
     })
-    .catch(error => console.log("ERROR: ", error));
+    .catch(error => console.log("ERROR IN DEFAULT SEARCH: ", error));
 });
 
 module.exports = router;

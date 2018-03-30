@@ -27,13 +27,13 @@ margin-right: 20%;
     display: inline;
 }
 
-.col {
+/* .col {
 margin-left: 5px;
 margin-right: 5px;
 padding-left: 0px;
-}
+} */
 
-.card {
+/* .card {
   position: inline-block;
   top: 50%;
   left: 50%;
@@ -81,12 +81,21 @@ padding-left: 0px;
 }
 
 .card .details h2 {
-  color : ##4d4d4d;
+  color : #4d4d4d;
   margin: 0;
   padding: 0 0 5px;
   border-bottom: 2px solid #bfbfbf;
 }
 
-.card . details p {
+.card .details p {
   margin: 20px 0 0;
+} */
+
+/* this is all for gerren's testing, delete it later if he didn't already */
+.searchResults {
+  background-color: lavender;
+}
+
+.card-columns {
+  max-width: 100%;
 }
