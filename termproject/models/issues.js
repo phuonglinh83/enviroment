@@ -12,8 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function( models ) {
         // associations can be defined here
-        issues.belongsTo( models.locations );
+        issues.belongsTo( models.categories );
         issues.belongsTo( models.users );
+        issues.belongsTo( models.status);
       }
     }
   });

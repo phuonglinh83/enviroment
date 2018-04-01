@@ -1,18 +1,84 @@
 <% include ./partials/header %>
-<!--
-extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
--->
+  <!doctype html>
+  <html>
 
-<!doctype html>
-<html>
-<head>
-    <br><br>
-  <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
-  <h2 style="text-align: center">Site under construction</h2>
-  <a href="/about" class="btn btn-primary" style="margin-left: 47%">About</a>
-</head>
-</html>
+  <head>
+    <div class="container jumbotron" id="main-container">
+
+      <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
+      <h2 style="text-align: center">Site under construction</h2>
+      <p class="container">
+        <!-- <form action="/search" method="GET" id="search-bar"> -->
+        <div class="input-group" id="search-bar">
+          <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search By City or Zipcode...">
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
+          </span>
+        </div>
+        <!-- </form> -->
+        <p>
+          <!-- <a href="/about" class="btn btn-primary" style="margin-left: 47%">About</a> -->
+    </div>
+
+
+    <!-- end outer container -->
+
+  </head>
+  <script src="/javascripts/search.js"></script>
+
+  <div class="container-fluid" style="border:1px solid #cecece;">
+<div class = "issueContainer">
+  <div class="row">
+    <div class="col-sm-2">
+            <div class="col-md-12">
+                <img src="http://i.imgur.com/Hw1dyoP.png">
+            </div>
+          </div>
+            <div class="col-sm-6">
+                <b>[ISSUE TITLE]</b><br>
+                [ISSUE LOCATION]<br><br>
+                <i>Category: [ISSUE CATEGORY]</i><br>
+                <i>Status: [ISSUE STATUS]</i>
+            </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="border:3px solid #cecece;">
+  <div class = "issueContainer">
+    <div class="row">
+      <div class="col-sm-2">
+              <div class="col-md-12">
+                  <img src="http://i.imgur.com/Hw1dyoP.png">
+              </div>
+            </div>
+              <div class="col-sm-6">
+                  <b>oil spill on 280</b><br>
+                  San Mateo, CA<br><br>
+                  <i>Category: Toxicant</i><br>
+                  <i>Status: Unresolved</i>
+              </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid" style="border:1px solid #cecece;">
+    <div class = "issueContainer">
+      <div class="row">
+        <div class="col-sm-2">
+                <div class="col-md-12">
+                    <img src="http://i.imgur.com/Hw1dyoP.png">
+                </div>
+              </div>
+                <div class="col-sm-6">
+                    <b>broken glass at Taraval Park</b><br>
+                    San Francisco, CA<br><br>
+                    <i>Category: Pollution</i><br>
+                    <i>Status: Resolved</i>
+                </div>
+        </div>
+      </div>
+    </div>
+
+  </html>
