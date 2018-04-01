@@ -15,6 +15,7 @@ var users = require('./routes/users');
 var about = require('./routes/about');
 
 let search = require('./routes/search');
+let searchDefault = require('./routes/searchDefault');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/about', about);
 
 //DELETE THIS AFTER PROTOTYPE TESTING IS DONE
 app.use('/search', search);
+app.use('/searchDefault', searchDefault);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,6 +59,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+<<<<<<< HEAD
 // const usersTable = require('./db/users');
 // const locationsTable = require('./db/locations');
 // const issuesTable = require('./db/issues');
@@ -121,7 +124,14 @@ app.use(function(err, req, res, next) {
 //     console.log( searchResult.length );
 //     console.log( searchResult[ 0 ].city );
 //     console.log(searchResult);
+=======
+// let searchTable = require('./db/search');
+// searchTable
+//   .defaultSearch()
+//   .then((result) => {
+//     console.log(result);
+>>>>>>> Justin
 //   })
-//   .catch( error => console.log( "Error: ", error ) );
+//   .catch((error) => { console.log("error:", error)});
 
 module.exports = app;

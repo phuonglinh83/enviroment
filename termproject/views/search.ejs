@@ -1,42 +1,63 @@
-<% include ./partials/header %>
+<!doctype html>
+<html>
 
-  <div class="container">
-    <div class="row" id="searchRow">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <input id="searchBar" class="form-control" type="search" placeholder="Search By City...">
-          <span class="input-group-btn">
-            <button id="searchButton" class="btn btn-default" type="submit">Search</button>
-          </span>
-        </div> <!-- /input-group -->
-      </div> <!-- /.col-lg-6 -->
-    </div> <!-- /.row -->
-  </div> <!-- end outer container -->
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <title> Search</title>
 
-  <script src="/javascripts/search.js"></script>
-
-<!-- 
-  <div class="input-group">
-    <div class="input-group-btn">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#">Action</a>
-        </li>
-        <li>
-          <a href="#">Another action</a>
-        </li>
-        <li>
-          <a href="#">Something else here</a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li>
-          <a href="#">Separated link</a>
-        </li>
-      </ul>
+  <body>
+    <div class="container">
+      <div class="row bodyContent">
+        <!-- <% include ./partials/header %> -->
+        <div class="col-xl-12 my-4" id="searchColumnProto">
+          <div class="input-group">
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Filter By
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Category</a></li>
+                    <li><a href="#">Status</a></li>
+                  </ul>
+                </div>
+            <input id="searchBarProto" class="form-control" type="search" placeholder="Search By City or Zipcode...">
+            <span class="input-group-btn">
+              <button id="searchButtonProto" class="btn btn-default" type="submit">Search</button>
+            </span>
+          </div>
+        </div>
+        <!-- <p> (0) Results returned for "san" </p> -->
+        <div class="card-columns" id="searchRowProto">
+            <!-- <div class="card">
+              <img class="card-img-top" src="images/field.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Description: </p>
+                <p class="card-text">Status: </p>
+                <p class="card-text">Category: </p>
+                <p class="card-text">Street Address: </p>
+                <p class="card-text">City: </p>
+                <p class="card-text">State: </p>
+                <p class="card-text">Zip Code: </p>
+                <p class="card-text">Submitted By: </p>
+                <p class="card-text"><small class="text-muted">Created: </small></p>
+              </div>
+          </div> -->
+      </div>
     </div>
-   
-    <input type="text" class="form-control" aria-label="...">
-  </div>/input-group -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script src="/javascripts/searchPrototype.js"></script>
+  </body>
+</head>
+
+</html>

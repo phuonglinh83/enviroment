@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         // associations can be defined here
         issues.belongsTo( models.categories );
         issues.belongsTo( models.users );
+        issues.belongsTo( models.status);
       }
     }
   });

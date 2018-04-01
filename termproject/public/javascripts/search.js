@@ -24,7 +24,7 @@ $( "document" ).ready( function() {
                   <li class="list-group-item">City: ${results[index].city} </li>
                   <li class="list-group-item">State: ${results[index].state} </li>
                   <li class="list-group-item">Zip Code: ${results[index].zipcode} </li>
-                  <li class="list-group-item">Category: ${results[index].category} </li>
+                  <li class="list-group-item">Category: ${results[index].type} </li>
               </ul>
             </div>
             </div>
