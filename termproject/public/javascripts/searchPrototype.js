@@ -12,10 +12,20 @@ $( "document" ).ready( function() {
       url: '/search',
       data: dataObject,
       success: function( results ) {
+        const myCenter = new google.maps.LatLng(37.720460, -122.478124);
+        const mapProp= {
+          center:myCenter,
+          zoom:14,
+        };
+        const map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        const marker = new google.maps.Marker({position:myCenter});
+        marker.setMap(map);
+
+
         const SEARCH_CONTENT = document.getElementById("searchRowProto");
         const SEARCH_COLUMN = document.getElementById("searchColumnProto");
         const SEARCH_RESULT_MESSAGE = `<p class="my-2"> ${results.length} results returned for "${searchValue}"`;
-        
+
         if( results.length > 0 ) {
           SEARCH_COLUMN.innerHTML += SEARCH_RESULT_MESSAGE;
 
@@ -33,7 +43,7 @@ $( "document" ).ready( function() {
               <p class="card-text">Zip Code: ${ results[ index ].zipcode }</p>
               <p class="card-text">Submitted By: ${ results[ index ].username }</p>
               <p class="card-text"><small class="text-muted">Created: ${ results[ index ].month }/${ results[ index ].day }/${ results[ index ].year }</small></p>
-              <p class="card-text"><small class="text-muted">Last Updated: ${ results[ index ].updatedAt }</small></p>            
+              <p class="card-text"><small class="text-muted">Last Updated: ${ results[ index ].updatedAt }</small></p>
             </div>
             </div>`;
             SEARCH_CONTENT.innerHTML += CARDS_TO_APPEND;
@@ -61,7 +71,7 @@ $( "document" ).ready( function() {
               <p class="card-text">Zip Code: ${ resultsDefault[ index ].zipcode }</p>
               <p class="card-text">Submitted By: ${ resultsDefault[ index ].username }</p>
               <p class="card-text"><small class="text-muted">Created: ${ resultsDefault[ index ].month }/${ resultsDefault[ index ].day }/${ resultsDefault[ index ].year }</small></p>
-              <p class="card-text"><small class="text-muted">Last Updated: ${ resultsDefault[ index ].updatedAt }</small></p>            
+              <p class="card-text"><small class="text-muted">Last Updated: ${ resultsDefault[ index ].updatedAt }</small></p>
             </div>
             </div>`;
             SEARCH_CONTENT.innerHTML += CARDS_FOR_DEFAULT;
@@ -69,9 +79,9 @@ $( "document" ).ready( function() {
           }, error: function () {
             console.log("error posting the default search");
           }
-        });     
+        });
         //   //make an alert that tells the user nothing was found, but you still display shit from the database
-        //   //after this alert is displayed you still need to figure out how to 
+        //   //after this alert is displayed you still need to figure out how to
         }
       },
       error: function() {
