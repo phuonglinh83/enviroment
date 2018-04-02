@@ -15,11 +15,12 @@ $( "document" ).ready( function() {
         const myCenter = new google.maps.LatLng(37.720460, -122.478124);
         const mapProp= {
           center:myCenter,
-          zoom:14,
+          zoom:12,
         };
         const map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        const marker = new google.maps.Marker({position:myCenter});
-        marker.setMap(map);
+        var geocoder = new google.maps.Geocoder();
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var locations = [];
 
 
         const SEARCH_CONTENT = document.getElementById("searchRowProto");
@@ -46,7 +47,29 @@ $( "document" ).ready( function() {
               <p class="card-text"><small class="text-muted">Last Updated: ${ results[ index ].updatedAt }</small></p>
             </div>
             </div>`;
-            SEARCH_CONTENT.innerHTML += CARDS_TO_APPEND;
+            // SEARCH_CONTENT.innerHTML += CARDS_TO_APPEND;
+            var address = results[ index ].streetAddress + ' ' + results[ index ].city + ', ' + results[ index ].state + ' ' + results[ index ].zipcode;
+            geocoder.geocode({'address': address}, function(results, status) {
+              if (status === 'OK') {
+                var loc = results[0].geometry.location;
+                map.setCenter(loc);
+                if (loc in locations) {
+                  locations[loc] += CARDS_TO_APPEND;
+                } else {
+                  locations[loc] = CARDS_TO_APPEND;
+                  var marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    label: labels[index % labels.length]
+                  });
+                  marker.setMap(map);
+                  google.maps.event.addListener(marker,'click',function() {
+                    SEARCH_CONTENT.innerHTML = locations[loc];
+                  });
+                }
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+              }
+            });
           };
         } else {
           SEARCH_COLUMN.innerHTML += SEARCH_RESULT_MESSAGE;
