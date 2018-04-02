@@ -5,7 +5,10 @@ const FUZZY_SEARCH_QUERY = `SELECT * FROM issues
   ON issues.category_id = categories.category_id
   INNER JOIN status
   ON issues.status_id = status.status_id
-  WHERE (city ILIKE $1) OR (zipcode ILIKE $1)`;
+  WHERE (city ILIKE $1) OR 
+        (zipcode ILIKE $1)  OR
+        (categories.type ILIKE $1) OR 
+        (status.issue_status ILIKE $1)`;
 
 const fuzzySearch = keyword => {
   const VALUES = '%' + keyword + '%';

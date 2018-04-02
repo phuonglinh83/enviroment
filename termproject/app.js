@@ -58,7 +58,15 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// let searchTable = require('./db/search');
+// const searchTable = require('./db/search');
+// let keyword = 'resolved';
+// searchTable
+//   .fuzzySearch(keyword)
+//   .then((result) => {
+//     console.log(result, result.length);
+//   })
+//   .catch((error) => { console.log("error in filter search:", error )});
+
 // searchTable
 //   .defaultSearch()
 //   .then((result) => {
