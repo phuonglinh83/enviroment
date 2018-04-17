@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var about = require('./routes/about');
+var issue = require('./routes/issue')
 
 let search = require('./routes/search');
 let searchDefault = require('./routes/searchDefault');
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/about', about);
+app.use('/issue', issue);
 
 //DELETE THIS AFTER PROTOTYPE TESTING IS DONE
 app.use('/search', search);

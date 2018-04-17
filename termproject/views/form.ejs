@@ -1,0 +1,63 @@
+  <!-- /*
+   * form.ejs
+   * A form webpage that allows the user to report an issue/complaint with a description, image and location.
+   * Justin Abarquez
+   * / -->
+
+  <% include ./partials/header %>
+
+    <!doctype html>
+    <html>
+
+    <head>
+  <br>
+  <br>
+    <h2 style="text-align: center"><i>Envirepair Cares</i></h2>
+    <h1 style="text-align: center">REPORT AN ISSUE</h1>
+    </head>
+
+    <!-- Submission form is enclosed in a jumbotron. -->
+    <div class="container jumbotron" id="main-container">
+
+<form action= "/issue/submit" method="POST">
+      <!-- This Bootstrap class aligns labels and textfields properly. -->
+      <div class="form-group row">
+        <!-- Label -->
+         <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Issue:</label>
+
+        <div class="col-sm-10">
+           <!-- Textfield -->
+           <input type="text" name="issueTitle" class="form-control form-control-lg" id="lgFormGroupInput">
+         </div>
+
+       </div>
+
+       <div class="form-group row">
+     <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Description:</label>
+     <div class= "col-sm-10">
+     <textarea class="form-control" name= "description" id="exampleTextarea" rows="7"></textarea>
+   </div>
+    </div>
+
+    <div class="form-group row">
+    <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Location:</label>
+    <div class= "col-sm-10">
+    <input type="email" class="form-control form-control-lg" name= "location" id="lgFormGroupInput">
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Image:</label>
+    <div class= "col-sm-10">
+      <br>
+    <!-- Browse from computer button. -->
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted" name= "image">Upload an image from your computer.</small>
+  </div>
+</div>
+
+  <!-- Submit button should add issue and all its information to the database. -->
+  <center><br><input type="submit" class="btn btn-secondary" value= "submit"></center></form>
+
+</div>
+    </html>

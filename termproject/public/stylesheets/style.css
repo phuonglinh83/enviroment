@@ -3,12 +3,30 @@ body {
   padding: 0;
   font-family: sans-serif;
   font-size: 12.5px;
+  /* A nice white-yellow color -Justin */
   background-color: #fff9e6;
 }
 
+/* Contains the issue information on the homepage. -Justin */
 .issueContainer {
   padding: 17px;
   background-color: #f2f2f2;
+}
+
+/* When hovered over, it changes to a lighter color for a more animated effect. -Justin*/
+.issueContainer:hover {
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+/* Contains the comment information. -Justin */
+.commentContainer {
+  padding: 17px;
+  background-color: #f2f2f2;
+  border-top: 2px solid #cecece;
+  border-bottom: 2px solid #cecece;
+  border-left: 4px solid #cecece;
+  border-right: 4px solid #cecece;
 }
 
 /* .container {
@@ -32,6 +50,7 @@ margin-right: 20%;
     display: inline;
 }
 
+/* Code for About page containers. Will change class names later to not interfere with Bootstrap definitions. -Justin */
 /* .col {
 margin-left: 5px;
 margin-right: 5px;
