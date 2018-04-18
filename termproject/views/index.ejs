@@ -7,21 +7,28 @@
   <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
   <h2 style="text-align: center">Site under construction</h2>
   <p class="container">
-    <!-- <form action="/search" method="POST" id="issue-search"> -->
-        <div class="input-group" id="search-bar">
-            <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
-                <span class="input-group-btn">
-                    <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
-                </span>
+    <div class="input-group" id="search-bar">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
+          <ul class="dropdown-menu" aria-labelledby="filterMenu">
+            <option class="dropdown-item" id="allFilter"> All </option>
+            <option class="dropdown-item" id="categoryFilter"> Category </option>
+            <option class="dropdown-item" id="statusFilter"> Status </option>
+          </ul>
         </div>
-    <!-- </form> -->
-</p>
+        <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
+            </span>
+    </div>
+  </p>
 
 </div>
-
+<h5 class="center" id="results-count"></h5>
 <div id="results-grid" class="row text-center">
+
 </div>
 </div>
 
 <script src="/scripts/search.js"></script>
-</html>
+<% include ./partials/footer %>

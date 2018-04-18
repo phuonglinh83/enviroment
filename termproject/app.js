@@ -1,7 +1,17 @@
+/**
+ * ============================ app.js ===================================
+ * This file is the core of the web server.
+ * Brings together all the different neccessary modules together.
+ * All incoming and outgoing requests are routed through this failed
+ *
+ */
+
+// Development environment
 if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
 }
 
+// Core modules
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,17 +19,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// User-Auth modules
 const passport = require("passport");
 const	local = require("passport-local");
 const	expSession = require("express-session");
 var bcrypt = require('bcrypt');
 
+// Routes
 const index = require('./routes/index');
 const user = require('./routes/user');
 const about = require('./routes/about');
 const search = require('./routes/search');
 const getUser = require('./db/users/getUser');
 
+// Express middleware instantiation
 var app = express();
 
 // view engine setup
@@ -34,16 +47,26 @@ app.use(function(err, req, res, next) {
 });
 
 app.use(logger('dev'));
+
+// Middleware setup for parsing HTTP body contents to JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Middleware setup for parsing storing cookies
 app.use(cookieParser());
+
+// Making public/ directory globally available
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Login session setup
 app.use(expSession({
   secret: 'bazinga',
   resave: false,
   saveUninitialized: false
 }));
+
+// Passport User-Auth setup
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new local({
@@ -52,6 +75,8 @@ passport.use(new local({
   getUser(username, (user,err)=> {
     // if (err) { return done(err); }
     if (!user) { return done(null, false); }
+
+    // Comparing encrypted passwords
     return bcrypt.compare(req.body.password, user.password, function(err, res) {
       if (!res) { console.log("Auth failed"); return done(null, false); }
       return done(null, user);
@@ -65,15 +90,18 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+// Making user object available to all views once logedin
 app.use(function(req, res, next) {
 	res.locals.user = req.user;
 	next();
 });
 
+// Routes Handling
 app.use('/', index);
 app.use('/user', user);
 app.use('/about', about);
 app.use('/search', search);
+// app.use('/searchDefault', searchDefault);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

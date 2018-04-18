@@ -1,3 +1,9 @@
+/**
+ * ============================ getUser.js ===================================
+ * This file gets the user and their details from the database when they login.
+ *
+ */
+
 const database = require('../index');
 
 const GET_USER_QUERY = `SELECT * FROM users

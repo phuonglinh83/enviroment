@@ -24,6 +24,14 @@ module.exports = {
           key:'user_id' 
         }
       },
+      status_id: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: {
+          model:'status',
+          key:'status_id'
+        }
+      },
       username: {
         allowNull: true,
         type: Sequelize.TEXT
@@ -33,9 +41,6 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING
-      },
-      resolved: {
-        type: Sequelize.TEXT
       },
       username: {
         allowNull: true,
@@ -62,13 +67,21 @@ module.exports = {
       isFlagged: {
         type: Sequelize.BOOLEAN
       },
-      createdAt: {
+      month: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
+      },
+      day: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      year: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.TEXT
       } 
     });
   },

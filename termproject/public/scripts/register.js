@@ -1,3 +1,9 @@
+/**
+ * ================================= register.js ===================================
+ * Responsible for front-end form validation, and display of error.
+ *
+ */
+
 let pass, repass, email;
 const emailEx = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const usernameEx = /^[a-zA-Z0-9]+([_\.]?[a-zA-Z0-9]){4,24}$/;
