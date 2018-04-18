@@ -4,81 +4,73 @@
   <html>
 
   <head>
-    <div class="container jumbotron" id="main-container">
-
-      <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
-      <h2 style="text-align: center">Site under construction</h2>
-      <p class="container">
-        <!-- <form action="/search" method="GET" id="search-bar"> -->
-        <div class="input-group" id="search-bar">
-          <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search By City or Zipcode...">
-          <span class="input-group-btn">
-            <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
-          </span>
-        </div>
-        <!-- </form> -->
-        <p>
-          <!-- <a href="/about" class="btn btn-primary" style="margin-left: 47%">About</a> -->
-    </div>
-
+      <script src="/javascripts/search.js"></script>
 
     <!-- end outer container -->
 
+  
+  <!-- 
+    Gary Straub
+    Styles used for the Home Page results and formatting
+    NOTES FOR MEE
+
+    Thumbnails!!
+    Change the logo positioning 
+    create two rows, make the navigation persistent
+
+
+   -->
+  <style>
+    /* Set the Row Height of search results */
+    #rowOverload {
+      height: 125px;
+    }
+    .thumbnail {
+      max-height: 100%;
+      max-width: 100%;
+    }
+    /* Used to set height of the body items to fit perfectly with the nav (nav height = 50px) */
+    .staticContainer {
+      height: calc(100vh - 262px);
+      overflow: auto;
+    }
+    .header {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+    }
+    /* For the static header/navigation */
+  .affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+  </style>
+
+<!-- 
+  Gary Straub
+  There are Two containers, one for the results and the other for the map
+ -->
+<!-- RESULTS -->
+
+
+<divclass="col-md-12 col-lg-12 col-sm-12">
+
+    <div class="col-lg-6 col-md-8 col-sm-12 staticContainer"  id="searchRow" style="position: relative;">
+    </div>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHb1IschZD5X09Ui_UZajU-BvLtJtu5I"></script> 
+
+    <div class="col-lg-6 col-md-6 hidden-sm" >
+        <div id="googleMap" style="height: calc(100vh - 262px);"></div> 
+      </div>
+    </div>
+
+
   </head>
-  <script src="/javascripts/search.js"></script>
-
-  <div class="container-fluid" style="border:1px solid #cecece;">
-<div class = "issueContainer">
-  <div class="row">
-    <div class="col-sm-2">
-            <div class="col-md-12">
-                <img src="http://i.imgur.com/Hw1dyoP.png">
-            </div>
-          </div>
-            <div class="col-sm-6">
-                <b>[ISSUE TITLE]</b><br>
-                [ISSUE LOCATION]<br><br>
-                <i>Category: [ISSUE CATEGORY]</i><br>
-                <i>Status: [ISSUE STATUS]</i>
-            </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid" style="border:3px solid #cecece;">
-  <div class = "issueContainer">
-    <div class="row">
-      <div class="col-sm-2">
-              <div class="col-md-12">
-                  <img src="http://i.imgur.com/Hw1dyoP.png">
-              </div>
-            </div>
-              <div class="col-sm-6">
-                  <b>oil spill on 280</b><br>
-                  San Mateo, CA<br><br>
-                  <i>Category: Toxicant</i><br>
-                  <i>Status: Unresolved</i>
-              </div>
-      </div>
-    </div>
-  </div>
-
-<div class="container-fluid" style="border:1px solid #cecece;">
-    <div class = "issueContainer">
-      <div class="row">
-        <div class="col-sm-2">
-                <div class="col-md-12">
-                    <img src="http://i.imgur.com/Hw1dyoP.png">
-                </div>
-              </div>
-                <div class="col-sm-6">
-                    <b>broken glass at Taraval Park</b><br>
-                    San Francisco, CA<br><br>
-                    <i>Category: Pollution</i><br>
-                    <i>Status: Resolved</i>
-                </div>
-        </div>
-      </div>
-    </div>
 
   </html>

@@ -12,6 +12,16 @@ $( "document" ).ready( function() {
       url: '/search',
       data: dataObject,
       success: function( results ) {
+        //Copy from Lilys code (Google Maps)
+        const myCenter = new google.maps.LatLng(37.720460, -122.478124);
+        const mapProp= {
+          center:myCenter,
+          zoom:14,
+        };
+        const map=new google.maps.Map(document.getElementById("googleMap"),mapProp);  
+        const marker = new google.maps.Marker({position:myCenter}); 
+        marker.setMap(map); 
+
         const SEARCH_CONTENT = document.getElementById("searchRowProto");
         const SEARCH_COLUMN = document.getElementById("searchColumnProto");
         const SEARCH_RESULT_MESSAGE = `<p class="my-2"> ${results.length} results returned for "${searchValue}"`;

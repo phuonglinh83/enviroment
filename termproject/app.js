@@ -59,7 +59,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-<<<<<<< HEAD
 // const usersTable = require('./db/users');
 // const locationsTable = require('./db/locations');
 // const issuesTable = require('./db/issues');
@@ -124,13 +123,6 @@ app.use(function(err, req, res, next) {
 //     console.log( searchResult.length );
 //     console.log( searchResult[ 0 ].city );
 //     console.log(searchResult);
-=======
-// let searchTable = require('./db/search');
-// searchTable
-//   .defaultSearch()
-//   .then((result) => {
-//     console.log(result);
->>>>>>> Justin
 //   })
 //   .catch((error) => { console.log("error:", error)});
 
