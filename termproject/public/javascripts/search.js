@@ -43,15 +43,18 @@ $( "document" ).ready( function() {
           // var expressThumbnail = require('express-thumbnail');
           // var app = express();
           // app.use(expressThumbnail.register(__dirname + '/assets'));
-
+          
+          var imgPath = results[index].imagePath;
+          var img = imgPath.split(/\/|\\/).pop();
+          var thumbnail = "/images/thumbnails/" + img;
           const cardsToAppend = `
+          
 
-<div class="container-fluid col-lg-6 col-md-12 col-sm-12" style="padding-bottom: 2px;">
+<div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
   <div class = "issueContainer">
     <div class="row" id="rowOverload">
       <div class="col-lg-4 col-md-4 col-sm-4">
-              <img class="thumbnail center" src="${ results[ index ].imagePath }">
-    
+              <img class="thumbnail center" style="padding: 0px; border-radius: 0px;" src="${thumbnail}">
             </div>
               <div class="col-lg-8 col-md-8 col-sm-8">
                   <b>${results[index].title}</b>
