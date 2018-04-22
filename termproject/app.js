@@ -15,7 +15,6 @@ var about = require('./routes/about');
 var issue = require('./routes/issue')
 
 let search = require('./routes/search');
-let searchDefault = require('./routes/searchDefault');
 
 var app = express();
 
@@ -38,7 +37,6 @@ app.use('/issue', issue);
 
 //DELETE THIS AFTER PROTOTYPE TESTING IS DONE
 app.use('/search', search);
-app.use('/searchDefault', searchDefault);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,12 +58,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// let searchTable = require('./db/search');
-// searchTable
-//   .defaultSearch()
-//   .then((result) => {
-//     console.log(result);
+// const searchQueries = require('./db/search');
+// searchQueries
+//   .searchByCity("san francisco")
+//   .then((searchResult) => {
+//     //searchResult.length returns 3 because there's 3 issues
+//     //to access each element you can just say searchResult[0].location_id
+//     // console.log( searchResult.length );
+//     // console.log( searchResult[ 0 ].city );
+//     console.log(searchResult);
 //   })
-//   .catch((error) => { console.log("error:", error)});
+//   .catch( error => console.log( "Error: ", error ) );
 
 module.exports = app;
