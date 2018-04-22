@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHb1IschZD5X09Ui_UZajU-BvLtJtu5I"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <link href="/stylesheets/style.css" rel="stylesheet">
+
     <title><%= title %></title>
 
   </head>
   <body id = "mybody">
 
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav id="navbar" class="navbar navbar-expand navbar-dark bg-dark">
 <a class="navbar-brand" href="#">Envirepair</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -22,7 +30,7 @@
     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Issues/Complaints</a>
+    <a class="nav-link active" href="/issue/create">New Issue</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Contact</a>
@@ -30,13 +38,23 @@
   <li class="nav-item active">
     <a class="nav-link" href="/about">About</a>
   </li>
-  <ul class="navbar-nav navbar-right">
-  <li class="nav-item active">
-    <a class="nav-link" href="/users/#reports">Login</a>
-  </li>
 
-  </ul>
-
+</ul>
+<ul class="navbar-nav navbar-right"
+<li class="nav-item">
+  <% if(user) { %>
+    <a class="nav-link active" href="/user/profile"><%= user.username %></a>
+  <% } else { %>
+    <a class="nav-link active" href="/user/login">Login</a>
+  <% } %>
+</li>
+<li class="nav-item">
+  <% if(user) { %>
+    <a class="nav-link active" href="/user/logout">Logout</a>
+  <% } else { %>
+    <a class="nav-link active" href="/user/register">Register</a>
+  <% } %>
+</li>
 
 </div>
 </nav>

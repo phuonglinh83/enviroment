@@ -1,38 +1,49 @@
+<!-- about.ejs
+ Envirepair homepage that allows a user to search for issues and complaints with
+ a list of results and an accompany map view. -Gary and Justin -->
+
 <% include ./partials/header %>
 
-  <!doctype html>
-  <html>
 
-  <head>
-    <div class="container jumbotron" id="main-container">
+<div class="container">
+<div class="container jumbotron" id="main-container">
 
-      <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
-      <h2 style="text-align: center">Site under construction</h2>
-      <p class="container">
-        <!-- <form action="/search" method="GET" id="search-bar"> -->
-        <div class="input-group" id="search-bar">
-          <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search By City or Zipcode...">
-          <span class="input-group-btn">
-            <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
-          </span>
+  <h4 style="text-align: center">SFSU CSC648 Class Project</h4>
+  <h6 style="text-align: center">A website where people can file environmental complaints and issues.</h6>
+  <!-- <p class="container"> -->
+    <div class="input-group" id="search-bar">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
+          <ul class="dropdown-menu" aria-labelledby="filterMenu">
+            <option class="dropdown-item" id="allFilter"> All </option>
+            <option class="dropdown-item" id="cityFilter"> City </option>
+            <option class="dropdown-item" id="categoryFilter"> Category </option>
+            <option class="dropdown-item" id="statusFilter"> Status </option>
+          </ul>
         </div>
-        <!-- </form> -->
-        <p>
-          <!-- <a href="/about" class="btn btn-primary" style="margin-left: 47%">About</a> -->
+        <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
+            </span>
     </div>
+  <!-- </p> -->
 
-    <div class="container">
-      <div class="row" id="searchRow">
-        <div class="col-lg-12 my-4">
-        </div>
-        <!-- /.col-lg-6 -->
+</div>
+<h5 class="center" id="resultsCount"></h5>
 
-      </div>
-      <!-- /.row -->
+<!-- <div id="searchRow" class="row text-center"> -->
+<div class="row">
+  <!-- <div class="col-md-12 col-lg-12 col-sm-12"> -->
+    <div class="col-lg-6 col-sm-12 staticContainer"  id="resultsRow" style="position: relative;">
     </div>
-    <!-- end outer container -->
+    <div class="col-lg-6 hidden-sm" >
+      <div id="googleMap" style="height: calc(100vh - 262px);"></div>
+    </div>
+  <!-- </div> -->
+</div>
+</div>
 
-  </head>
-  <script src="/javascripts/search.js"></script>
 
-  </html>
+<script src="/scripts/search.js"></script>
+
+<% include ./partials/footer %>
