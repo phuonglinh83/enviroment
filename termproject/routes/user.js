@@ -61,7 +61,7 @@ router.get("/logout", function(req, res) {
 
 // User profile route
 router.get("/profile", isLoggedIn, function(req, res) {
-  res.render("profile", {title: "Profile"});
+  res.render("users", {title: "Profile"});
 });
 
 module.exports = router;

@@ -9,6 +9,7 @@
 // Development environment
 if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
+  // console.log(process_env.DATABASE_URL);
 }
 
 // Core modules

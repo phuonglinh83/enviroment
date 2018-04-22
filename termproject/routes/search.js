@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
     let searchQuery = req.query.keyword;
     let filter = req.query.filter;
     console.log(searchQuery);
-    if(filter == "all") {
+    if(filter == "all" || filter == "") {
       search.searchAll( searchQuery ).then( searchResults => {
         res.status(200).json(searchResults);
       }).catch( error => console.log( "ERROR: ", error ) );

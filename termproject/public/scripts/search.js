@@ -4,7 +4,7 @@
  *
  */
 
-let filter = "";
+let filter = "all";
 
 // Funciton to update the filter name on the button
 const setFilter = function(element) {
@@ -48,17 +48,34 @@ const loadData = function(e){
 
   $.get('/search?keyword=' + searchValue +"&filter=" + filter.toLowerCase(), function(data) {
       // console.log(JSON.stringify(data);
-      $('#results-count').html(data.length + " results found");
-      $('#results-grid').html("");
+
+      const myCenter = new google.maps.LatLng(37.720460, -122.478124);
+      const mapProp= {
+        center:myCenter,
+        zoom:14,
+        scrollwheel: false,
+      };
+      const map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      const marker = new google.maps.Marker({position:myCenter});
+      marker.setMap(map);
+
+      $('#resultsCount').html(data.length + " results found");
+      $('#resultsRow').html("");
       data.forEach(function(issue) {
         console.log(issue.imagePath);
-        $('#results-grid').append(`
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <img class="card-img-top" src="${ issue.imagePath }">
-              <div class="caption">
-                <h5>${ issue.title }</h5>
-                <p>${issue.description}</p>
+        $('#resultsRow').append(`
+          <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
+            <div class = "issueContainer">
+              <div class="row" id="rowOverload">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <img class="thumbnail center" src="${ issue.imagePath }">
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                  <b>${issue.title}</b>
+                  <br>${issue.city}, ${issue.state}<br><br>
+                  <i>Category: ${issue.type}</i><br>
+                  <i>Status: Unresolved</i>
+                </div>
               </div>
             </div>
           </div>
