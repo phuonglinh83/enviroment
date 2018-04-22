@@ -7,8 +7,44 @@
     <link href="/stylesheets/style.css" rel="stylesheet">
     <title><%= title %></title>
 
+<<<<<<< HEAD
   </head>
   <body id = "mybody">
+=======
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+        <!-- /*Gary Straub
+        Temporary fixes for some
+        When the user presses enter the query is submit 
+         */ -->
+            <script>
+                $( "document" ).ready( function() {
+                  var input = document.getElementById("searchBar");
+                  input.addEventListener("keyup", function(event) {
+                      event.preventDefault();
+                      if (event.keyCode === 13) {
+                          document.getElementById("searchButton").click();
+                      }
+                  });
+                });
+            </script>
+  <title>
+    <%= title %>
+  </title>
+>>>>>>> gary
 
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 <a class="navbar-brand" href="#">Envirepair</a>
@@ -16,6 +52,7 @@
 <span class="navbar-toggler-icon"></span>
 </button>
 
+<<<<<<< HEAD
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto">
   <li class="nav-item active">
@@ -40,3 +77,73 @@
 
 </div>
 </nav>
+=======
+<body id="mybody">
+      <div class="container-fluid" id="main-container">
+        <h1 style="text-align: center">SFSU CSC648 Class Project</h1>
+        <!-- <h2 style="text-align: center">Site under construction</h2> -->
+        <p class="container">
+          <!-- <form action="/search" method="GET" id="search-bar"> -->
+
+          
+          <!-- </form> -->
+          <p>
+            <!-- <a href="/about" class="btn btn-primary" style="margin-left: 47%">About</a> -->
+      </div>
+      <nav class="navbar navbar-expand navbar-dark bg-dark" data-offset-top="197" style="margin-bottom: 0px;">
+          <a class="navbar-brand" href="#">Envirepair</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Issues/Complaints</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Contact</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+      
+            </ul>
+            <ul class="navbar-nav navbar-right">
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Register</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+
+
+      <nav class="navbar navbar-expand navbar-inverse" data-offset-top="197">
+          <ul class="nav navbar-nav">
+            <li>
+                <div class="input-group" id="search-bar">
+                  <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search By City or Zipcode..." 
+                  style="margin-top:0%">
+                  <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Submit">
+                  </span>
+                </div>
+
+            </li>
+          </ul>
+        </nav>
+
+
+</body>
+</html>
+>>>>>>> gary

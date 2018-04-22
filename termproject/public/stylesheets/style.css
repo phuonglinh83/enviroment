@@ -22,7 +22,6 @@ body {
   */
 .issueContainer:hover {
   background-color: #fff;
-  border: 1px solid #000;
 }
 
 /* Contains the comment information. -Justin */
@@ -43,7 +42,7 @@ margin-right: 20%;
 #main-container {
     margin-top: 20px;
     max-width: 1000px;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 #search-bar {

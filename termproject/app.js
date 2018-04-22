@@ -1,5 +1,6 @@
 if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
+  // console.log(process_env.DATABASE_URL);
 }
 
 var express = require('express');
@@ -58,14 +59,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// const searchQueries = require('./db/search');
-// searchQueries
-//   .searchByCity("san francisco")
-//   .then((searchResult) => {
-//     //searchResult.length returns 3 because there's 3 issues
-//     //to access each element you can just say searchResult[0].location_id
-//     // console.log( searchResult.length );
-//     // console.log( searchResult[ 0 ].city );
+       // console.log( searchResult.length );
+       // console.log( searchResult[ 0 ].city );
 //     console.log(searchResult);
 //   })
 //   .catch( error => console.log( "Error: ", error ) );
