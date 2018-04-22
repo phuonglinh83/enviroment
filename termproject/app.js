@@ -19,6 +19,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var processImage = require('express-processimage');
+var gm = require('gm');
 
 // User-Auth modules
 const passport = require("passport");
@@ -57,8 +59,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Middleware setup for parsing storing cookies
 app.use(cookieParser());
 
-// Making public/ directory globally available
+app.use(processImage(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(processImage(path.join(__dirname, 'public')));
 
 
 // Login session setup
