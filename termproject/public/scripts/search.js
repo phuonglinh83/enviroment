@@ -66,7 +66,7 @@ const loadData = function(e){
         $('#resultsRow').append(`
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
-              <div class="row" id="rowOverload">
+              <a class="row" id="rowOverload" href="/issue/${issue.issue_id}">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                   <img class="thumbnail center" src="${ issue.imagePath }">
                 </div>
@@ -76,7 +76,7 @@ const loadData = function(e){
                   <i>Category: ${issue.type}</i><br>
                   <i>Status: Unresolved</i>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         `);

@@ -31,6 +31,7 @@ const index = require('./routes/index');
 const user = require('./routes/user');
 const about = require('./routes/about');
 const search = require('./routes/search');
+const issue = require('./routes/issue');
 const getUser = require('./db/users/getUser');
 
 // Express middleware instantiation
@@ -102,6 +103,7 @@ app.use('/', index);
 app.use('/user', user);
 app.use('/about', about);
 app.use('/search', search);
+app.use('/issue', issue);
 // app.use('/searchDefault', searchDefault);
 
 // catch 404 and forward to error handler
