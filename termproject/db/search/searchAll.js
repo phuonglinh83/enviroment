@@ -1,7 +1,6 @@
 /**
  * ============================ searchAll.js ===================================
  * This file is responsible for returning issue results from the database by using the search keyword.
- * Makes use of % Like feature to find any matching string in any column of the issue table.
  */
 
 const database = require('../index');
@@ -10,6 +9,8 @@ const database = require('../index');
 const SELECT_ALL_QUERY = `SELECT * FROM issues
   INNER JOIN categories
   ON issues.category_id = categories.category_id
+  INNER JOIN status
+  ON issues.status_id = status.status_id
   WHERE (title ILIKE $1) OR (description ILIKE $1) OR (city ILIKE $1) OR (zipcode ILIKE $1)`;
 
 const searchAll = keyword => {

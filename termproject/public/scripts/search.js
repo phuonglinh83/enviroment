@@ -4,12 +4,14 @@
  *
  */
 
+let filter = "";
+
 // Funciton to update the filter name on the button
 const setFilter = function(element) {
-  const label = $(element).text();
-  if(label.trim() != 'All' ) {
-    $('#filterMenu').text(label);
-    $('#searchBar').attr("placeholder", `Search By ${label}...`);
+  filter = $(element).text().trim();
+  if(filter != 'All' ) {
+    $('#filterMenu').text(filter);
+    $('#searchBar').attr("placeholder", `Search By ${filter}...`);
   } else {
     $('#filterMenu').text("Search All");
     $('#searchBar').attr("placeholder", 'Search by Title, Description, City, or Zipcode...');
@@ -26,6 +28,11 @@ $("#categoryFilter").on('click', function () {
   setFilter('#categoryFilter');
 });
 
+// If user clicks on "City"
+$("#cityFilter").on('click', function () {
+  setFilter('#cityFilter');
+});
+
 // If user clicks on "Status"
 $("#statusFilter").on('click', function () {
   setFilter('#statusFilter');
@@ -39,10 +46,10 @@ const loadData = function(e){
   const searchValue = document.getElementById("searchBar").value;
   console.log( searchValue );
 
-  $.get('/search?keyword=' + searchValue , function(data) {
+  $.get('/search?keyword=' + searchValue +"&filter=" + filter.toLowerCase(), function(data) {
       // console.log(JSON.stringify(data);
       $('#results-count').html(data.length + " results found");
-      $('#results-grid').html();
+      $('#results-grid').html("");
       data.forEach(function(issue) {
         console.log(issue.imagePath);
         $('#results-grid').append(`
