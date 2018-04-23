@@ -9,9 +9,9 @@ const database = require('../index');
 const INSERT_ISSUE_QUERY = `INSERT INTO issues
   (category_id, user_id, status_id, title, description,
   username, "streetAddress", city, state, zipcode, "numberOfOccurrences",
-  "imagePath", "isFlagged", "createdAt", "updatedAt")
+  "imagePath", "isFlagged", "month", "day", "year", "updatedAt")
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
-  $11, $12, $13, $14, $15)
+  $11, $12, $13, $14, $15, $16, $17)
   RETURNING "issue_id"`;
 
 const addIssue = issueObject => {
@@ -20,12 +20,11 @@ const addIssue = issueObject => {
   const MONTH = CURRENT_DATE.getMonth() + 1;
   const DAY = CURRENT_DATE.getDate();
   const YEAR = CURRENT_DATE.getFullYear();
-  const TIME = currentDate.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12:true});
+  const UPDATED_AT = CURRENT_DATE.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12:true});
 
-  const CREATED_AT = MONTH + "/" + DAY + "/" + YEAR;
-  const UPDATED_AT = TIME;
-
-  issueObject[ "createdAt" ] = CREATED_AT;
+  issueObject[ "year" ] = YEAR;
+  issueObject[ "month" ] = MONTH;
+  issueObject[ "day" ] = DAY;
   issueObject[ "updatedAt" ] = UPDATED_AT;
 
   const VALUES = [ issueObject.category_id,
@@ -41,7 +40,9 @@ const addIssue = issueObject => {
     issueObject.numberOfOccurrences,
     issueObject.imagePath,
     issueObject.isFlagged,
-    issueObject.createdAt,
+    issueObject.month,
+    issueObject.day,
+    issueObject.year,
     issueObject.updatedAt ];
 
   // Inserting data into the database.

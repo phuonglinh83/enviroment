@@ -18,7 +18,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bb = require('express-busboy');
 
 // User-Auth modules
 const passport = require("passport");
@@ -51,8 +51,10 @@ app.use(function(err, req, res, next) {
 app.use(logger('dev'));
 
 // Middleware setup for parsing HTTP body contents to JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// Use busboy-expression for parsing both JSON text and files
+bb.extend(app, { upload: true });
 
 // Middleware setup for parsing storing cookies
 app.use(cookieParser());
