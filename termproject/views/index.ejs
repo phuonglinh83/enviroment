@@ -4,77 +4,46 @@
 
 <% include ./partials/header %>
 
-  <!doctype html>
-  <html>
 
-  <head>
-      <script src="/javascripts/search.js"></script>
+<div class="container">
+<div class="container jumbotron" id="main-container">
 
-    <!-- end outer container -->
-
-
-  <!--
-    Gary Straub
-    Styles used for the Home Page results and formatting
-    NOTES FOR MEE
-
-    Thumbnails!!
-    Change the logo positioning
-    create two rows, make the navigation persistent
-
-
-   -->
-  <style>
-    /* Set the Row Height of search results */
-    #rowOverload {
-      height: 125px;
-    }
-    .thumbnail {
-      max-height: 100%;
-      max-width: 100%;
-    }
-    /* Used to set height of the body items to fit perfectly with the nav (nav height = 50px) */
-    .staticContainer {
-      height: calc(100vh - 262px);
-      overflow: auto;
-    }
-    .header {
-    padding: 10px 16px;
-    background: #555;
-    color: #f1f1f1;
-    }
-    /* For the static header/navigation */
-  .affix {
-      top: 0;
-      width: 100%;
-      z-index: 9999 !important;
-  }
-
-  .affix + .container-fluid {
-      padding-top: 70px;
-  }
-  </style>
-
-<!--
-  Gary Straub
-  There are Two containers, one for the results and the other for the map
- -->
-<!-- RESULTS -->
-
-
-<divclass="col-md-12 col-lg-12 col-sm-12">
-
-    <div class="col-lg-6 col-md-8 col-sm-12 staticContainer"  id="searchRow" style="position: relative;">
+  <h4 style="text-align: center">SFSU CSC648 Class Project</h4>
+  <h6 style="text-align: center">A website where people can file environmental complaints and issues.</h6>
+  <!-- <p class="container"> -->
+    <div class="input-group" id="search-bar">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
+          <ul class="dropdown-menu" aria-labelledby="filterMenu">
+            <option class="dropdown-item" id="allFilter"> All </option>
+            <option class="dropdown-item" id="cityFilter"> City </option>
+            <option class="dropdown-item" id="categoryFilter"> Category </option>
+            <option class="dropdown-item" id="statusFilter"> Status </option>
+          </ul>
+        </div>
+        <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
+            </span>
     </div>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHb1IschZD5X09Ui_UZajU-BvLtJtu5I"></script>
+  <!-- </p> -->
 
-    <div class="col-lg-6 col-md-6 hidden-sm" >
-        <div id="googleMap" style="height: calc(100vh - 262px);"></div>
-      </div>
+</div>
+<h5 class="center" id="resultsCount"></h5>
+
+<!-- <div id="searchRow" class="row text-center"> -->
+<div class="row">
+  <!-- <div class="col-md-12 col-lg-12 col-sm-12"> -->
+    <div class="col-lg-6 col-sm-12 staticContainer"  id="resultsRow" style="position: relative;">
     </div>
+    <div class="col-lg-6 hidden-sm" >
+      <div id="googleMap" style="height: calc(100vh - 262px);"></div>
+    </div>
+  <!-- </div> -->
+</div>
+</div>
 
 
-  </head>
+<script src="/scripts/search.js"></script>
 
-  </html>
+<% include ./partials/footer %>

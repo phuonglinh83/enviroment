@@ -1,3 +1,9 @@
+/**
+ * ============================ addIssue.js ===================================
+ * As the name suggests this file is responsible for adding new issues to the databse.
+ *
+ */
+
 const database = require('../index');
 
 const INSERT_ISSUE_QUERY = `INSERT INTO issues
@@ -9,7 +15,7 @@ const INSERT_ISSUE_QUERY = `INSERT INTO issues
   RETURNING "issue_id"`;
 
 const addIssue = issueObject => {
-  // let currentDate = new Date();
+  // Generating time and date of the issue post.
   const CURRENT_DATE = new Date();
   const MONTH = CURRENT_DATE.getMonth() + 1;
   const DAY = CURRENT_DATE.getDate();
@@ -38,6 +44,7 @@ const addIssue = issueObject => {
     issueObject.createdAt,
     issueObject.updatedAt ];
 
+  // Inserting data into the database.
   return database
     .one( INSERT_ISSUE_QUERY, VALUES )
     .catch( error => console.log( "ERROR IN ADD ISSUE: ", error ) );
