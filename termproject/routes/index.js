@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
 
-// FUTURE PLANS TO CORRECT SEARCH FROM POST TO GET
+// FUTURE- PLANS TO CORRECT SEARCH FROM POST TO GET
 // router.get("/search", function(req, res) {
 //     console.log("hits the post for search!");
 //     if(req.query.search) {

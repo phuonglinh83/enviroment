@@ -1,3 +1,4 @@
 module.exports = {
-  addIssue: require('./issues/addIssue')
+  addIssue: require('./issues/addIssue'),
+  readIssue: require('./issues/readIssue')
 };

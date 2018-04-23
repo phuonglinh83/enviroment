@@ -9,7 +9,6 @@
     "db:migrate": "sequelize db:migrate",
     "db:rollback": "sequelize db:migrate:undo"
   },
-  
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
@@ -17,6 +16,7 @@
     "dotenv": "^5.0.0",
     "ejs": "^2.5.7",
     "express": "~4.15.5",
+    "express-ejs-layouts": "^2.4.0",
     "morgan": "~1.9.0",
     "nodemon": "^1.14.12",
     "pg-promise": "^7.4.1",

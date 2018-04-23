@@ -74,4 +74,12 @@ app.use(function(err, req, res, next) {
 //   })
 //   .catch((error) => { console.log("error:", error)});
 
+const ISSUES_TABLE = require('./db/issues');
+ISSUES_TABLE  
+  .readIssue(1)
+  .then((issueResult) => {
+    console.log(issueResult);
+  })
+  .catch((error) => console.log("fucked up returning the read search result", error));
+
 module.exports = app;

@@ -4,7 +4,7 @@ $("document").ready(function () {
 
   $("#searchButtonProto").on('click', function () {
     console.log(document.getElementById('filterMenu').innerText.toLowerCase());
-    const filterValue = document.getElementById('filterMenu').innerText.toLowerCase();
+    // const filterValue = document.getElementById('filterMenu').innerText.toLowerCase();
     const searchValue = document.getElementById("searchBarProto").value;
     console.log(searchValue);
 
@@ -86,7 +86,7 @@ $("document").ready(function () {
     let dropdownMenu = document.getElementById('filterMenu');
     dropdownMenu.innerText = categoryDropdown.text;
     console.log(dropdownMenu.innerText);
-    $("#searchBarProto").attr("placeholder", "Search By Category...");
+    $("#searchBarProto").attr("placeholder", "Search By Category (i.e. pollution, waste, toxicants)...");
   });
 
   $("#statusFilter").on('click', function () {
@@ -94,12 +94,10 @@ $("document").ready(function () {
     let dropdownMenu = document.getElementById('filterMenu');
     dropdownMenu.innerText = statusDropdown.text;
     console.log(dropdownMenu.innerText);
-    $("#searchBarProto").attr("placeholder", "Search By Status...");
-
+    $("#searchBarProto").attr("placeholder", "Search By Status (i.e. pending, in progress, resolved)...");
   });
 
   function cardGenerator(cardAttributes) {
-    // console.log(cardAttributes.title);
     const CARDS_TO_APPEND = `<div class="card">
     <img class="card-img-top" src="${ cardAttributes.imagePath}">
     <div class="card-body">
@@ -116,6 +114,7 @@ $("document").ready(function () {
       <p class="card-text"><small class="text-muted">Last Updated: ${ cardAttributes.updatedAt}</small></p>            
     </div>
     </div>`;
+
     SEARCH_CONTENT.innerHTML += CARDS_TO_APPEND;
   };
 });
