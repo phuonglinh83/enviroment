@@ -4,6 +4,12 @@
 .AppleDouble
 .LSOverride
 
+# IDE files
+.idea
+
+# PDF File
+*.pdf
+
 # Icon must end with two \r
 Icon
 

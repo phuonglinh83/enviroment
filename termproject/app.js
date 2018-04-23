@@ -1,8 +1,18 @@
+/**
+ * ============================ app.js ===================================
+ * This file is the core of the web server.
+ * Brings together all the different neccessary modules together.
+ * All incoming and outgoing requests are routed through this failed
+ *
+ */
+
+// Development environment
 if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
   // console.log(process_env.DATABASE_URL);
 }
 
+// Core modules
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -12,13 +22,21 @@ var bodyParser = require('body-parser');
 var processImage = require('express-processimage');
 var gm = require('gm');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var about = require('./routes/about');
+// User-Auth modules
+const passport = require("passport");
+const	local = require("passport-local");
+const	expSession = require("express-session");
+var bcrypt = require('bcrypt');
 
-let search = require('./routes/search');
-let searchDefault = require('./routes/searchDefault');
+// Routes
+const index = require('./routes/index');
+const user = require('./routes/user');
+const about = require('./routes/about');
+const search = require('./routes/search');
+const issue = require('./routes/issue');
+const getUser = require('./db/users/getUser');
 
+// Express middleware instantiation
 var app = express();
 
 // view engine setup
@@ -28,26 +46,68 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-
-
+app.use(function(err, req, res, next) {
+    console.log(err);
+});
 
 app.use(logger('dev'));
+
+// Middleware setup for parsing HTTP body contents to JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Middleware setup for parsing storing cookies
 app.use(cookieParser());
 
 app.use(processImage(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(processImage(path.join(__dirname, 'public')));
 
+
+// Login session setup
+app.use(expSession({
+  secret: 'bazinga',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Passport User-Auth setup
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new local({
+  passReqToCallback: true
+}, (req, username, password, done) => {
+  getUser(username, (user,err)=> {
+    // if (err) { return done(err); }
+    if (!user) { return done(null, false); }
+
+    // Comparing encrypted passwords
+    return bcrypt.compare(req.body.password, user.password, function(err, res) {
+      if (!res) { console.log("Auth failed"); return done(null, false); }
+      return done(null, user);
+    });
+  });
+}));
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// Making user object available to all views once logedin
+app.use(function(req, res, next) {
+	res.locals.user = req.user;
+	next();
+});
+
+// Routes Handling
 app.use('/', index);
-app.use('/users', users);
+app.use('/user', user);
 app.use('/about', about);
-
-
-//DELETE THIS AFTER PROTOTYPE TESTING IS DONE
 app.use('/search', search);
-app.use('/searchDefault', searchDefault);
+app.use('/issue', issue);
+// app.use('/searchDefault', searchDefault);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,79 +121,10 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // res.locals.myname = 5;
-  // console.log(res.locals);
 
-  // render the error page
+  console.log(err);
   res.status(err.status || 500);
   res.render('error');
 });
-
-// const usersTable = require('./db/users');
-// const locationsTable = require('./db/locations');
-// const issuesTable = require('./db/issues');
-
-// const userObject = {
-//   username: "gerren",
-//   password: "password",
-//   email: "gpenalo1@mail.sfsu.edu",
-//   privilege: 2
-// };
-
-// usersTable
-//   .addUser(userObject)
-//   .then(userResult => {
-//     console.log(userResult.user_id);
-//     console.log(userResult.username)
-//   })
-//   .catch( error => console.log( "ERROR: ", error) );
-
-
-// const locationsObject = {
-//   city: "san francisco",
-//   state: "california",
-//   zipcode: 94110,
-//   numIssues: 1
-// };
-
-// usersTable  
-//   .addUser( userObject )
-  // .then( ( userResult ) => {
-  //   locationsTable  
-  //     .addLocation( locationsObject )
-  //     .then( ( locationResult ) => {
-  //       const issueObject = {
-  //         location_id: locationResult.location_id,
-  //         user_id: userResult.user_id,
-  //         username: userResult.username,
-  //         title: "cat land",
-  //         resolved: "in progress",
-  //         category: "chemical",
-  //         img: "/images/tree.jpg",
-  //         comment: "wow what a big white person!"
-  //       };
-  //       issuesTable
-  //         .addIssue( issueObject )
-  //         .then( result => {
-  //           console.log( result );
-  //         })
-  //         //.catch( error => console.log(error));
-  //     })
-  //     //.catch( error => console.log(error));
-  // })
-  // .catch( error => console.log( "ERROR: ", error ) );
-
-// const searchQueries = require('./db/search');
-
-// searchQueries 
-//   .searchByCity("san francisco")
-//   .then((searchResult) => {
-//     //searchResult.length returns 3 because there's 3 issues
-//     //to access each element you can just say searchResult[0].location_id
-//     console.log( searchResult.length );
-//     console.log( searchResult[ 0 ].city );
-//     console.log(searchResult);
-//   })
-//   .catch((error) => { console.log("error:", error)});
 
 module.exports = app;

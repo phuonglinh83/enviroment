@@ -1,23 +1,94 @@
+/* style.css
+ * Stylesheet for the Envirepair website. Contributed by Justin, Eva and Gary.
+ */
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-size: 12.5px;
+  /* font-family: sans-serif; */
+  font-size: 14px;
   background-color: #fff9e6;
+  font-family: 'Roboto Slab', sans-serif;
+	display: flex;
+	flex-direction: column;
+  /* background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/0kjHIH6/cute-and-puffy-cartoon-clouds-hovering-in-a-beautiful-blue-sky_bnjbcfrm__F0000.png'); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
 }
 
+/* Contains the issue information on the homepage. -Justin */
 .issueContainer {
   padding: 17px;
   background-color: #f2f2f2;
 }
+
+/* When hovered over, it changes to a lighter color for a more animated effect.
+  * -Justin
+  */
 .issueContainer:hover {
-  background-color: white;
-  /* border: 1px solid black; */
+  background-color: #fff;
 }
+
+/* Contains the comment information. -Justin */
+.commentContainer {
+  padding: 17px;
+  background-color: #f2f2f2;
+  border-top: 2px solid #cecece;
+  border-bottom: 2px solid #cecece;
+  border-left: 4px solid #cecece;
+  border-right: 4px solid #cecece;
+}
+
 /* .container {
 margin-left: 20%;
 margin-right: 20%;
 } */
+
+.promise {
+	text-align: center;
+	color: #4BB543;
+}
+
+#sub {
+  padding-right: 3px;
+}
+
+#cancel {
+  padding-left: 3px;
+}
+
+.col-6 {
+    flex: 0 0 50%;
+}
+
+.center {
+	text-align: center;
+}
+
+.form-control {
+  width: 280px;
+}
+/*
+#main-container {
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2),
+				0px -2px 5px rgba(0,0,0,0.2),
+				2px 0px 5px rgba(0,0,0,0.2),
+				2px 0px 5px rgba(0,0,0,0.2);
+} */
+
+.thumbnail {
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.2),
+				0px -2px 5px rgba(0,0,0,0.2),
+				2px 0px 5px rgba(0,0,0,0.2),
+				2px 0px 5px rgba(0,0,0,0.2);
+	padding: 0px;
+	max-width: 3000px;
+}
+
+.row.text-center {
+	display: flex;
+	flex-wrap: wrap;
+}
 
 #main-container {
     margin-top: 20px;
@@ -30,17 +101,23 @@ margin-right: 20%;
     width: 60%;
 }
 
-#search-button {
-    display: inline;
+#search-bar input:focus {
+	border-color: #66afe9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 
-/* .col {
+.col {
 margin-left: 5px;
 margin-right: 5px;
 padding-left: 0px;
-} */
+}
 
-/* .card {
+/* Card Classes
+ * Code for About Me page card layout. May need to rename classes to not
+  * interfere with Bootstrap definitions. -Justin
+  */
+.card {
   position: inline-block;
   top: 50%;
   left: 50%;
@@ -96,13 +173,142 @@ padding-left: 0px;
 
 .card .details p {
   margin: 20px 0 0;
-} */
-
-/* this is all for gerren's testing, delete it later if he didn't already */
-.searchResults {
-  background-color: lavender;
 }
+
+.col-md-6, .col-md-5{
+  border: 1px solid black;
+}
+
 
 .card-columns {
   max-width: 100%;
 }
+
+/*===============================================================================*/
+
+/* navbarSupportedContent
+ * Coded by Eva.
+*/
+#navbarSupportedContent #Dropdown .nav-item {
+      position: relative;
+ }
+#navbarSupportedContent #Dropdown .nav-item ul {
+      position: absolute;
+      list-style-type: none;
+      padding-left: 0px;
+      background-color: #343a40;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+      display: none;
+  }
+#navbarSupportedContent #Dropdown .nav-item:hover ul {
+      display: block;
+    }
+
+    article.tabs
+     {
+         position: relative;
+         display: block;
+         width: 60em;
+         height: 40em;
+         margin: 2em auto;
+
+     }
+     article.tabs section
+     {
+         position: absolute;
+         display: block;
+         top: 2em;
+         left: 0;
+         height: 38em;
+         padding: 10px 20px;
+         background-color: #ddd;
+         border-radius: 5px;
+         box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+         z-index: 0;
+         width:58em;
+     }
+     article.tabs section:first-child
+     {
+         z-index: 1;
+     }
+     article.tabs section h2
+     {
+         position: absolute;
+         font-size: 1.3em;
+         width: 150px;
+         height: 2em;
+         top: -2em;
+         left: 10px;
+         padding: 0;
+         margin: 0;
+         color: #999;
+         background-color: #ddd;
+         border-radius: 5px 5px 0 0;
+     }
+
+     article.tabs section:nth-child(2) h2
+     {
+         left: 162px;
+     }
+     article.tabs section:nth-child(3) h2
+     {
+         left: 314px;
+     }
+
+     article.tabs section h2 a
+     {
+         display: block;
+         width: 100%;
+         line-height: 1.8em;
+         text-align: center;
+         text-decoration: none;
+         color: inherit;
+         outline: 0 none;
+     }
+
+     /* The selected tap can be display and the color is white */
+     article.tabs section:target,
+     article.tabs section:target h2
+     {
+         color: #333;
+         background-color: #fff;
+         z-index: 2;
+     }
+
+     .modal-header{
+         background-color:#333;
+         color:#fff;
+      }
+
+/*===============================================================================*/
+
+      #rowOverload {
+        height: 125px;
+      }
+      .thumbnail {
+        max-height: 100%;
+        max-width: 100%;
+      }
+      /* Used to set height of the body items to fit perfectly with the nav (nav height = 50px) */
+      .staticContainer {
+        height: calc(100vh - 262px);
+        overflow: auto;
+      }
+      .header {
+      padding: 10px 16px;
+      background: #555;
+      color: #f1f1f1;
+      }
+      /* For the static header/navigation */
+      .affix {
+        top: 0;
+        width: 100%;
+        z-index: 9999 !important;
+      }
+
+      .affix + .container-fluid {
+        padding-top: 70px;
+      }

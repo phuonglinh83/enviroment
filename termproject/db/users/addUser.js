@@ -1,3 +1,9 @@
+/**
+ * ============================ addUser.js ===================================
+ * Responsible for adding a newly registered user, their credentials, and details to the database.
+ *
+ */
+
 const database = require('../index');
 
 const INSERT_USER_QUERY = `INSERT INTO users
@@ -10,10 +16,10 @@ const addUser = userObject => {
     userObject.password,
     userObject.email,
     userObject.privilege ];
-  
-  return database 
+
+  return database
     .one( INSERT_USER_QUERY, VALUES )
-    .catch( error => console.log( "ERROR: ", error ) ); 
+    .catch( error => console.log( "ERROR: ", error ) );
 };
 
 module.exports = addUser;
