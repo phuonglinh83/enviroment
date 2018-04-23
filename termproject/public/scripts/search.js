@@ -56,14 +56,22 @@ const loadData = function(e){
         scrollwheel: false,
       };
       const map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-      const marker = new google.maps.Marker({position:myCenter});
-      marker.setMap(map);
+      // geocoder will convert address into LongLat location on the map
+      const geocoder = new google.maps.Geocoder();
+      // label to display each marker on the map
+      const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      let index = 0;
+      // dict to map each marker location to a list of issues on that location
+      let locations = [];
+      // bounds to fit all markers into the map
+      var bounds = new google.maps.LatLngBounds();
 
       $('#resultsCount').html(data.length + " results found");
       $('#resultsRow').html("");
       data.forEach(function(issue) {
         console.log(issue.imagePath);
-        $('#resultsRow').append(`
+        // html content of each issue to display
+        const card_to_append = `
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
               <a class="row" id="rowOverload" href="/issue/${issue.issue_id}">
@@ -74,12 +82,43 @@ const loadData = function(e){
                   <b>${issue.title}</b>
                   <br>${issue.city}, ${issue.state}<br><br>
                   <i>Category: ${issue.type}</i><br>
-                  <i>Status: Unresolved</i>
+                  <i>Status: ${issue.issue_status}</i>
                 </div>
               </a>
             </div>
           </div>
-        `);
+        `;
+        $('#resultsRow').append(card_to_append);
+        var address = issue.streetAddress + ' ' + issue.city + ', ' + issue.state + ' ' + issue.zipcode;
+        geocoder.geocode({'address': address}, function(results, status) {
+          // Callback to handle location received from geocoder for each address
+          if (status === 'OK') {
+            const loc = results[0].geometry.location;
+            if (loc in locations) {
+              // Existing location, just append issue content to the corresponding entry in the dict
+              locations[loc] += card_to_append;
+            } else {
+              // New location, first extend the map boundary
+              bounds.extend(loc);
+              // Create a new entry for the location dict
+              locations[loc] = card_to_append;
+              // Create a maker for the location
+              const marker = new google.maps.Marker({
+                position: loc,
+                label: labels[index++ % labels.length]
+              });
+              // show the marker
+              marker.setMap(map);
+              google.maps.event.addListener(marker,'click',function() {
+                // if the marker is clicked, only show issues related to the location
+                $('#resultsRow').html(locations[loc]);
+              });
+            }
+            map.fitBounds(bounds);
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
       });
     });
   }
