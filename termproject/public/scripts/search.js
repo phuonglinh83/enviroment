@@ -59,19 +59,28 @@ const loadData = function(e){
       // geocoder will convert address into LongLat location on the map
       const geocoder = new google.maps.Geocoder();
       // label to display each marker on the map
-      const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      let index = 0;
+      // const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      let index = 1;
       // dict to map each marker location to a list of issues on that location
       let locations = [];
+      let loc_labels = [];
       // bounds to fit all markers into the map
       var bounds = new google.maps.LatLngBounds();
 
       $('#resultsCount').html(data.length + " results found");
       $('#resultsRow').html("");
       data.forEach(function(issue) {
-        console.log(issue.imagePath);
-        // html content of each issue to display
-        const card_to_append = `
+        var address = issue.streetAddress + ' ' + issue.city + ', ' + issue.state + ' ' + issue.zipcode;
+        geocoder.geocode({'address': address}, function(results, status) {
+          // Callback to handle location received from geocoder for each address
+          if (status === 'OK') {
+            const loc = results[0].geometry.location;
+            if (!(loc in loc_labels)) {
+              // loc_labels[loc] = labels[index++ % labels.length];
+              loc_labels[loc] = index++;
+            }
+            // html content of each issue to display
+            const card_to_append = `
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
               <a class="row" id="rowOverload" href="/issue/${issue.issue_id}">
@@ -79,7 +88,7 @@ const loadData = function(e){
                   <img class="thumbnail center" src="${ issue.imagePath }">
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8">
-                  <b>${issue.title}</b>
+                  <b>${loc_labels[loc]} - ${issue.title}</b>
                   <br>${issue.city}, ${issue.state}<br><br>
                   <i>Category: ${issue.type}</i><br>
                   <i>Status: ${issue.issue_status}</i>
@@ -88,12 +97,6 @@ const loadData = function(e){
             </div>
           </div>
         `;
-        $('#resultsRow').append(card_to_append);
-        var address = issue.streetAddress + ' ' + issue.city + ', ' + issue.state + ' ' + issue.zipcode;
-        geocoder.geocode({'address': address}, function(results, status) {
-          // Callback to handle location received from geocoder for each address
-          if (status === 'OK') {
-            const loc = results[0].geometry.location;
             if (loc in locations) {
               // Existing location, just append issue content to the corresponding entry in the dict
               locations[loc] += card_to_append;
@@ -105,7 +108,7 @@ const loadData = function(e){
               // Create a maker for the location
               const marker = new google.maps.Marker({
                 position: loc,
-                label: labels[index++ % labels.length]
+                label: "" + loc_labels[loc]
               });
               // show the marker
               marker.setMap(map);
@@ -115,6 +118,7 @@ const loadData = function(e){
               });
             }
             map.fitBounds(bounds);
+            $('#resultsRow').append(card_to_append);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
