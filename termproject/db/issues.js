@@ -1,4 +1,5 @@
 module.exports = {
   addIssue: require('./issues/addIssue'),
-  readIssue: require('./issues/readIssue')
+  getIssue: require('./issues/getIssue')
+  // readIssue: require('./issues/readIssue')  
 };

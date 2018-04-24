@@ -1,0 +1,123 @@
+<!-- form.ejs
+  A form webpage that allows the user to report an issue/complaint with a
+  description, image and location. -Justin -->
+
+<% include ./partials/header %>
+
+  <br>
+  <br>
+  <h2 style="text-align: center">
+    <i>Envirepair Cares</i>
+  </h2>
+  <h1 style="text-align: center">REPORT AN ISSUE</h1>
+
+
+  <!-- Submission form is enclosed in a jumbotron. -->
+  <div class="container jumbotron" id="main-container">
+    <!-- this is a message output after the issue has been uploaded -->
+    <%= typeof msg != 'undefined' ? msg : '' %>
+      <form action="/issue/create" encType="multipart/form-data" method="POST">
+        <!-- This Bootstrap class aligns labels and textfields properly. -->
+        <div class="form-group row">
+          <!-- Label -->
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Issue Title:</label>
+
+          <div class="col-sm-10">
+            <!-- Textfield -->
+            <input type="text" name="issueTitle" class="form-control form-control-lg" id="lgFormGroupInput">
+          </div>
+        </div>
+
+        <!-- street address field -->
+        <div class="form-group row">
+          <!-- Label -->
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Street Address:</label>
+
+          <div class="col-sm-10">
+            <!-- Textfield -->
+            <input type="text" name="streetAddress" class="form-control form-control-lg" id="lgFormGroupInput">
+          </div>
+        </div>
+
+        <!-- city field -->
+        <div class="form-group row">
+          <!-- Label -->
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">City:</label>
+
+          <div class="col-sm-10">
+            <!-- Textfield -->
+            <input type="text" name="city" class="form-control form-control-lg" id="lgFormGroupInput">
+          </div>
+        </div>
+
+        <!-- state field -->
+        <div class="form-group row">
+          <!-- Label -->
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">State:</label>
+
+          <div class="col-sm-10">
+            <!-- Textfield -->
+            <input type="text" name="state" class="form-control form-control-lg" id="lgFormGroupInput">
+          </div>
+        </div>
+
+        <!-- zip code field -->
+        <div class="form-group row">
+          <!-- Label -->
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Zip Code:</label>
+
+          <div class="col-sm-10">
+            <!-- Textfield -->
+            <input type="text" name="zipcode" class="form-control form-control-lg" id="lgFormGroupInput">
+          </div>
+        </div>
+
+        <!-- selecting the category -->
+        <!-- fix this so that category is a dropdown or some check boxes that list out 
+        all of the different categories, then be sure you can send the specific 
+        category checked or selected to the back end. Also make sure that only one selection
+        can be made -->
+        <div class="form-group row">
+          <!-- Label -->
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Category:</label>
+
+          <div class="col-sm-10">
+            <!-- Textfield -->
+            <input type="text" name="category" class="form-control form-control-lg" id="lgFormGroupInput">
+          </div>
+        </div>
+
+        <!-- description field -->
+        <div class="form-group row">
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Description:</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" name="description" id="exampleTextarea" rows="7"></textarea>
+          </div>
+        </div>
+
+        <!-- <div class="form-group row">
+        <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Location:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control form-control-lg" name="location" id="lgFormGroupInput">
+        </div>
+      </div> -->
+
+        <div class="form-group row">
+          <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Image:</label>
+          <div class="col-sm-10">
+            <br>
+            <!-- Browse from computer button. -->
+            <input type="file" class="form-control-file" name="image" id="exampleInputFile" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted">Upload an image from your computer.</small>
+          </div>
+        </div>
+
+        <!-- Submit button should add issue and all its information to the database. -->
+        <center>
+          <br>
+          <input type="submit" class="btn btn-secondary" value="submit">
+        </center>
+      </form>
+  </div>
+
+  <% include ./partials/footer %>
