@@ -8,7 +8,9 @@ var router = express.Router();
 const fs = require('fs-extra');
 
 const getIssue = require('../db/issues/getIssue');
+const getComments = require('../db/comments/getComments');
 const addIssue = require('../db/issues/addIssue');
+const addComment = require('../db/comments/addComment');
 
 // Render the issue creation form.
 router.get('/create', function(req, res) {
@@ -48,13 +50,31 @@ router.post('/create', function(req, res) {
     });
 });
 
-// Rendering detailed view of the issue.
+// Adding a comment into the database
+router.post('/createComment', function(req, res) {
+  console.log(req.body);
+  // Assume 1 is for anonymous user
+  const user_id = req.user.user_id;
+  addComment({
+    issue_id: req.body.issue_id,
+    user_id: user_id,
+    content: req.body.content
+  }).then (result => {
+    // Render the detailed view again with the new comment
+    res.redirect("/issue/" + req.body.issue_id);
+  })
+
+});
+
+// Rendering detailed view of the issue, including all comments.
 router.get('/:id', function(req, res) {
+  // First get the details of the issue
   getIssue( req.params.id ).then( issue => {
-    // console.log(issue);
-    res.render("detailedview", { title: 'Detailed view', issue: issue});
+    // Then get all comments related to the issue
+    getComments( req.params.id ).then( comments => {
+      res.render("detailedview", { title: 'Detailed view', issue: issue, comments: comments});
+    })
   }).catch( error => console.log( "ERROR: ", error ) );
-  // res.send(req.params.id)
 });
 
 module.exports = router;
