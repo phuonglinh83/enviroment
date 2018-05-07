@@ -21,6 +21,8 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <link href="/stylesheets/style.css" rel="stylesheet">
 
+
+
     <title><%= title %></title>
 
   </head>
@@ -48,10 +50,16 @@
   </li>
 
 </ul>
-<ul class="navbar-nav navbar-right"
+<ul class="navbar-nav navbar-right" id="Dropdown"
 <li class="nav-item">
   <% if(user) { %>
-    <a class="nav-link active" href="/user/profile"><%= user.username %></a>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="user-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= user.username %></button>
+      <ul class="dropdown-menu" id="user-dropdown">
+        <li><option=dropdown-item><a href="/user/profile#reports">  My reports </option></li>
+        <li><option=dropdown-item><a href="/user/profile#information">  My information </option></li>
+      </ul>
+    </div>
   <% } else { %>
     <a class="nav-link active" href="/user/login">Login</a>
   <% } %>

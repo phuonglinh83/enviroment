@@ -6,11 +6,34 @@
  The last tab content is changing password. -Eva -->
 
 <% include ./partials/header %>
+
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <div class="row">
+     <div class="col-sm-12" align="center">
+    <div id='show-me'>
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#reports" aria-controls="reports" role="tab" data-toggle="tab">Reports</a></li>
+                    <li role="presentation"><a href="#information" aria-controls="information" role="tab" data-toggle="tab">Information</a></li>
+                </ul>
+
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="reports">Home Tab Content</div>
+                    <div role="tabpanel" class="tab-pane" id="information">Profile Tab Content</div>
+
+                </div>
+            </div> -->
     <br>
-    <article class="tabs">
+    <!-- <div class="row">
+      <div class="cover-card col-sm-4"> -->
+      <article class="tabs">
+
+      <!-- <div class="col-lg-4 col-md-4 col-sm-1"> -->
       <!-- my reports tab -->
       <section id="reports">
-          <h2><a href="#reports">My reports</a></h2>
+          <h2><a href="#reports">Reports</a></h2>
           <table class="table table-striped table-condensed">
               <thead>
                 <tr>
@@ -25,30 +48,61 @@
                     <td>05/06/2016</td>
                     <td>Oil Spill</td>
                     <td>Golden Gate Park</td>
-                    <td>Resolved</td>
+
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">Deleted<span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="StatusItem">
+                          <option class="dropdown-item" id="deleted"> Deleted </option>
+                          <option class="dropdown-item" id="pending"> Pending </option>
+                          <option class="dropdown-item" id="completed"> Completed </option>
+                        </ul>
+                      </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>12/12/2015</td>
                     <td>Damaged trees</td>
                     <td>Mission Street</td>
-                    <td>Deleted</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">Completed<span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="StatusItem">
+                          <option class="dropdown-item" id="deleted"> Deleted </option>
+                          <option class="dropdown-item" id="pending"> Pending </option>
+                          <option class="dropdown-item" id="completed"> Completed </option>
+                        </ul>
+                      </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>01/12/2014</td>
                     <td>A mass of trash</td>
                     <td>San Francisco State University</td>
-                    <td>Pending</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">Pedning<span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="StatusItem">
+                          <option class="dropdown-item" id="deleted"> Deleted</option>
+                          <option class="dropdown-item" id="pending"> Pending </option>
+                          <option class="dropdown-item" id="completed"> Completed </option>
+                        </ul>
+                      </div>
+                    </td>
                 </tr>
               </tbody>
           </table>
+
       </section>
+
 
         <!-- my information tab -->
         <!-- If click to 'edit' button, the modal comes out.
         Then, on the modal, user inputs what he change and click to 'update'.
         And user must click to 'save'.  -->
         <section id="information">
-            <h2><a href="#information">My information</a></h2>
+
+            <h2><a href="#information">Information</a></h2>
             <br>
             <table class="table table-user-information">
               <tbody>
@@ -80,7 +134,7 @@
                 </tbody>
               </table>
               <br><br>
-              <div class="col-md-9 text-center">
+              <div class="text-center">
                 <button id="save" name="save" class="btn btn-success">Save</button>
                 <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
               </div>
@@ -88,7 +142,7 @@
 
         <!-- change password tab -->
         <!-- User inputs the new password and confrim password then click to 'save.' -->
-        <section id="password">
+        <!-- <section id="password">
             <h2><a href="#password">Change password</a></h2>
             <br>
             <div class="form-group">
@@ -109,9 +163,10 @@
                 <button id="save" name="save" class="btn btn-success">Save</button>
                 <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
               </div>
-        </section>
+        </section> -->
     </article>
-
+</div>
+</div>
 <!-- edit modal window -->
 
     <div id="edit" class="modal fade" role="dialog">

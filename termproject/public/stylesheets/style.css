@@ -189,29 +189,12 @@ padding-left: 0px;
 /* navbarSupportedContent
  * Coded by Eva.
 */
-#navbarSupportedContent #Dropdown .nav-item {
-      position: relative;
- }
-#navbarSupportedContent #Dropdown .nav-item ul {
-      position: absolute;
-      list-style-type: none;
-      padding-left: 0px;
-      background-color: #343a40;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      padding: 12px 16px;
-      z-index: 1;
-      display: none;
-  }
-#navbarSupportedContent #Dropdown .nav-item:hover ul {
-      display: block;
-    }
 
     article.tabs
      {
          position: relative;
          display: block;
-         width: 60em;
+         width: 90vw;
          height: 40em;
          margin: 2em auto;
 
@@ -228,7 +211,7 @@ padding-left: 0px;
          border-radius: 5px;
          box-shadow: 0 3px 3px rgba(0,0,0,0.1);
          z-index: 0;
-         width:58em;
+         width:90vw;
      }
      article.tabs section:first-child
      {
@@ -238,7 +221,7 @@ padding-left: 0px;
      {
          position: absolute;
          font-size: 1.3em;
-         width: 150px;
+         width: 145px;
          height: 2em;
          top: -2em;
          left: 10px;
@@ -282,6 +265,19 @@ padding-left: 0px;
          background-color:#333;
          color:#fff;
       }
+      #user-menu {
+           background-color: #343a40;
+           color:#fff;
+       }
+       #user-dropdown{
+         background-color: #343a40;
+         padding-left: 3px;
+       }
+       #user-dropdown a{
+         font-size:14px;
+          color:#fff;
+       }
+
 
 /*===============================================================================*/
 
