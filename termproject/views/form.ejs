@@ -13,7 +13,7 @@
     <!-- Submission form is enclosed in a jumbotron. -->
     <div class="container jumbotron" id="main-container">
 
-<form action= "/issue/create" method="POST" enctype="multipart/form-data">
+<form action= "/issue/create" method="POST" enctype="multipart/form-data" id="formIssue">
       <!-- This Bootstrap class aligns labels and textfields properly. -->
     <div class="form-group row">
         <!-- Label -->
@@ -21,7 +21,7 @@
 
         <div class="col-sm-10">
            <!-- Textfield -->
-           <input type="text" name="issueTitle" class="form-control form-control-lg" id="lgFormGroupInput">
+           <input type="text" name="issueTitle" class="form-control form-control-lg" id="lgFormTitle">
          </div>
 
        </div>
@@ -29,14 +29,14 @@
        <div class="form-group row">
      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Description:</label>
      <div class= "col-sm-10">
-     <textarea class="form-control" name= "description" id="exampleTextarea" rows="7"></textarea>
+     <textarea class="form-control" name= "description" rows="7" id="lgFormDescription"></textarea>
     </div>
     </div>
 
     <div class="form-group row">
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Category:</label>
       <div class= "col-sm-10">
-        <select name="category" id="lgFormGroupInput">
+        <select name="category" id="lgFormCategory">
           <option value="" selected="selected">Select a Category</option>
           <option value="1">Pollution</option>
           <option value="2">Waste</option>
@@ -48,21 +48,21 @@
     <div class="form-group row">
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Street Address:</label>
       <div class= "col-sm-10">
-        <input type="text" class="form-control form-control-lg" name= "street" id="lgFormGroupInput">
+        <input type="text" class="form-control form-control-lg" name= "street" id="lgFormStreet">
       </div>
     </div>
 
     <div class="form-group row">
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">City:</label>
       <div class= "col-sm-10">
-        <input type="text" class="form-control form-control-lg" name= "city" id="lgFormGroupInput">
+        <input type="text" class="form-control form-control-lg" name= "city" id="lgFormCity">
       </div>
     </div>
 
     <div class="form-group row">
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">State:</label>
       <div class= "col-sm-10">
-        <select name="state" id="lgFormGroupInput">
+        <select name="state" id="lgFormState">
           <option value="" selected="selected">Select a State</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -122,7 +122,7 @@
     <div class="form-group row">
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Zipcode:</label>
       <div class= "col-sm-10">
-        <input type="text" class="form-control form-control-lg" name= "zipcode" id="lgFormGroupInput">
+        <input type="text" class="form-control form-control-lg" name= "zipcode" id="lgFormZipcode">
       </div>
     </div>
 
@@ -135,10 +135,16 @@
         <small id="fileHelp" class="form-text text-muted" name= "image">Upload an image from your computer.</small>
       </div>
     </div>
-
+  <input type="hidden" name="lng" id="lgFormLng">
+  <input type="hidden" name="lat" id="lgFormLat">
+  </form>
+  <!-- Area to display input error -->
+  <p id="error" class="text-danger center"></p>
   <!-- Submit button should add issue and all its information to the database. -->
-  <center><br><input type="submit" class="btn btn-secondary" value= "submit"></center></form>
+  <center><br><button type="submit" id="submitIssue" class="btn btn-secondary"> Create Issue</button></center>
 
 </div>
+
+<script src="/scripts/newIssue.js"></script>
 
 <% include ./partials/footer %>

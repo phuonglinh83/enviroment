@@ -8,10 +8,10 @@ const database = require('../index');
 
 const INSERT_ISSUE_QUERY = `INSERT INTO issues
   (category_id, user_id, status_id, title, description,
-  username, "streetAddress", city, state, zipcode, "numberOfOccurrences",
-  "imagePath", "isFlagged", "month", "day", "year", "updatedAt")
+  username, "streetAddress", city, state, zipcode, longtitude, latitude,
+  "numberOfOccurrences", "imagePath", "isFlagged", "month", "day", "year", "updatedAt")
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
-  $11, $12, $13, $14, $15, $16, $17)
+  $11, $12, $13, $14, $15, $16, $17, $18, $19)
   RETURNING "issue_id"`;
 
 const addIssue = issueObject => {
@@ -26,7 +26,6 @@ const addIssue = issueObject => {
   issueObject[ "month" ] = MONTH;
   issueObject[ "day" ] = DAY;
   issueObject[ "updatedAt" ] = UPDATED_AT;
-
   const VALUES = [ issueObject.category_id,
     issueObject.user_id,
     issueObject.status_id,
@@ -37,6 +36,8 @@ const addIssue = issueObject => {
     issueObject.city,
     issueObject.state,
     issueObject.zipcode,
+    issueObject.longtitude,
+    issueObject.latitude,
     issueObject.numberOfOccurrences,
     issueObject.imagePath,
     issueObject.isFlagged,

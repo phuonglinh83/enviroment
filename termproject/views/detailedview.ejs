@@ -10,9 +10,15 @@
   <center><h1><i><%= issue.title %></i></h1></center><br><br>
 </div>
 
+<div class="col-lg-6 hidden-sm" >
+  <div id="googleMap" style="height: calc(100vh - 262px);"></div>
+</div>
+
 <!-- Align issue image in the middle, slightly to the left. -->
 <div class="col-md-8">
-<center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"><br><br></center>
+<% if (issue.imagePath != '#') {%>
+  <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"><br><br></center>
+<% } %>
 </div>
 
 <!-- Enclose information and comments in a single jumbotron. -->
@@ -26,47 +32,32 @@
 
 <center><h5><b>Comments</b></h5></center><br>
 </div>
-    <!-- Render all comments retrieved from the database -->
-    <% for(let index = 0; index < comments.length; index++) {%>
-    <!-- commentContainer is very similar to issueContainer except the background color is different and commentContainer has no hover properties. -->
-    <div class = "commentContainer">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="col-md-12">
-            <b><%=comments[index].username%> at <%=comments[index].createdAt.toLocaleString('en-US', {month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12:true})%></b>
-          </div>
-        </div>
-        <div class="col-sm-8">
-            <%=comments[index].content%>
-        </div>
-      </div>
-    </div>
-    <% }%>
+
+<!-- Comments are empty initially -->
+<div id="comments">
+</div>
 <br><br>
 <div class="col-sm-3">
 <center><h7><b><i>Leave a comment below:</b></i></h7></center><br>
 </div>
 
-<form action= "/issue/createComment" method="POST">
-  <input type="hidden" name="issue_id" id="lgFormGroupInput" value=<%= issue.issue_id %>>
+  <input type="hidden" name="issue_id" id="issue_id" value=<%= issue.issue_id %>>
   </input
   <!-- Text field (of 7 rows) for user comments. -->
+  <p id="error" class="text-danger center"></p>
   <div class="form-group row">
     <div class= "col-sm-12">
-      <textarea name= "content" class="form-control" id="exampleTextarea" rows="7"></textarea>
+      <textarea name= "content" class="form-control" id="content" rows="7"></textarea>
     </div>
   </div>
   <!-- Comment button will add user's comment to the latest of the comment list. -->
-  <!-- Currently will reload the page to display the new comment, but shoud consider using AJAX
-  for faster rendering. -->
   <% if (user) {%>
     <!-- only logged in user can comment -->
-    <center><br><button type="submit" class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
+    <center><br><button type="submit" id="postComment" class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
   <% } else {%>
-    <center><br><button type="submit" disabled=true class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
+    <center><br><button type="submit" id="postComment" disabled=true class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
   <% }%>
   </div>
-</form>
 
-
+<script src="/scripts/issue.js"></script>
 <% include ./partials/footer %>

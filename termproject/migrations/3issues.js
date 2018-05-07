@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model:'categories',
-          key:'category_id' 
+          key:'category_id'
         }
       },
       user_id: {
@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model:'users',
-          key:'user_id' 
+          key:'user_id'
         }
       },
       status_id: {
@@ -54,9 +54,15 @@ module.exports = {
       },
       state: {
         type: Sequelize.TEXT
-      }, 
+      },
       zipcode: {
         type: Sequelize.TEXT
+      },
+      longtitude: {
+        type: Sequelize.DOUBLE
+      },
+      latitude: {
+        type: Sequelize.DOUBLE
       },
       numberOfOccurrences: {
         type: Sequelize.INTEGER
@@ -82,7 +88,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.TEXT
-      } 
+      }
     });
   },
   down: (queryInterface, Sequelize) => {

@@ -43,12 +43,11 @@ const loadData = function(e){
   $('#results-count').html('');
   console.log(e.which);
   if(e.which == 13 || e.type == 'click') {
-  const searchValue = document.getElementById("searchBar").value;
-  console.log( searchValue );
+    const searchValue = document.getElementById("searchBar").value;
+    console.log( searchValue );
 
-  $.get('/search?keyword=' + searchValue +"&filter=" + filter.toLowerCase(), function(data) {
+    $.get('/search?keyword=' + searchValue +"&filter=" + filter.toLowerCase(), function(data) {
       // console.log(JSON.stringify(data);
-
       const myCenter = new google.maps.LatLng(37.720460, -122.478124);
       const mapProp= {
         center:myCenter,
@@ -70,17 +69,11 @@ const loadData = function(e){
       $('#resultsCount').html(data.length + " results found");
       $('#resultsRow').html("");
       data.forEach(function(issue) {
-        var address = issue.streetAddress + ' ' + issue.city + ', ' + issue.state + ' ' + issue.zipcode;
-        geocoder.geocode({'address': address}, function(results, status) {
-          // Callback to handle location received from geocoder for each address
-          if (status === 'OK') {
-            const loc = results[0].geometry.location;
-            if (!(loc in loc_labels)) {
-              // loc_labels[loc] = labels[index++ % labels.length];
-              loc_labels[loc] = index++;
-            }
-            // html content of each issue to display
-            const card_to_append = `
+        const loc = new google.maps.LatLng(issue.latitude, issue.longtitude);
+        if (!(loc in loc_labels)) {
+          loc_labels[loc] = index++;
+        }
+        const card_to_append = `
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
               <a class="row" id="rowOverload" href="/issue/${issue.issue_id}">
@@ -97,36 +90,32 @@ const loadData = function(e){
             </div>
           </div>
         `;
-            if (loc in locations) {
-              // Existing location, just append issue content to the corresponding entry in the dict
-              locations[loc] += card_to_append;
-            } else {
-              // New location, first extend the map boundary
-              bounds.extend(loc);
-              // Create a new entry for the location dict
-              locations[loc] = card_to_append;
-              // Create a maker for the location
-              const marker = new google.maps.Marker({
-                position: loc,
-                label: "" + loc_labels[loc]
-              });
-              // show the marker
-              marker.setMap(map);
-              google.maps.event.addListener(marker,'click',function() {
-                // if the marker is clicked, only show issues related to the location
-                $('#resultsRow').html(locations[loc]);
-              });
-            }
-            map.fitBounds(bounds);
-            $('#resultsRow').append(card_to_append);
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      });
+        if (loc in locations) {
+          // Existing location, just append issue content to the corresponding entry in the dict
+          locations[loc] += card_to_append;
+        } else {
+          // New location, first extend the map boundary
+          bounds.extend(loc);
+          // Create a new entry for the location dict
+          locations[loc] = card_to_append;
+          // Create a maker for the location
+          const marker = new google.maps.Marker({
+            position: loc,
+            label: "" + loc_labels[loc]
+          });
+          // show the marker
+          marker.setMap(map);
+          google.maps.event.addListener(marker,'click',function() {
+            // if the marker is clicked, only show issues related to the location
+            $('#resultsRow').html(locations[loc]);
+          });
+        }
+        map.fitBounds(bounds);
+        $('#resultsRow').append(card_to_append);
+      })
     });
   }
-  };
+};
 
 $( "document" ).ready( function() {
   $("#searchButton").on( 'click', loadData);
