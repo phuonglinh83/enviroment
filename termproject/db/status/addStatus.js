@@ -1,3 +1,10 @@
+/**
+ * ============================ addStatus.js ===================================
+ * This file is responsible for adding new issue status to the databse.
+ * 
+ * CONTRIBUTORS: Gerren Penaloza
+ */
+
 const database = require('../index');
 
 const INSERT_STATUS_QUERY = `INSERT INTO status 

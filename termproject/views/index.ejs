@@ -16,16 +16,17 @@
           <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
           <ul class="dropdown-menu" aria-labelledby="filterMenu">
             <option class="dropdown-item" id="allFilter"> All </option>
-            <option class="dropdown-item" id="cityFilter"> City </option>
+            <option class="dropdown-item" id="cityFilter"> City or Zip</option>
             <option class="dropdown-item" id="categoryFilter"> Category </option>
             <option class="dropdown-item" id="statusFilter"> Status </option>
           </ul>
         </div>
         <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
-            <span class="input-group-btn">
-                <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
-            </span>
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
+        </span>
     </div>
+    <div class="center text-danger"><strong id="error-message"></strong></div>
   <!-- </p> -->
 
 </div>

@@ -2,6 +2,7 @@
  * ============================ issue.js ===================================
  * This file handles all requests related to issues.
  *
+ * CONTRIBUTORS: Uzair Inamdar, Gerren Penaloza, Justin Abarquez
  */
 
 var express = require('express');

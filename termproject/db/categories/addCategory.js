@@ -1,3 +1,10 @@
+/**
+ * ============================ addCategory.js ===================================
+ * This file is responsible for adding new categories to the databse.
+ * 
+ * CONTRIBUTORS: Gerren Penaloza
+ */
+
 const database = require('../index');
 
 const INSERT_CATEGORY_QUERY = `INSERT INTO categories 

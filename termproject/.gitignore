@@ -5,7 +5,7 @@
 .LSOverride
 
 # IDE files
-.idea
+.idea/
 
 # PDF File
 *.pdf
@@ -40,6 +40,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
+*.yaml
 
 # Runtime data
 pids

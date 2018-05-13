@@ -2,6 +2,7 @@
  * ============================ addUser.js ===================================
  * Responsible for adding a newly registered user, their credentials, and details to the database.
  *
+ * CONTRIBUTORS: Uzair Inamdar
  */
 
 const database = require('../index');

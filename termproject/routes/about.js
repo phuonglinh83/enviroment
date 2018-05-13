@@ -1,7 +1,8 @@
 /**
  * ============================ about.js ===================================
  * This file renders the about page.
- *
+ * 
+ * CONTRIBUTORS: Uzair Inamdar
  */
 
 var express = require('express');

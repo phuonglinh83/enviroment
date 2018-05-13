@@ -1,7 +1,8 @@
 /**
  * ============================ getUser.js ===================================
  * This file gets the user and their details from the database when they login.
- *
+ * 
+ * CONTRIBUTORS: Uzair Inamdar
  */
 
 const database = require('../index');

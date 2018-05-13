@@ -1,6 +1,8 @@
 /**
  * ============================ searchByStatus.js ===================================
  * This file is responsible for searching statuses as the query.
+ * 
+ * CONTRIBUTORS: Gerren Penaloza
  */
 
 const database = require('../index');

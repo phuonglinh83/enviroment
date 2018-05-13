@@ -3,6 +3,7 @@
  * A small middleware module to check if user is logedin.
  * If not, then user is redirected to login page.
  *
+ * CONTRIBUTORS: Uzair Inamdar
  */
 
 module.exports = (req, res, next) => {

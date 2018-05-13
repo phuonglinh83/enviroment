@@ -1,6 +1,8 @@
 /**
  * ============================ searchByCategory.js ===================================
  * This file is responsible for searching categories as the query.
+ * 
+ * CONTRIBUTORS: Gerren Penaloza
  */
 
 const database = require('../index');

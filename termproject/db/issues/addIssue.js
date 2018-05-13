@@ -1,7 +1,8 @@
 /**
  * ============================ addIssue.js ===================================
  * As the name suggests this file is responsible for adding new issues to the databse.
- *
+ * 
+ * CONTRIBUTORS: Gerren Penaloza
  */
 
 const database = require('../index');

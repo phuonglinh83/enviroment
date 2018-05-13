@@ -2,6 +2,7 @@
  * ============================ user.js ===================================
  * This file handles all user related routes like registration, login, and profile.
  *
+ * CONTRIBUTORS: Uzair Inamdar
  */
 
 var express = require('express');
