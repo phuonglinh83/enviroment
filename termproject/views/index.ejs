@@ -4,29 +4,37 @@
 
 <% include ./partials/header %>
 
-
+<br>
 <div class="container">
 <div class="container jumbotron" id="main-container">
 
   <h4 style="text-align: center">SFSU CSC648 Class Project</h4>
-  <h6 style="text-align: center">A website where people can file environmental complaints and issues.</h6>
-  <!-- <p class="container"> -->
-    <div class="input-group" id="search-bar">
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
-          <ul class="dropdown-menu" aria-labelledby="filterMenu">
-            <option class="dropdown-item" id="allFilter"> All </option>
-            <option class="dropdown-item" id="cityFilter"> City </option>
-            <option class="dropdown-item" id="categoryFilter"> Category </option>
-            <option class="dropdown-item" id="statusFilter"> Status </option>
-          </ul>
-        </div>
-        <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
+  <h6 style="text-align: center">A website where people can file and browse environmental complaints and issues.<br><br></h6>
+  <div class="input-group" id="search-bar">
+    <div class="row">
+<div class="col-sm-4"><div class="dropdown">
+  <button class="btn btn-outline-info dropdown-toggle" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
+  <ul class="dropdown-menu" aria-labelledby="filterMenu">
+    <option class="dropdown-item" id="allFilter"> All </option>
+    <option class="dropdown-item" id="cityFilter"> City </option>
+    <option class="dropdown-item" id="categoryFilter"> Category </option>
+    <option class="dropdown-item" id="statusFilter"> Status </option>
+  </ul>
+</div></div>
+<div class="col-sm-6">
+  <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
+          </div>
+          <div class="col-sm-2">
             <span class="input-group-btn">
                 <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
             </span>
-    </div>
-  <!-- </p> -->
+                    </div>
+</div>
+
+<br><br><br>
+  </div>
+</div>
+
 
 </div>
 <h5 class="center" id="resultsCount"></h5>

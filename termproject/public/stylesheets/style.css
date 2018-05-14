@@ -7,7 +7,7 @@ body {
   padding: 0;
   /* font-family: sans-serif; */
   font-size: 14px;
-  background-color: #fff9e6;
+  background-color: #e6e6e6;
   font-family: 'Roboto Slab', sans-serif;
 	display: flex;
 	flex-direction: column;
@@ -15,6 +15,14 @@ body {
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
 }
+
+.navbar-brand
+{
+  font-size: 48px; !important;
+  padding-right: 36px;
+  margin: 0px;
+}
+
 
 /* Contains the issue information on the homepage. -Justin */
 .issueContainer {
@@ -114,9 +122,8 @@ padding-left: 0px;
 }
 
 /* Card Classes
- * Code for About Me page card layout. May need to rename classes to not
-  * interfere with Bootstrap definitions. -Justin
-  */
+ * Code for About Me page card layout. -Justin
+ */
 .card {
   position: inline-block;
   top: 50%;
@@ -125,7 +132,7 @@ padding-left: 0px;
   transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
-  background: #fff3cc;
+  background: #e6e6e6;
   overflow: hidden;
 }
 
@@ -153,7 +160,7 @@ padding-left: 0px;
 }
 
 .card .details {
-  background: #fff9e6;
+  background: #e6e6e6;
   top: 0;
   left: 100%;
   padding: 10px 15px;
@@ -176,9 +183,8 @@ padding-left: 0px;
 }
 
 .col-md-6, .col-md-5{
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
-
 
 .card-columns {
   max-width: 100%;
