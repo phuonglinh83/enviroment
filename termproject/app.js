@@ -12,6 +12,7 @@ if(process.env.NODE_ENV === 'development') {
   // console.log(process_env.DATABASE_URL);
 }
 
+
 // Core modules
 var express = require('express');
 var path = require('path');

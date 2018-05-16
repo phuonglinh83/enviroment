@@ -1,50 +1,76 @@
 <!-- about.ejs
  Envirepair homepage that allows a user to search for issues and complaints with
- a list of results and an accompany map view. -Gary and Justin -->
+ a list of results and an accompany map view. -Gary and Justin
+  filter using
+  -->
 
+ <!-- 
+   Notes:
+   Drop Down List for category
+   Cookie for user
+
+  -->
 <% include ./partials/header %>
+<!-- Entire Nody Section of Home Page -->
+<Style>
+  #leftNav {
+    height: 100%; 
+    width: 160px; 
+    position: relative; 
+    z-index: 2; 
+    top: 0; 
+    left: 0; 
+    overflow-x: hidden; 
+    padding-top: 20px;
+    background-color: ivory
+  }
+  #leftNav>.nav-link:hover{
+    background-color: hotpink;
+  }
+  #filterCategories{
+    list-style-type: none;
+  }
+</Style>
+<script src="/scripts/filters.js"></script>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Filter Nav. Made into a partial for better organization -->
+      <% include ./partials/filterNav %>      
+      <div id="mainContent" class="col-lg-10">
+          <div class="col-lg-6"  id="resultsRow"></div>
+            <div class="col-lg-6 hidden-sm" >
+            <div id="googleMap"></div>
+          </div>
+      </div>
 
 
-<div class="container">
-<div class="container jumbotron" id="main-container">
 
-  <h4 style="text-align: center">SFSU CSC648 Class Project</h4>
-  <h6 style="text-align: center">A website where people can file environmental complaints and issues.</h6>
-  <!-- <p class="container"> -->
-    <div class="input-group" id="search-bar">
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
-          <ul class="dropdown-menu" aria-labelledby="filterMenu">
-            <option class="dropdown-item" id="allFilter"> All </option>
-            <option class="dropdown-item" id="cityFilter"> City </option>
-            <option class="dropdown-item" id="categoryFilter"> Category </option>
-            <option class="dropdown-item" id="statusFilter"> Status </option>
-          </ul>
-        </div>
-        <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
-            <span class="input-group-btn">
-                <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
-            </span>
     </div>
-  <!-- </p> -->
+    
+  <script src="/scripts/search.js"></script>
+
+
+
 
 </div>
-<h5 class="center" id="resultsCount"></h5>
+
 
 <!-- <div id="searchRow" class="row text-center"> -->
-<div class="row">
-  <!-- <div class="col-md-12 col-lg-12 col-sm-12"> -->
-    <div class="col-lg-6 col-sm-12 staticContainer"  id="resultsRow" style="position: relative;">
+<!-- <div class="row">
+  
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <div class="col-lg-6 col-sm-12 staticContainer"  id="resultsRow">
     </div>
-    <div class="col-lg-6 hidden-sm" >
-      <div id="googleMap" style="height: calc(100vh - 262px);"></div>
+    <div class="col-lg-6 hidden-sm staticContainer" >
+      <div id="googleMap"></div>
     </div>
-  <!-- </div> -->
-</div>
-</div>
+  </div> -->
+<!-- </div> -->
+<!-- No Clue what this div is for... -->
+<!-- </div> -->
 
 
-<script src="/javascripts/thumbnail.js"></script>
-<script src="/scripts/search.js"></script>
+
 
 <% include ./partials/footer %>

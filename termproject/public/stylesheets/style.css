@@ -97,7 +97,7 @@ margin-right: 20%;
 }
 
 #search-bar {
-    margin-left: 20%;
+    margin-left: 15%;
     width: 60%;
 }
 
@@ -294,7 +294,7 @@ padding-left: 0px;
       }
       /* Used to set height of the body items to fit perfectly with the nav (nav height = 50px) */
       .staticContainer {
-        height: calc(100vh - 262px);
+        height: calc(100vh - 247px);
         overflow: auto;
       }
       .header {
@@ -311,4 +311,18 @@ padding-left: 0px;
 
       .affix + .container-fluid {
         padding-top: 70px;
+      }
+      .title, p.city, p.state{
+        margin-bottom: 5px;
+        display: inline;
+        text-transform: capitalize;
+      }
+      div.address {
+        display: inline-block;
+        vertical-align: top;
+        text-transform: capitalize;
+      }
+      h3.title{
+        display: inline-block;
+
       }

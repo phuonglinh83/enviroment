@@ -71,18 +71,28 @@ const loadData = function(e){
       data.forEach(function(issue) {
         console.log(issue.imagePath);
         // html content of each issue to display
+        var imgPath = issue.imagePath;
+        var img = imgPath.split(/\/|\\/).pop();
+        var thumbnail = "/images/thumbnails/" + img;
         const card_to_append = `
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
-              <a class="row" id="rowOverload" href="/issue/${issue.issue_id}">
+              <a class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                  <img class="thumbnail center" src="${ issue.imagePath }">
+                  <img class="thumbnail center" src="${ thumbnail }">
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8">
-                  <b>${issue.title}</b>
-                  <br>${issue.city}, ${issue.state}<br><br>
-                  <i>Category: ${issue.type}</i><br>
-                  <i>Status: ${issue.issue_status}</i>
+                <div>
+                <h3 class="title">${issue.title}</h3>
+                </div>
+                <div class="address">
+                  <p class="city">${issue.city},</p>
+                  <p class="state">${issue.state}</p>
+                </div>
+                <div class="issueInfo col-lg-12">
+                <p class="category">Category: ${issue.type}</p>
+                <p class="status">Status: ${issue.issue_status}</p>
+                </div>
                 </div>
               </a>
             </div>
