@@ -4,7 +4,11 @@
  The first tab content is my reports that have the table for user's report content.
  The seoond tab content is my information that can edit the user's info.
  The last tab content is changing password. -Eva -->
+<script>
 
+issue_id=parseInt(req.params.whateverYouPutHereToGetTheIssueID)
+
+</script>
 <% include ./partials/header %>
 
     <br>
@@ -30,11 +34,11 @@
 
                     <td>
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">In Progress<span class="caret"></span></button>
-                        <ul class="dropdown-menu" id="StatusItem">
-                          <option class="dropdown-item" id="deleted"> In Progress </option>
-                          <option class="dropdown-item" id="pending"> Pending </option>
-                          <option class="dropdown-item" id="completed"> Resolved </option>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">In Process<span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="status">
+                          <option class="dropdown-item" id="1"> In Progress </option>
+                          <option class="dropdown-item" id="2"> Pending </option>
+                          <option class="dropdown-item" id="3"> Resolved </option>
                         </ul>
                       </div>
                     </td>
@@ -46,12 +50,8 @@
                     <td>Mission Street <button data-toggle="modal" data-target="#edit" class="w3-btn w3-ripple" >✎</button></td>
                     <td>
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">Resolved<span class="caret"></span></button>
-                        <ul class="dropdown-menu" id="StatusItem">
-                          <option class="dropdown-item" id="deleted"> In Progress </option>
-                          <option class="dropdown-item" id="pending"> Pending </option>
-                          <option class="dropdown-item" id="completed"> Resolved </option>
-                        </ul>
+                        <button data-toggle="modal" data-target="#select" class="w3-btn w3-ripple" >In Progress<span class="caret"></span></button>
+
                       </div>
                     </td>
                 </tr>
@@ -62,11 +62,11 @@
                     <td>San Francisco State University <button data-toggle="modal" data-target="#edit" class="w3-btn w3-ripple" >✎</button></td>
                     <td>
                       <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">Pedning<span class="caret"></span></button>
-                        <ul class="dropdown-menu" id="StatusItem">
-                          <option class="dropdown-item" id="deleted"> In Progress </option>
-                          <option class="dropdown-item" id="pending"> Pending </option>
-                          <option class="dropdown-item" id="completed"> Resolved </option>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="StatusMenu" data-toggle="dropdown">Pending<span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="status">
+                          <option class="dropdown-item" id=1> In Progress </option>
+                          <option class="dropdown-item" id="2"> Pending </option>
+                          <option class="dropdown-item" id="3"> Resolved </option>
                         </ul>
                       </div>
                     </td>
@@ -170,5 +170,27 @@
       </div>
     </div>
   </div>
+
+  <div id="select" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button  class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-default dropdown-toggle" type="button" id="status" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">In Pending<span class="caret"></span></button>
+        <ul class="dropdown-menu" id="status">
+          <option class="dropdown-item" id="1"> In Progress </option>
+          <option class="dropdown-item" id="2"> Pending </option>
+          <option class="dropdown-item" id="3"> Resolved </option>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button id="up" class="btn btn-success" data-dismiss="modal">Update</button>
+        <button class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <% include ./partials/footer %>
