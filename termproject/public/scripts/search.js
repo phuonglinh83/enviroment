@@ -50,18 +50,18 @@ const loadData = function(e){
       $('#resultsCount').html(data.length + " results found");
       $('#resultsRow').html("");
       data.forEach(function(issue) {
-<<<<<<< HEAD
+
         console.log(issue.imagePath);
         // html content of each issue to display
         var imgPath = issue.imagePath;
         var img = imgPath.split(/\/|\\/).pop();
         var thumbnail = "/images/thumbnails/" + img;
-=======
+
         const loc = new google.maps.LatLng(issue.latitude, issue.longtitude);
         if (!(loc in loc_labels)) {
           loc_labels[loc] = index++;
         }
->>>>>>> lily
+
         const card_to_append = `
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
@@ -69,7 +69,7 @@ const loadData = function(e){
                 <div class="col-lg-4 col-md-6">
                   <img class="thumbnail center" width="100%" src="${ thumbnail }">
                 </div>
-<<<<<<< HEAD
+                
                 <div class="col-lg-8 col-md-6">
                   <div>
                   <h3 class="title">${issue.title}</h3>
@@ -82,13 +82,7 @@ const loadData = function(e){
                     <p class="category">Category: ${issue.type}</p>
                     <p class="status">Status: ${issue.issue_status}</p>
                   </div>
-=======
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                  <b>${loc_labels[loc]} - ${issue.title}</b>
-                  <br>${issue.city}, ${issue.state}<br><br>
-                  <i>Category: ${issue.type}</i><br>
-                  <i>Status: ${issue.issue_status}</i>
->>>>>>> lily
+
                 </div>
               </a>
             </div>

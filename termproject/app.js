@@ -19,13 +19,10 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-<<<<<<< HEAD
 var bodyParser = require('body-parser');
 var processImage = require('express-processimage');
 var gm = require('gm');
-=======
 var bb = require('express-busboy');
->>>>>>> lily
 
 // User-Auth modules
 const passport = require("passport");
