@@ -6,36 +6,51 @@
 
 <br>
 <br>
-<div class= "col-sm-5">
-  <center><h1><i><%= issue.title %></i></h1></center><br><br>
+
+
+
+    <div>
+        <center><h1><i><%= issue.title %></i></h1></center><br><br>
+      </div>
+      
+
+
+<div>
+    <div class="col-lg-6" >
+        <div id="googleMap" style="width: 100%;">
+          <!-- Google Map Will b placed here -->
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+          <% if (issue.imagePath != '#') {%>
+            <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"></center>
+          <% } %>
+    </div>
+
+
 </div>
 
-<div class="col-lg-6 hidden-sm" >
-  <div id="googleMap" style="height: calc(100vh - 262px);"></div>
-</div>
+
+
 
 <!-- Align issue image in the middle, slightly to the left. -->
-<div class="col-md-8">
-<% if (issue.imagePath != '#') {%>
-  <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"><br><br></center>
-<% } %>
-</div>
+
 
 <!-- Enclose information and comments in a single jumbotron. -->
 <div class="container jumbotron" id="main-container">
-<h2><b>Description</b></h2><br>
-<h6><%= issue.description %></h6>
-<br>
+  <h2><b>Description</b></h2><br>
+  <h6><%= issue.description %></h6>
+  <br>
 <!-- Issue Status aligned right. -->
-<h6><p align= "right">Status:<b> <%=issue.issue_status%></b></h6></p></h6>
-<div class="col-sm-3">
-
-<center><h5><b>Comments</b></h5></center><br>
-</div>
+  <h6><p align= "right">Status:<b> <%=issue.issue_status%></b></h6></p></h6>
+  <div class="col-sm-3">
+    <center><h5><b>Comments</b></h5></center><br>
+  </div>
 
 <!-- Comments are empty initially -->
-<div id="comments">
-</div>
+  <div id="comments">
+  </div>
 <br><br>
 <div class="col-sm-3">
 <center><h7><b><i>Leave a comment below:</b></i></h7></center><br>
@@ -58,6 +73,7 @@
     <center><br><button type="submit" id="postComment" disabled=true class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
   <% }%>
   </div>
+
 
 <script src="/scripts/issue.js"></script>
 <% include ./partials/footer %>
