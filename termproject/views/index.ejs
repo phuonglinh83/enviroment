@@ -36,39 +36,47 @@
 <div class="container-fluid">
   <div class="row">
     <!-- Filter Nav. Made into a partial for better organization -->
-      <% include ./partials/filterNav %>      
-      <div id="mainContent" class="col-lg-10">
-          <div class="col-lg-6"  id="resultsRow"></div>
-            <div id="googleMap" class="col-lg-6">
-            <!-- <div  class="staticContainer col-lg-12"></div> -->
+      <% include ./partials/filterNav %>
+      <!-- <div> -->
+          <div class="col-lg-10 col-sm-12 staticContainer"  id="resultsRow" style="position: relative; padding: 0px;">
+            </div>
+    
+            <div class="col-lg-5 hidden-sm staticContainer" id="googleMapContainer" style="padding: 0px; display: none">
+              <div id="googleMap" class="staticContainer"></div>
           </div>
-      </div>
-
-
-
+      <!-- </div>       -->
     </div>
+</div>
     
   <script src="/scripts/search.js"></script>
 
+  <script>
 
 
 
-</div>
+
+      window.addEventListener("resize", myFunction);
+      
+      var x = 0;
+      function myFunction() {
+        var resultContainer = document.getElementsByClassName("staticContainer");
+        var offset = resultContainer[0].offsetTop;
+        for(var i = 0; i<resultContainer.length; i++ ){
+          var tmpHeight = "calc(100vh - "+ offset + "px)"
+          resultContainer[i].style.height = tmpHeight;
+        }
+          var txt = x += 1;
+          // document.getElementById("demo").innerHTML = txt;
+          console.log("size changed");
+      }
+      document.addEventListener("DOMContentLoaded", function(event) {
+        myFunction();
+        console.log("DOM fully loaded and parsed");
+      });
+
+      </script>
 
 
-<!-- <div id="searchRow" class="row text-center"> -->
-<!-- <div class="row">
-  
-  <div class="col-md-12 col-lg-12 col-sm-12">
-    <div class="col-lg-6 col-sm-12 staticContainer"  id="resultsRow">
-    </div>
-    <div class="col-lg-6 hidden-sm staticContainer" >
-      <div id="googleMap"></div>
-    </div>
-  </div> -->
-<!-- </div> -->
-<!-- No Clue what this div is for... -->
-<!-- </div> -->
 
 
 

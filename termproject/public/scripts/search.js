@@ -18,25 +18,6 @@ const setFilter = function(element) {
   }
 };
 
-// If user clicks on "All"
-$("#allFilter").on('click', function () {
-  setFilter('#allFilter');
-});
-
-// If user clicks on "Category"
-$("#categoryFilter").on('click', function () {
-  setFilter('#categoryFilter');
-});
-
-// If user clicks on "City"
-$("#cityFilter").on('click', function () {
-  setFilter('#cityFilter');
-});
-
-// If user clicks on "Status"
-$("#statusFilter").on('click', function () {
-  setFilter('#statusFilter');
-});
 
 // Function to load and put search results on the page
 const loadData = function(e){
@@ -78,21 +59,21 @@ const loadData = function(e){
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
               <a class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <img class="thumbnail center" src="${ thumbnail }">
+                <div class="col-lg-4 col-md-6">
+                  <img class="thumbnail center" width="100%" src="${ thumbnail }">
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                <div>
-                <h3 class="title">${issue.title}</h3>
-                </div>
-                <div class="address">
-                  <p class="city">${issue.city},</p>
-                  <p class="state">${issue.state}</p>
-                </div>
-                <div class="issueInfo col-lg-12">
-                <p class="category">Category: ${issue.type}</p>
-                <p class="status">Status: ${issue.issue_status}</p>
-                </div>
+                <div class="col-lg-8 col-md-6">
+                  <div>
+                  <h3 class="title">${issue.title}</h3>
+                  </div>
+                  <div class="address">
+                    <p class="city">${issue.city},</p>
+                    <p class="state">${issue.state}</p>
+                  </div>
+                  <div class="issueInfo col-lg-12">
+                    <p class="category">Category: ${issue.type}</p>
+                    <p class="status">Status: ${issue.issue_status}</p>
+                  </div>
                 </div>
               </a>
             </div>
@@ -137,4 +118,25 @@ const loadData = function(e){
 $( "document" ).ready( function() {
   $("#searchButton").on( 'click', loadData);
   $("#searchBar").keyup(loadData);
+});
+
+
+// If user clicks on "All"
+$("#allFilter").on('click', function () {
+  setFilter('#allFilter');
+});
+
+// If user clicks on "Category"
+$("#categoryFilter").on('click', function () {
+  setFilter('#categoryFilter');
+});
+
+// If user clicks on "City"
+$("#cityFilter").on('click', function () {
+  setFilter('#cityFilter');
+});
+
+// If user clicks on "Status"
+$("#statusFilter").on('click', function () {
+  setFilter('#statusFilter');
 });
