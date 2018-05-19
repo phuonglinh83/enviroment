@@ -2,7 +2,7 @@
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 var hashed;
- 
+
 // function getHash(string) {
 //   // var hashed;
 //   bcrypt.hash(string, saltRounds, function(err, hash) {
@@ -13,6 +13,7 @@ var hashed;
 var admins = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert( 'users', [
+      { username: "anonymous", password: "", email: "", privilege: 1 },
       { username: "eva", password: "$2a$10$Hr9CyOGIyc9zqSYkKq/dTeQPrcPkKstX/hcyjE9/QuAC/d6.1F9zC", email: "eva@envirepair.com", privilege: 4 },
       { username: "lily", password: "$2a$10$HLfzQISKZcNWziy4GD9wU.L6SzJmZche1MQYMGqkdbGEWKIVWntne", email: "lily@envirepair.com", privilege: 4 },
       { username: "gary", password: "$2a$10$WS5VmisSIdgQnK8DK1U3xeZdTPYhUtrUoEraPj4Gm9o8NDduDoLy6", email: "gary@envirepair.com", privilege: 4 },
