@@ -4,6 +4,8 @@ const loadMap = function(){
   // Call server to get the location of the issue
   $.get('/issue/' + issue_id + '/location', function(location) {
     // Set the center of the map at the issue location
+
+    const myCenter = new google.maps.LatLng(37.720460, -122.478124);
     const mapProp = {
       center: location,
       zoom: 14,
