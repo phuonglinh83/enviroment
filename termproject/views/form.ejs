@@ -17,7 +17,7 @@
 
   <!-- Submission form is enclosed in a jumbotron. -->
   <div class="container">
-
+    <form action="/issue/create" encType="multipart/form-data" method="POST">
     <div class="form-group row">
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Title:</label>
       <div class= "col-sm-10">
@@ -138,21 +138,24 @@
     </div>
   <input type="hidden" name="lng" id="lgFormLng">
   <input type="hidden" name="lat" id="lgFormLat">
-  </form>
+  
   <!-- Area to display input error -->
   <p id="error" class="text-danger center"></p>
   <!-- Submit button should add issue and all its information to the database. -->
-  <center><br><button type="submit" id="submitIssue" class="btn btn-secondary"> Create Issue</button></center>
+  <!-- <center><br><button type="submit" id="submitIssue" class="btn btn-secondary"> Create Issue</button></center> -->
 
         <!-- Submit button should add issue and all its information to the database. -->
         <center>
           <br>
-          <input type="submit" class="btn btn-secondary" value="submit">
+          <input type="submit" class="btn btn-secondary" id="submitIssue" value="submit">
         </center>
-      </form>
+      
   </div>
+</form>
 </div>
 
 <script src="/scripts/newIssue.js"></script>
 
 <% include ./partials/footer %>
+
+

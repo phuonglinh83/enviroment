@@ -8,10 +8,10 @@ const database = require('../index');
 
 const INSERT_ISSUE_QUERY = `INSERT INTO issues
   (category_id, user_id, status_id, title, description,
-  username, "streetAddress", city, state, zipcode, "numberOfOccurrences",
+  username, "streetAddress", city, state, zipcode, longtitude, latitude, "numberOfOccurrences",
   "imagePath", "isFlagged", month, day, year, "updatedAt")
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
-  $11, $12, $13, $14, $15, $16, $17)
+  $11, $12, $13, $14, $15, $16, $17, $18, $19)
   RETURNING "issue_id"`;
 
 const addIssue = issueObject => {

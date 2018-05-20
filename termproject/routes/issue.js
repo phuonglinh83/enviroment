@@ -108,7 +108,7 @@ router.post('/create', function(req, res) {
       const state = req.body.state;
       const zipcode = req.body.zipcode;
       const description = req.body.description;
-      const imagePath = `/resources/issue_images/${req.file.filename}`;
+      const imagePath = `\resources\issue_images\${req.file.filename}`;
       console.log(imagePath);
       console.log(req.user)
 
@@ -126,6 +126,8 @@ router.post('/create', function(req, res) {
         city: city,
         state: state,
         zipcode: zipcode,
+        longtitude: req.body.long,
+        latitude: req.body.lat,
         numberOfOccurrences: 1,
         imagePath: imagePath,
         isFlagged: false
@@ -134,6 +136,7 @@ router.post('/create', function(req, res) {
         .addIssue(issueObject)
         .then(addResult => {
           console.log(addResult);
+          res.send(addResult);
         })
         .catch( err => console.log( "Error: ", err ) );
     };

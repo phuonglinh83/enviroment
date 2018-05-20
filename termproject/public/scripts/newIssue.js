@@ -4,7 +4,7 @@ submitIssue = function() {
   const title = $("#lgFormTitle").val();
   // Title should not be empty
   if (title.length < 1) {
-    $("#error").append("Please enter a title <br />");
+    $("#error").append("Please enter a title <br/>");
   }
 
   const description = $("#lgFormDescription").val();
@@ -12,6 +12,8 @@ submitIssue = function() {
   if (description.length < 10) {
     $("#error").append("Please add at least 10 characters for issue description <br />");
   }
+  
+
 
   const category = $("#lgFormCategory").val();
   // Category is required
@@ -31,6 +33,18 @@ submitIssue = function() {
       const location = results[0].geometry.location;
       console.log(location.lng());
       console.log(location.lat());
+      let googleCoordnates = {lat:location.lng(), long:location.lat()};
+      $.ajax({
+        type: 'POST',
+        url: '/create',
+        data: googleCoordnates,
+        success: function( results){
+          console.log("Successful Ajax Call");
+        },
+        error: function(){
+          console.log("Error Ajax Call");
+        }
+      });
       // Set hidden input for Lng/Lat in the form
       $("#lgFormLng").val(location.lng());
       $("#lgFormLat").val(location.lat());
