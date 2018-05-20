@@ -334,6 +334,9 @@ padding-left: 0px;
         padding: 0px;
 
       }
+      #resultsCount {
+        padding-top: 5px;
+      }
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */

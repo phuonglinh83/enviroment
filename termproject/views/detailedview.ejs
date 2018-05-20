@@ -4,75 +4,102 @@
 
 <% include ./partials/header %>
 
-<br>
-<br>
 
 
-
+<div class="container">
     <div>
-        <center><h1><i><%= issue.title %></i></h1></center><br><br>
-      </div>
-      
-
-
-<div>
-    <div class="col-lg-6" >
-        <div id="googleMap" style="width: 100%;">
-          <!-- Google Map Will b placed here -->
+        <h1><%= issue.title %></h1>
+    </div>
+    <div>
+        <div class="col-lg-6" >
+            <div id="googleMap" style="width: 100%;">
+              <!-- Google Map Will b placed here -->
+            </div>
         </div>
+    
+        <div class="col-lg-6">
+              <% if (issue.imagePath != '#') {%>
+                <img class="img-fluid" src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image">
+              <% } %>
+        </div>
+    
+    
     </div>
+  <hr>
+    
+    
+    
+    
+    <!-- Align issue image in the middle, slightly to the left. -->
+    
+    <!-- Enclose information and comments in a single jumbotron. -->
+    <div class="well well-lg" id="main-container">
+        <h6 align= "right">Category:<b> <%=issue.category_id%></b></h6></h6>
+      <h6 align= "right">Status:<b> <%=issue.issue_status%></b></h6></h6>
+      <h3><b>Description</b></h3>
 
-    <div class="col-lg-6">
-          <% if (issue.imagePath != '#') {%>
-            <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"></center>
-          <% } %>
+      <p><%= issue.description %></p> 
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type 
+        specimen book. It has survived not only five centuries, but also the leap into 
+        electronic typesetting, remaining essentially unchanged. It was popularised in the 
+        1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+        and more recently with desktop publishing software like Aldus PageMaker 
+        including versions of Lorem Ipsum.</p>
+      <br>
+    <!-- Issue Status aligned right. -->
+      
+      <div class="col-sm-3">
+        <center><h5><b>Comments</b></h5></center><br>
+      </div>
+    
+    <!-- Comments are empty initially -->
+      <div id="comments">
+      </div>
+    <!-- Fake comments to test the UI in the mean time gs -->
+      <div id="">
+          <div class = "">
+              <div class="row even">
+                <div class="col-lg-12">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Gary Straub: 3:44pm Monday June 56 2089</p>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type 
+                        specimen book. It has survived not only five centuries, but also the leap into 
+                        electronic typesetting, remaining essentially unchanged. It was popularised in the 
+                        1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                        and more recently with desktop publishing software like Aldus PageMaker 
+                        including versions of Lorem Ipsum.</p>
+                </div>
+              </div>
+            </div>
+      </div>
+
+    <div class="col-sm-4">
+    <h5><b>Leave a comment below:</b></h5><br>
     </div>
-
-
-</div>
-
-
-
-
-<!-- Align issue image in the middle, slightly to the left. -->
-
-<!-- Enclose information and comments in a single jumbotron. -->
-<div class="container jumbotron" id="main-container">
-  <h2><b>Description</b></h2><br>
-  <h6><%= issue.description %></h6>
-  <br>
-<!-- Issue Status aligned right. -->
-  <h6><p align= "right">Status:<b> <%=issue.issue_status%></b></h6></p></h6>
-  <div class="col-sm-3">
-    <center><h5><b>Comments</b></h5></center><br>
-  </div>
-
-<!-- Comments are empty initially -->
-  <div id="comments">
-  </div>
-<br><br>
-<div class="col-sm-3">
-<center><h7><b><i>Leave a comment below:</b></i></h7></center><br>
-</div>
-
-  <input type="hidden" name="issue_id" id="issue_id" value=<%= issue.issue_id %>>
-  </input
-  <!-- Text field (of 7 rows) for user comments. -->
-  <p id="error" class="text-danger center"></p>
-  <div class="form-group row">
-    <div class= "col-sm-12">
-      <textarea name= "content" class="form-control" id="content" rows="7"></textarea>
-    </div>
-  </div>
-  <!-- Comment button will add user's comment to the latest of the comment list. -->
-  <% if (user) {%>
-    <!-- only logged in user can comment -->
-    <center><br><button type="submit" id="postComment" class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
-  <% } else {%>
-    <center><br><button type="submit" id="postComment" disabled=true class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
-  <% }%>
-  </div>
-
+    
+      <input type="hidden" name="issue_id" id="issue_id" value=<%= issue.issue_id %>>
+  </input>
+      <!-- Text field (of 7 rows) for user comments. -->
+      <p id="error" class="text-danger center"></p>
+      <div class="form-group row">
+        <div class= "col-sm-12">
+          <textarea name= "content" class="form-control" id="content" rows="7"></textarea>
+        </div>
+      </div>
+      <!-- Comment button will add user's comment to the latest of the comment list. -->
+      <% if (user) {%>
+        <!-- only logged in user can comment -->
+        <center><br><button type="submit" id="postComment" class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
+      <% } else {%>
+        <center><br><button type="submit" id="postComment" disabled=true class="btn btn-secondary" style="float:right">COMMENT</button></center><br><br>
+      <% }%>
 
 <script src="/scripts/issue.js"></script>
 <% include ./partials/footer %>
