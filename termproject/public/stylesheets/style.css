@@ -372,6 +372,7 @@ padding-left: 0px;
   #rightBorder {
     width: 100vw;
     max-width: 100vw;
+    border: none;
   }
   #resultsContainer{
     width: 100vw;
@@ -390,6 +391,7 @@ padding-left: 0px;
     display: none;
     width: 100vw;
     max-width: 100vw;
+    border: none;
   }
   #resultsContainer{
     width: 100vw;

@@ -58,8 +58,8 @@ app.use(function(err, req, res, next) {
 app.use(logger('dev'));
 
 // Middleware setup for parsing HTTP body contents to JSON
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // Use busboy-expression for parsing both JSON text and files
 bb.extend(app, { upload: true });
 
