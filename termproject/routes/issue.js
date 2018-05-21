@@ -14,14 +14,14 @@ let issuesTable = require('../db/issues');
 // File Upload module for submitting issues
 const multer = require('multer');
 // Setting Storage Engine
-/*Here we are telling the app where to store the image once it 
-  is uploaded 
-  destination = the path to the uploads folder where the images 
+/*Here we are telling the app where to store the image once it
+  is uploaded
+  destination = the path to the uploads folder where the images
   will be stored
   filename = the filename will be the name of the file with a timestamp
   concatinated onto the end of it to ensure it is unique
-  cb = callback function 
-  fieldname = the name attribute in form.ejs 
+  cb = callback function
+  fieldname = the name attribute in form.ejs
 */
 const storage = multer.diskStorage({
   destination: './public/resources/issue_images',
@@ -56,7 +56,7 @@ const upload = multer({
 function checkFileType( file, cb ){
   //Allowed ext
   const filetypes = /jpeg|jpg|png|gif/;
-  //check ext, this looks at the file extension and 
+  //check ext, this looks at the file extension and
   //tries to match it to any of the valid filetypes we described above
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 
@@ -75,7 +75,11 @@ function checkFileType( file, cb ){
 }
 
 
-// const getIssue = require('../db/issues/getIssue');
+const getIssue = require('../db/issues/getIssue');
+const getComments = require('../db/comments/getCommentsForIssue');
+const getComment = require('../db/comments/getComment');
+const addIssue = require('../db/issues/addIssue');
+const addComment = require('../db/comments/addComment');
 
 // Render the issue creation form.
 router.get('/create', isLoggedIn, function(req, res) {
@@ -100,18 +104,18 @@ router.post('/create', function(req, res) {
         title: 'Create Issue',
         msg: 'Successfully submitted issue!'
       });
-    //in here write the code to insert the stuff from the form into the database 
+    //in here write the code to insert the stuff from the form into the database
       console.log("HERE IS REQUEST", req.body);
       const issueTitle = req.body.title;
       const description = req.body.description;
-      const category = req.body.category;      
+      const category = req.body.category;
       const streetAddress = req.body.street;
       const city = req.body.city;
       const state = req.body.state;
       const zipcode = req.body.zipcode;
       const imagePath = `/resources/issue_images/${req.file.filename}`;
-      
-      console.log("THIS IS THE TITLE", issueTitle);      
+
+      console.log("THIS IS THE TITLE", issueTitle);
       console.log("HERE IS THE DESCRIPTION:", description);
       console.log("THIS IS THE CATEGORY", category);
       console.log("THIS IS THE STREET ADDRESS", streetAddress);
@@ -122,7 +126,7 @@ router.post('/create', function(req, res) {
 
       console.log("THIS IS THE IMAGE PATH", imagePath);
       console.log("THIS IS THE USERNAME", req.user.username);
-      console.log("THIS IS THE USER OBJECT", req.user); 
+      console.log("THIS IS THE USER OBJECT", req.user);
 
       console.log("THIS IS THE LATITUDE", req.body.lat);
       console.log("THIS IS THE LONGITUDE", req.body.lng);
