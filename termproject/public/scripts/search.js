@@ -47,6 +47,7 @@ const loadData = function(e){
       // bounds to fit all markers into the map
       var bounds = new google.maps.LatLngBounds();
 
+      //This function gets called from the rowItems
       window.moveMapFocous = function (newLat,newLng){
         map.setCenter({
           lat : newLat,

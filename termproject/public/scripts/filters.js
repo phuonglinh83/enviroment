@@ -105,9 +105,9 @@ function filterByCategory(){
         }
         // if the bool is still true then we display the item, if not we hide it
         if(displayItem){
-            filterCriteria[i].style.display = "flex";
+            issuesDisplayed[i].style.display = "flex";
         } else {
-            filterCriteria[i].style.display = "none";
+            issuesDisplayed[i].style.display = "none";
         }
         
     }
@@ -129,8 +129,8 @@ function resetButton(){
     document.getElementById("wasteCheckBox").checked = false;
     document.getElementById("pollutionCheckBox").checked = false;
 
-    for(var i = 0; i<filterCriteria.length; i++){
-        filterCriteria[i].style.display = "flex";
+    for(var i = 0; i<issuesDisplayed.length; i++){
+        issuesDisplayed[i].style.display = "flex";
     }
 }
 
