@@ -101,45 +101,59 @@ router.post('/create', function(req, res) {
         msg: 'Successfully submitted issue!'
       });
     //in here write the code to insert the stuff from the form into the database 
-      //console.log(req.file);
-      const issueTitle = req.body.issueTitle;
-      const streetAddress = req.body.streetAddress;
+      console.log("HERE IS REQUEST", req.body);
+      const issueTitle = req.body.title;
+      const description = req.body.description;
+      const category = req.body.category;      
+      const streetAddress = req.body.street;
       const city = req.body.city;
       const state = req.body.state;
       const zipcode = req.body.zipcode;
-      const description = req.body.description;
-      const imagePath = `\resources\issue_images\${req.file.filename}`;
-      console.log(imagePath);
-      console.log(req.user)
+      const imagePath = `/resources/issue_images/${req.file.filename}`;
+      
+      console.log("THIS IS THE TITLE", issueTitle);      
+      console.log("HERE IS THE DESCRIPTION:", description);
+      console.log("THIS IS THE CATEGORY", category);
+      console.log("THIS IS THE STREET ADDRESS", streetAddress);
+      console.log("THIS IS THE CITY", city);
+      console.log("THIS IS THE STATE", state);
+      console.log("THIS IS THE ZIPCODE", zipcode);
+      console.log("THIS IS THE FILE", req.file);
 
-      const issueObject = {
-        category_id: 1,
-        //should read the cookie to get this
-        //req.user or req.username
-        user_id: 6,
-        status_id: 1,
-        title: issueTitle,
-        description: description,
-        //should read the cookie, pass the userID in to get the username tied to the user_id and put that here for username
-        username: 'gerren',
-        streetAddress: streetAddress,
-        city: city,
-        state: state,
-        zipcode: zipcode,
-        longtitude: req.body.long,
-        latitude: req.body.lat,
-        numberOfOccurrences: 1,
-        imagePath: imagePath,
-        isFlagged: false
-      }
-      issuesTable
-        .addIssue(issueObject)
-        .then(addResult => {
-          console.log(addResult);
-          res.send(addResult);
-        })
-        .catch( err => console.log( "Error: ", err ) );
-    };
+      console.log("THIS IS THE IMAGE PATH", imagePath);
+      console.log("THIS IS THE USERNAME", req.user.username);
+      console.log("THIS IS THE USER OBJECT", req.user); 
+
+      console.log("THIS IS THE LATITUDE", req.body.lat);
+      console.log("THIS IS THE LONGITUDE", req.body.lng);
+
+      // const issueObject = {
+      //   category_id: 1,
+      //   //should read the cookie to get this
+      //   //req.user or req.username
+      //   user_id: 6,
+      //   status_id: 1,
+      //   title: issueTitle,
+      //   description: description,
+      //   //should read the cookie, pass the userID in to get the username tied to the user_id and put that here for username
+      //   username: 'gerren',
+      //   streetAddress: streetAddress,
+      //   city: city,
+      //   state: state,
+      //   zipcode: zipcode,
+      //   longtitude: req.body.long,
+      //   latitude: req.body.lat,
+      //   numberOfOccurrences: 1,
+      //   imagePath: imagePath,
+      //   isFlagged: false
+      // }
+      // issuesTable
+      //   .addIssue(issueObject)
+      //   .then(addResult => {
+      //     res.send(addResult);
+      //   })
+      //   .catch( err => console.log( "Error: ", err ) );
+    }; //end else
   });
 });
 

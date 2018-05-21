@@ -12,6 +12,8 @@ const addUser = require("../db/users/addUser");
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const issuesTable = require('../db/issues');
+
 
 //Registration routes
 router.get("/register", function(req, res) {
@@ -61,7 +63,22 @@ router.get("/logout", function(req, res) {
 
 // User profile route
 router.get("/profile", isLoggedIn, function(req, res) {
-  res.render("users", {title: "Profile"});
+  //here you first want to query the issues the user has submitted, you can get their
+  //user name by saying req.user.username 
+  //call the read issues function
+  //send that object that it returns to the users view
+  console.log(req.user.username);
+  const currentUser = req.user.username; 
+  issuesTable
+    .readUserIssues( currentUser )
+    .then((result) => {
+      console.log("Here is what the database returned", result);
+      res.render("users", {title: "Profile", result: result});
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  
 });
 
 module.exports = router;

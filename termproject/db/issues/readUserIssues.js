@@ -6,12 +6,17 @@
 */
 const database = require('../index');
 
-const READ_USER_ISSUES_QUERY = `SELECT * FROM issues 
-WHERE user_id = $1`;
+const READ_USER_ISSUES_QUERY = `SELECT title, description, "streetAddress", type, issue_status 
+FROM issues 
+INNER JOIN status
+ON issues.status_id = status.status_id
+INNER JOIN categories
+ON categories.category_id = issues.category_id
+WHERE username = $1`;
 
-const READ_USER_ISSUES = user_id => {
+const READ_USER_ISSUES = username => {
   return database
-    .manyOrNone(READ_USER_ISSUES_QUERY, user_id)
+    .manyOrNone(READ_USER_ISSUES_QUERY, username)
     .catch( error => console.log("Error reading user issues: ", error ) );
 };
 

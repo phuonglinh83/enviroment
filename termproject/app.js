@@ -58,10 +58,10 @@ app.use(function(err, req, res, next) {
 app.use(logger('dev'));
 
 // Middleware setup for parsing HTTP body contents to JSON
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // Use busboy-expression for parsing both JSON text and files
-bb.extend(app, { upload: true });
+// bb.extend(app, { upload: true });
 
 // Middleware setup for parsing storing cookies
 app.use(cookieParser());
@@ -133,5 +133,15 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const issuesTable = require('./db/issues');
+
+issuesTable
+  .readUserIssues('gerren')
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) =>{
+    console.log(error);
+  })
 
 module.exports = app;
