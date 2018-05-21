@@ -11,6 +11,15 @@ var router = express.Router();
 let isLoggedIn = require('../middleware/isLoggedIn');
 let issuesTable = require('../db/issues');
 
+
+// Copied from Lilys branch
+const getIssue = require('../db/issues/getIssue');
+const getComments = require('../db/comments/getCommentsForIssue');
+const getComment = require('../db/comments/getComment');
+const addIssue = require('../db/issues/addIssue');
+const addComment = require('../db/comments/addComment');
+// End Copy
+
 // File Upload module for submitting issues
 const multer = require('multer');
 // Setting Storage Engine
@@ -126,7 +135,7 @@ router.post('/create', function(req, res) {
         city: city,
         state: state,
         zipcode: zipcode,
-        longtitude: req.body.long,
+        longtitude: req.body.lng,
         latitude: req.body.lat,
         numberOfOccurrences: 1,
         imagePath: imagePath,

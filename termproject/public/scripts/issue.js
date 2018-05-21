@@ -4,13 +4,12 @@ const loadMap = function(){
   // Call server to get the location of the issue
   $.get('/issue/' + issue_id + '/location', function(location) {
     // Set the center of the map at the issue location
-
-    const myCenter = new google.maps.LatLng(37.720460, -122.478124);
     const mapProp = {
       center: location,
       zoom: 14,
       scrollwheel: false,
     };
+
     const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
     // Create a marker for the issue
     const marker = new google.maps.Marker({
@@ -18,6 +17,7 @@ const loadMap = function(){
     });
     // show the marker
     marker.setMap(map);
+    markerTest.setMap(map);
   });
 };
 

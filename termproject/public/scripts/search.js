@@ -32,7 +32,7 @@ const loadData = function(e){
       const myCenter = new google.maps.LatLng(37.720460, -122.478124);
       const mapProp= {
         center:myCenter,
-        zoom:14,
+        zoom: 19,
         scrollwheel: false,
       };
       const map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
@@ -47,6 +47,14 @@ const loadData = function(e){
       // bounds to fit all markers into the map
       var bounds = new google.maps.LatLngBounds();
 
+      window.moveMapFocous = function (newLat,newLng){
+        map.setCenter({
+          lat : newLat,
+          lng : newLng,
+          zoom: 19,
+          gestureHandling: 'cooperative'
+        });
+      }
       $('#resultsCount').html(data.length + " results found");
       $('#resultsRow').html("");
       data.forEach(function(issue) {
@@ -65,7 +73,7 @@ const loadData = function(e){
         const card_to_append = `
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
-              <a class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
+              <a onmouseover="moveMapFocous(${issue.latitude }, ${issue.longtitude})" class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                   <img class="thumbnail center" height="100%" width="auto" src="${ thumbnail }">
                 </div>
@@ -108,7 +116,12 @@ const loadData = function(e){
             $('#resultsRow').html(locations[loc]);
           });
         }
-        map.fitBounds(bounds);
+        // var uluru = {lat: -25.363, lng: 131.044};
+        // var marker = new google.maps.Marker({
+        //   position: uluru,
+        //   map: map
+        // });
+        // map.fitBounds(bounds);
         $('#resultsRow').append(card_to_append);
       })
     });

@@ -1,43 +1,32 @@
 
-// document.getElementById("searchButton").addEventListener("click", function(){
-//     // var initialResults = document.getElementsByClassName("issueContainer");
-//     var cities = document.getElementsByClassName("city");
-//     var cityList = [];
-//     // cityList.push(cities[0].innerHTML);
-//     console.log("Hello this is where the text should print:");
-//     // var myCity = document.getElementsByClassName("city")[0].innerHTML;
-//     for(var i =0; i<cities.length; i++){
-//         console.log(cities[i]);
-//     }
-//     // var citiesCondenced = cityList.filter(onlyUnique);
-//     // console.log(cityList);
-// });
+// Created By: Gary Straub
+// TL;DR: This is where the filter f unctionality has been built. 
+// we use a matrix to represent issues, and then use user input to hide
+// values the user is not interested to see 
+// Algorith is O(n) : Must iterate through all n items once per filter.
+
+// Detailed Descrition: This is a very simple filter/refine by algorith
+// that creates a matrix of integers
+// Each Colum is is representative of the Filter criteria, where each row is an issue
+// When a user wants to refine their search we create another matrix representing
+// their desired croteria, and match those to the matrix we created when 
+// the page loaded of the issues being displayed.
+// ----------------------------------------------------------------------
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    function onlyUnique(value, index, self) { 
-        return self.indexOf(value) === index;
-    }
-    function readResults(){
-    }
-    function getCityCount(){
-        var cityList = initialResults.getElementsByClassName("city");
-        var citiesCondenced = cityList.filter(onlyUnique);
-    }
-});
 
+// Global variables holding our matrixes with the filter criteria.
     // Number   Status Filters      Category
     // 0        Pending             toxicants
     // 1        In-Progress         waste
     // 2        Complete            pollution
-var results;
-var filterCriteria;
+
+var filterCriteria; // think of this as a matrix representing our data
 
 function createFilterMatrix(){
+    //fill the matrix
     issuesDisplayed = document.getElementsByClassName("issueContainer");
-    results = issuesDisplayed;
     filterCriteria = new Array(issuesDisplayed.length);
-    // results = issuesDisplayed;
     for(var i =0; i<issuesDisplayed.length; i++){
         filterCriteria[i] = new Array(2);
         //Check for Status
@@ -65,16 +54,13 @@ function createFilterMatrix(){
         }
     }
 }
-
+//Where the filtering happens 
 function filterByCategory(){
     var filterMatrix = new Array(2);
     filterMatrix[0] = [0, 0, 0]; //status
     filterMatrix[1] = [0, 0, 0]; //Category
     var checkFilter = [false , false];
-
-
-    
-
+// Check the user input
     if(document.getElementById("pendingCheckBox").checked){
         filterMatrix[0][0] = 1;
     }
@@ -94,7 +80,7 @@ function filterByCategory(){
     if(document.getElementById("pollutionCheckBox").checked){
         filterMatrix[1][2] = 1;
     }
-
+// if the user didnt selelect a section it is becaus they still want all data from that section
     if(filterMatrix[0][0]==1 || filterMatrix[0][1]==1 || filterMatrix[0][2]==1){
         // checkFilter.push(true);
         checkFilter[0] = true;
@@ -104,56 +90,37 @@ function filterByCategory(){
         checkFilter[1] = true;
     }
 
+// Testing the matix for correct values and logic
+    // console.log(filterCriteria);
+    // console.log(checkFilter);
+    // console.log("Display individual filter criteria: \n");
 
-    console.log(filterCriteria);
-    console.log(checkFilter);
-
-
-    console.log("Display individual filter criteria: \n");
-    for(var i = 0; i<results.length; i++){
-        //removing unwanted statuses
-        console.log("Matrix Value: " + filterCriteria[i][0] + " Computed Value: "+ status[filterCriteria[i][0]]);
+    for(var i = 0; i<filterCriteria.length; i++){
+        // boolean value of whether to sdisplay the current item or not.
         var displayItem = true;
-
         for(var j = 0; j<2; j++){
             if(filterMatrix[j][filterCriteria[i][j]]!=1 && displayItem && checkFilter[j]){
                 displayItem = false;
             }   
         }
-        console.log("Matrix Value: " + filterCriteria[i][0] + " Computed Value: "+ status[filterCriteria[i][0]] + " Display Item: " + displayItem);
+        // if the bool is still true then we display the item, if not we hide it
         if(displayItem){
-            results[i].style.display = "flex";
+            filterCriteria[i].style.display = "flex";
         } else {
-            results[i].style.display = "none";
+            filterCriteria[i].style.display = "none";
         }
-        // if(checkStatus){
-        //     if(status[filterCriteria[i][0]]!=1){
-        //         results[i].style.display = "none";
-        //     }else{
-        //         results[i].style.display = "flex";
-        //     }
-        // }
-
-        // // console.log(filterCriteria[i][1]);
-        // if(checkCategory){
-        //     if(category[filterCriteria[i][1]]!=1){
-        //         results[i].style.display = "none";
-        //     }else{
-        //         results[i].style.display = "flex";
-        //     }
-        // }
-        // resultesContainer.appendChild(results[i].innerHTML);
+        
     }
-    // console.log(results[0]);
-    // resultesContainer.appendChild(results[0].innerHTML);
 }
+// initialize the filering procedure
 function filterButton(){
-    console.log("Filter Me")
+    // console.log("Filter Me")
     createFilterMatrix();
     filterByCategory();
 }
 
 function resetButton(){
+    // Reset the checkboxes upon the users reset command
     document.getElementById("pendingCheckBox").checked = false;
     document.getElementById("inProgressCheckBox").checked = false;
     document.getElementById("resolvedCheckBox").checked = false;
@@ -162,9 +129,8 @@ function resetButton(){
     document.getElementById("wasteCheckBox").checked = false;
     document.getElementById("pollutionCheckBox").checked = false;
 
-    for(var i = 0; i<results.length; i++){
-        results[i].style.display = "flex";
-        // resultesContainer.appendChild(results[i].innerHTML);
+    for(var i = 0; i<filterCriteria.length; i++){
+        filterCriteria[i].style.display = "flex";
     }
 }
 
