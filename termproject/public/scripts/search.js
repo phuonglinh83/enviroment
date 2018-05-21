@@ -66,13 +66,13 @@ const loadData = function(e){
           <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
             <div class = "issueContainer">
               <a class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
-                <div class="col-lg-4 col-md-6">
-                  <img class="thumbnail center" width="100%" src="${ thumbnail }">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                  <img class="thumbnail center" height="100%" width="auto" src="${ thumbnail }">
                 </div>
                 
-                <div class="col-lg-8 col-md-6">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                   <div>
-                  <h3 class="title">${issue.title}</h3>
+                  <h4 class="title">${issue.title}</h4>
                   </div>
                   <div class="address">
                     <p class="city">${issue.city},</p>

@@ -1,11 +1,22 @@
-<nav class="col-lg-2 d-none d-md-block bg-light sidebar">
-    <h5 class="center" id="resultsCount"></h5>
-    <div class="sidebar-sticky">
-      <ul class="nav flex-column">
+<nav class="col-lg-2 d-md-block sidebar navbar navbar-expand-lg" id="rightBorder">
+    <button id="filterToggleButton" class="navbar-toggle btn btn-secondary .d-none .d-sm-block .d-md-none" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            Filters
+          </button>
+    <div class="sidebar-sticky collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="nav flex-column" id="">
+          <li>
+                <p class="center" id="resultsCount"></p>
+                <hr>
+          </li>
+          
+          <li>
+              <h5 class="lead center" id="filterLabelGrey">Refine By</h5>
+          </li>
+
         <li>
-            <h4>
-                Categories
-              </h4>
+            <h6>
+                <b>Categories</b>
+              </h6>
             <ul id="filterCategories">
                 <li>
                 </li>
@@ -27,9 +38,9 @@
               </ul>
         </li>
         <li>
-            <h4>
+            <h6>
                 Status
-              </h4>
+              </h6>
             <ul id="filterCategories">
                 <li>
                 </li>

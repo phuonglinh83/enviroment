@@ -70,7 +70,7 @@ function filterByCategory(){
     var filterMatrix = new Array(2);
     filterMatrix[0] = [0, 0, 0]; //status
     filterMatrix[1] = [0, 0, 0]; //Category
-    var checkFilter = [];
+    var checkFilter = [false , false];
 
 
     
@@ -96,14 +96,17 @@ function filterByCategory(){
     }
 
     if(filterMatrix[0][0]==1 || filterMatrix[0][1]==1 || filterMatrix[0][2]==1){
-        checkFilter.push(true);
+        // checkFilter.push(true);
+        checkFilter[0] = true;
     }
     if(filterMatrix[1][0]==1 || filterMatrix[1][1]==1 || filterMatrix[1][2]==1){
-        checkFilter.push(true);
+        // checkFilter.push(true);
+        checkFilter[1] = true;
     }
 
 
     console.log(filterCriteria);
+    console.log(checkFilter);
 
 
     console.log("Display individual filter criteria: \n");

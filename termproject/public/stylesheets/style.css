@@ -337,21 +337,74 @@ padding-left: 0px;
       #resultsCount {
         padding-top: 5px;
       }
+      #filterLabelGrey {
+        color: #767676!important;
+      }
+      #rightBorder {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-right: #333 solid 1px;
+        width: 200px;
+        max-width: 200px;
+      }
+      #resultsContainer{
+        width: calc(100vw - 200px);
+        display: flex;
+      }
+      .thumbnail.center{
+        object-fit: cover;
+      }
+
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
+
+/* For devices below 768px  */
+@media screen and (max-width: 767px)  {
+  #search-bar {
+    margin-left: 4%;
+    width: 100%;
+  }
+  #googleMapContainer{
+    display: none;
+  }
+  #rightBorder {
+    width: 100vw;
+    max-width: 100vw;
+  }
+  #resultsContainer{
+    width: 100vw;
+  }
+}
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-
+@media screen and (min-width: 768px) and (max-width: 991px){
+  #search-bar {
+    margin-left: 10%;
+    width: 80%;
+  }
+  #googleMapContainer{
+    display: none;
+  }
+  #rightBorder {
+    display: none;
+    width: 100vw;
+    max-width: 100vw;
+  }
+  #resultsContainer{
+    width: 100vw;
+  }
 }
-
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) and (max-width: 1199px){
+  #filterToggleButton {
+    display: none;
+  }
 
 }
-
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-
+@media screen and (min-width: 1200px) {
+  #filterToggleButton {
+    display: none;
+  }
 }

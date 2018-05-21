@@ -37,15 +37,18 @@
   <div class="row">
     <!-- Filter Nav. Made into a partial for better organization -->
       <% include ./partials/filterNav %>
-
-      
       <!-- <div style="width: calc(100vw - 200px)"> -->
-          <div class="col-lg-5 col-sm-12 staticContainer"  id="resultsRow" style="position: relative; padding: 0px;">
+        <div class="" id="resultsContainer">
+            <div class="col-lg-6 col-sm-12 staticContainer"  id="resultsRow" style="position: relative; padding: 0px;">
+              </div>
+      
+              <div class="col-lg-6 col-md-5 hidden-sm staticContainer" id="googleMapContainer" style="padding: 0px;">
+                <div id="googleMap" class="staticContainer"></div>
             </div>
-    
-            <div class="col-lg-5 hidden-sm staticContainer" id="googleMapContainer" style="padding: 0px;">
-              <div id="googleMap" class="staticContainer"></div>
-          </div>
+        </div>
+          
+
+
       <!-- </div>       -->
     </div>
 </div>
@@ -57,10 +60,15 @@
 
 
 
+
       window.addEventListener("resize", myFunction);
       
       var x = 0;
       function myFunction() {
+        var x = window.matchMedia("(max-width: 991px)");
+        if(x.matches){
+
+        }
         var resultContainer = document.getElementsByClassName("staticContainer");
         var offset = resultContainer[0].offsetTop;
         for(var i = 0; i<resultContainer.length; i++ ){
@@ -75,6 +83,9 @@
         myFunction();
         console.log("DOM fully loaded and parsed");
       });
+      var x = window.matchMedia("(max-width: 700px)")
+      myFunction(x) // Call listener function at run time
+      x.addListener(myFunction) // Attach listener function on state changes
 
       </script>
 
