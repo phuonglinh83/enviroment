@@ -12,48 +12,48 @@
     </div>
     <div>
         <div class="col-lg-6" >
-            <div id="googleMap" style="width: 100%;">
+            <div id="googleMap" style="height: calc(100vh - 262px);">
               <!-- Google Map Will b placed here -->
             </div>
         </div>
-    
+
         <div class="col-lg-6">
               <% if (issue.imagePath != '#') {%>
                 <img class="img-fluid" src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image">
               <% } %>
         </div>
-    
-    
+
+
     </div>
   <hr>
-    
-    
-    
-    
+
+
+
+
     <!-- Align issue image in the middle, slightly to the left. -->
-    
+
     <!-- Enclose information and comments in a single jumbotron. -->
     <div class="well well-lg" id="main-container">
         <h6 align= "right">Category:<b> <%=issue.category_id%></b></h6></h6>
       <h6 align= "right">Status:<b> <%=issue.issue_status%></b></h6></h6>
       <h3><b>Description</b></h3>
 
-      <p><%= issue.description %></p> 
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        when an unknown printer took a galley of type and scrambled it to make a type 
-        specimen book. It has survived not only five centuries, but also the leap into 
-        electronic typesetting, remaining essentially unchanged. It was popularised in the 
-        1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-        and more recently with desktop publishing software like Aldus PageMaker 
+      <p><%= issue.description %></p>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type
+        specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged. It was popularised in the
+        1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker
         including versions of Lorem Ipsum.</p>
       <br>
     <!-- Issue Status aligned right. -->
-      
+
       <div class="col-sm-3">
         <center><h5><b>Comments</b></h5></center><br>
       </div>
-    
+
     <!-- Comments are empty initially -->
       <div id="comments">
       </div>
@@ -67,13 +67,13 @@
                   </div>
                 </div>
                 <div class="col-lg-12">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries, but also the leap into 
-                        electronic typesetting, remaining essentially unchanged. It was popularised in the 
-                        1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker 
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged. It was popularised in the
+                        1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker
                         including versions of Lorem Ipsum.</p>
                 </div>
               </div>
@@ -83,7 +83,7 @@
     <div class="col-sm-4">
     <h5><b>Leave a comment below:</b></h5><br>
     </div>
-    
+
       <input type="hidden" name="issue_id" id="issue_id" value=<%= issue.issue_id %>>
   </input>
       <!-- Text field (of 7 rows) for user comments. -->
