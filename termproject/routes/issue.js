@@ -84,7 +84,7 @@ function checkFileType( file, cb ){
 // const getIssue = require('../db/issues/getIssue');
 
 // Render the issue creation form.
-router.get('/create', isLoggedIn, function(req, res) {
+router.get('/create', function(req, res) {
   res.render("form", { title: 'Create issue'});
 });
 
