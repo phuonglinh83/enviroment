@@ -84,12 +84,12 @@ function checkFileType( file, cb ){
 // const getIssue = require('../db/issues/getIssue');
 
 // Render the issue creation form.
-router.get('/create', function(req, res) {
+router.get('/create', isLoggedIn, function(req, res) {
   res.render("form", { title: 'Create issue'});
 });
 
 // Adding the issue to the database.
-router.post('/create', function(req, res) {
+router.post('/create', isLoggedIn, function(req, res) {
   upload( req, res, (err) => {
     if( err ) {
       //if the file was not uploaded correctly, render the form again
@@ -147,8 +147,8 @@ router.post('/create', function(req, res) {
         city: city,
         state: state,
         zipcode: zipcode,
-        longtitude: null,
-        latitude: null,
+        longtitude: parseFloat(req.body.lng),
+        latitude: parseFloat(req.body.lat),
         numberOfOccurrences: 1,
         imagePath: imagePath,
         isFlagged: false

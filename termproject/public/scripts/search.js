@@ -11,7 +11,7 @@ const zipcode = new RegExp("^[0-9]{5}(?:-[0-9]{4})?$");
 
 const search =  (query, searchFilter, option) => {
   $.get('/search?keyword=' + query +"&filter=" + searchFilter.toLowerCase(), function(data) {
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
 
     const myCenter = new google.maps.LatLng(37.720460, -122.478124);
     const mapProp= {
@@ -53,7 +53,7 @@ const search =  (query, searchFilter, option) => {
       var imgPath = issue.imagePath;
       var img = imgPath.split(/\/|\\/).pop();
       var thumbnail = "/images/thumbnails/" + img;
-      console.log(issue.imagePath);
+      // console.log(issue.imagePath);
 
       const loc = new google.maps.LatLng(issue.latitude, issue.longtitude);
       if (!(loc in loc_labels)) {
@@ -139,7 +139,7 @@ const loadData = function(e){
   // console.log(e.which);
   if(e.which == 13 || e.type == 'click') {
   const searchValue = document.getElementById("searchBar").value;
-  console.log( searchValue );
+  // console.log( searchValue );
   search(searchValue, filter);
 
   } else {

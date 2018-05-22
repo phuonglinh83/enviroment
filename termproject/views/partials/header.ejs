@@ -2,6 +2,10 @@
 <html>
   <head>
     <!-- Google Analytics -->
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', 'UA-118058493-1', 'auto');
@@ -27,7 +31,7 @@
   <body id = "mybody">
     <div id="header">
 <nav id="navbar" class="navbar navbar-expand navbar-dark bg-dark">
-<a class="navbar-brand" href="#">Envirepair</a>
+<a class="navbar-brand" href="/">Envirepair</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -40,15 +44,12 @@
   <li class="nav-item">
     <a class="nav-link active" href="/issue/create">Report Issue</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Contact</a>
-  </li>
   <li class="nav-item active">
     <a class="nav-link" href="/about">About</a>
   </li>
-  <h4 style="text-align: center; color: white;">SFSU CSC648 Class Project</h4>
 </ul>
-<ul class="navbar-nav navbar-right">
+<h5 class="navbar-nav mx-auto" style="text-align: center; color: white;"><strong>SFSU CSC648 Class Project</strong></h5>
+<ul class="navbar-nav ml-auto">
 <li class="nav-item">
   <% if(user) { %>
     <a class="nav-link active" href="/user/profile"><%= user.username %></a>

@@ -20,14 +20,17 @@ submitIssue = function() {
       console.log(location.lng());
       console.log(location.lat());
 
-      const title = document.getElementById("lgFormTitle").value;
-      const description = document.getElementById("lgFormDescription").value;
-      const category = document.getElementById("lgFormCategory").value;
-      const streetAddress = document.getElementById("lgFormStreet").value;
-      const city = document.getElementById("lgFormCity").value;
-      const state = document.getElementById("lgFormState").value;
-      const zipcode = document.getElementById("lgFormZipcode").value;
-      const file = document.getElementsByName("image");
+      const issue_object = { title : $("#lgFormTitle").val(),
+        description : $("#lgFormDescription").val(),
+        category : $("#lgFormCategory").val(),
+        streetAddress : $("#lgFormStreet").val(),
+        city : $("#lgFormCity").val(),
+        state : $("#lgFormState").val(),
+        zipcode : $("#lgFormZipcode").val(),
+        file : $("#exampleInputFile"),
+        latitude : location.lng(),
+        longitude : location.lat()
+      }
 
 
       // console.log(file);
@@ -41,6 +44,7 @@ submitIssue = function() {
       // Now ready to submit form if no error
       if ($("#error").val().length === 0) {
         $("#formIssue").submit();
+        // $.post('/issue/create', issue_object);
       }
     } else {
       if (status === 'ZERO_RESULTS') {
