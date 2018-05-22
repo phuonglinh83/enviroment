@@ -16,15 +16,17 @@
 
 
 <!--  Display map and picture in the same row -->
-<div class="row" style="left: 19%; width: 95%; position: relative;">
-  <div class="col-sm-4">
-    <% if (issue.imagePath != '#') {%>
-      <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"></center>
-    <% } %>
-  </div>
-  <div class="col-sm-4">
-    <div id="googleMap" style="height: calc(47vh - 100px);">
+<div>
+  <div class="row" style="left: 19%; width: 95%; position: relative;">
+    <div class="col-sm-4">
+      <% if (issue.imagePath != '#') {%>
+        <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"></center>
+      <% } %>
+    </div>
+    <div class="col-sm-4">
+      <div id="googleMap" style="height: calc(47vh - 100px);">
       </div>
+    </div>
   </div>
 </div>
 
