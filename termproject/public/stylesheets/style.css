@@ -14,10 +14,11 @@ body {
   padding: 0;
   /* font-family: sans-serif; */
   font-size: 14px;
-  background-color: #fff9e6;
+  background-color: white;
   font-family: 'Roboto Slab', sans-serif;
 	display: flex;
-	flex-direction: column;
+  flex-direction: column;
+  height: 100vh;
   /* background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/0kjHIH6/cute-and-puffy-cartoon-clouds-hovering-in-a-beautiful-blue-sky_bnjbcfrm__F0000.png'); */
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
@@ -104,7 +105,7 @@ margin-right: 20%;
 }
 
 #search-bar {
-    margin-left: 20%;
+    margin-left: 15%;
     width: 60%;
 }
 
@@ -182,9 +183,9 @@ padding-left: 0px;
   margin: 20px 0 0;
 }
 
-.col-md-6, .col-md-5{
+/* .col-md-6, .col-md-5{
   border: 1px solid black;
-}
+} */
 
 
 .card-columns {
@@ -292,16 +293,15 @@ padding-left: 0px;
 
 /*===============================================================================*/
 
-      #rowOverload {
-        height: 125px;
-      }
+      /* #rowOverload {
+        height:140px;
+      } */
       .thumbnail {
         max-height: 100%;
         max-width: 100%;
       }
       /* Used to set height of the body items to fit perfectly with the nav (nav height = 50px) */
       .staticContainer {
-        height: calc(100vh - 262px);
         overflow: auto;
       }
       .header {
@@ -319,3 +319,43 @@ padding-left: 0px;
       .affix + .container-fluid {
         padding-top: 70px;
       }
+      .title, p.city, p.state{
+        margin-bottom: 5px;
+        display: inline;
+        text-transform: capitalize;
+      }
+      div.address {
+        display: inline-block;
+        vertical-align: top;
+        text-transform: capitalize;
+      }
+      h3.title{
+        display: inline-block;
+        text-decoration: none;
+
+      }
+      #googleMap {
+        z-index: 1000;
+      }
+      #googleMapContainer {
+        padding: 0px;
+
+      }
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}

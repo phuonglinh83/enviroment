@@ -1,3 +1,4 @@
 module.exports = {
-  addStatus : require('./status/addStatus')
+  addStatus : require('./status/addStatus'),
+  updateStatus: require('./status/updateStatus')
 };

@@ -25,7 +25,7 @@
 
   </head>
   <body id = "mybody">
-
+    <div id="header">
 <nav id="navbar" class="navbar navbar-expand navbar-dark bg-dark">
 <a class="navbar-brand" href="#">Envirepair</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="/issue/create">New Issue</a>
+    <a class="nav-link active" href="/issue/create">Report Issue</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Contact</a>
@@ -46,9 +46,9 @@
   <li class="nav-item active">
     <a class="nav-link" href="/about">About</a>
   </li>
-
+  <h4 style="text-align: center; color: white;">SFSU CSC648 Class Project</h4>
 </ul>
-<ul class="navbar-nav navbar-right"
+<ul class="navbar-nav navbar-right">
 <li class="nav-item">
   <% if(user) { %>
     <a class="nav-link active" href="/user/profile"><%= user.username %></a>
@@ -63,6 +63,65 @@
     <a class="nav-link active" href="/user/register">Register</a>
   <% } %>
 </li>
-
+</ul>
 </div>
 </nav>
+</div>
+
+
+
+
+
+<!-- <div class="container" style="position: sticky;">
+  <div class="jumbotron" id="main-container" >
+  
+    <h4 style="text-align: center">SFSU CSC648 Class Project</h4>
+    <h6 style="text-align: center">A website where people can file environmental complaints and issues.</h6>
+  </div>
+</div> -->
+
+
+
+
+  <!-- <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="input-group" id="search-bar">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle bg-warning" type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search All<span class="caret"></span></button>
+        <ul class="dropdown-menu" aria-labelledby="filterMenu">
+          <option class="dropdown-item" id="allFilter"> All </option>
+          <option class="dropdown-item" id="cityFilter"> City </option>
+          <option class="dropdown-item" id="categoryFilter"> Category </option>
+          <option class="dropdown-item" id="statusFilter"> Status </option>
+        </ul>
+      </div>
+      <input type="text" id="searchBar" name="search" class="form-control" placeholder="Search by Title, Description, City, or Zipcode...">
+          <span class="input-group-btn">
+              <input type="submit" class="btn btn-primary" id="searchButton" type="button" value="Search">
+          </span> -->
+
+  
+
+  <!-- <div id="filter" style="display: inline-block;"> -->
+
+
+  <!-- End of Filter Div -->
+<!-- </div> -->
+
+
+
+
+<script>
+//   window.onscroll = function() {myFunction()};
+
+// var navbar = document.getElementById("searchBarStick");
+// var sticky = navbar.offsetTop;
+
+// function myFunction() {
+  
+//   if (window.pageYOffset >= sticky) {
+//     navbar.classList.add("sticky")
+//   } else {
+//     navbar.classList.remove("sticky");
+//   }
+// }
+</script>

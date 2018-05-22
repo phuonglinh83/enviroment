@@ -12,6 +12,7 @@ if(process.env.NODE_ENV === 'development') {
   // console.log(process_env.DATABASE_URL);
 }
 
+
 // Core modules
 var express = require('express');
 var path = require('path');
@@ -19,12 +20,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var processImage = require('express-processimage');
+var gm = require('gm');
+var bb = require('express-busboy');
 
 // User-Auth modules
 const passport = require("passport");
 const	local = require("passport-local");
 const	expSession = require("express-session");
 var bcrypt = require('bcrypt');
+
+
 
 // Routes
 const index = require('./routes/index');
@@ -44,6 +50,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+
 app.use(function(err, req, res, next) {
     console.log(err);
 });
@@ -52,13 +59,16 @@ app.use(logger('dev'));
 
 // Middleware setup for parsing HTTP body contents to JSON
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+// Use busboy-expression for parsing both JSON text and files
+// bb.extend(app, { upload: true });
 
 // Middleware setup for parsing storing cookies
 app.use(cookieParser());
 
-// Making public/ directory globally available
+app.use(processImage(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(processImage(path.join(__dirname, 'public')));
 
 
 // Login session setup
@@ -118,10 +128,20 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   console.log(err);
   res.status(err.status || 500);
   res.render('error');
 });
+
+const issuesTable = require('./db/issues');
+
+issuesTable
+  .readUserIssues('gerren')
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) =>{
+    console.log(error);
+  })
 
 module.exports = app;

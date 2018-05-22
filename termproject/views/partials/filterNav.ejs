@@ -1,0 +1,59 @@
+<nav class="col-lg-2 d-none d-md-block bg-light sidebar" style="padding-top: 15%">
+    <h5 class="center" id="resultsCount"></h5>
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li>
+            <h4>
+                Categories
+              </h4>
+            <ul id="filterCategories">
+                <li>
+                </li>
+                  <li>
+                      <div class="checkbox">
+                          <label><input type="checkbox" name="optradio" id="pendingCheckBox">Pending</label>
+                        </div>
+                  </li>
+                  <li>
+                      <div class="checkbox">
+                          <label><input type="checkbox" name="optradio" id="inProgressCheckBox">In Progress</label>
+                        </div>
+                  </li>
+                  <li>
+                      <div class="checkbox">
+                          <label><input type="checkbox" name="optradio" id="resolvedCheckBox">Resolved</label>
+                        </div>
+                  </li>
+              </ul>
+        </li>
+        <li>
+            <h4>
+                Status
+              </h4>
+            <ul id="filterCategories">
+                <li>
+                </li>
+                  <li>
+                      <div class="checkbox">
+                          <label><input type="checkbox" name="optradio" id="toxicantsCheckBox">Toxicants</label>
+                        </div>
+                  </li>
+                  <li>
+                      <div class="checkbox">
+                          <label><input type="checkbox" name="optradio" id="wasteCheckBox">Waste</label>
+                        </div>
+                  </li>
+                  <li>
+                      <div class="checkbox">
+                          <label><input type="checkbox" name="optradio" id="pollutionCheckBox">Pollution</label>
+                        </div>
+                  </li>
+              </ul>
+        </li>
+        <li><button class="btn btn-default bg-warning" type="button" id="resetButton" onclick="resetButton()" aria-haspopup="true" aria-expanded="true">Reset</button>
+          <button class="btn btn-default bg-warning" type="button" id="filterMe" onclick="filterButton()" aria-haspopup="true" aria-expanded="true">Filter</button></li>
+      </ul>
+
+
+    </div>
+  </nav>
