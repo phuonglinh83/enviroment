@@ -17,7 +17,6 @@ const loadMap = function(){
     });
     // show the marker
     marker.setMap(map);
-    markerTest.setMap(map);
   });
 };
 
