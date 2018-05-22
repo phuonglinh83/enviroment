@@ -1,3 +1,11 @@
+/**
+ * ================================= newIssue.js ===================================
+ * Responsible for querying server to get the issue location to display on the map;
+ * loading, displaying comments, and processing new comment post.
+ *
+ * CONTRIBUTORS: Lily Linh Lan
+ */
+
 // Setting Google map for the detailed view
 const loadMap = function(){
   issue_id = $('#issue_id').val();

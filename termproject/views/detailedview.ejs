@@ -1,6 +1,6 @@
 <!-- detailedview.ejs
  A more detailed view of a specific issue that contains relevant information
- such as images, a map, a status and comments. -Justin -->
+ such as images, a map, a status and comments. -Justin, Lily Linh Lan -->
 
 <% include ./partials/header %>
 
@@ -12,24 +12,22 @@
     <div>
         <center><h1><i><%= issue.title %></i></h1></center><br><br>
       </div>
-      
 
 
-<div>
-    <div class="col-lg-6" >
-        <div id="googleMap" style="width: 100%;">
-          <!-- Google Map Will b placed here -->
-        </div>
-    </div>
 
-    <div class="col-lg-6">
-          <% if (issue.imagePath != '#') {%>
-            <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"></center>
-          <% } %>
-    </div>
-
-
+<!--  Display map and picture in the same row -->
+<div class="row" style="left: 19%; width: 95%; position: relative;">
+  <div class="col-sm-4">
+    <% if (issue.imagePath != '#') {%>
+      <center><img src=<%= issue.imagePath %> class="img-fluid" alt="Responsive image"></center>
+    <% } %>
+  </div>
+  <div class="col-sm-4">
+    <div id="googleMap" style="height: calc(47vh - 100px);">
+      </div>
+  </div>
 </div>
+
 
 
 

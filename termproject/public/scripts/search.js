@@ -2,6 +2,7 @@
  * ================================= search.js ===================================
  * This files makes ajax calls to dynamically update the search results without reloading the page.
  *
+ * CONTRIBUTORS: Lily Linh Lan
  */
 
 let filter = "all";
@@ -28,7 +29,8 @@ const search =  (query, searchFilter, option) => {
     let locations = [];
     let loc_labels = [];
     // bounds to fit all markers into the map
-    var bounds = new google.maps.LatLngBounds();
+    // var bounds = new google.maps.LatLngBounds();
+    let setCenter = false;
 
     window.moveMapFocous = function (newLat,newLng){
       map.setCenter({
@@ -58,6 +60,13 @@ const search =  (query, searchFilter, option) => {
         loc_labels[loc] = index++;
       }
 
+      // Set center of the map to the first result, instead of using the above default location for SFSU
+      if (!setCenter) {
+        setCenter = true;
+        map.setCenter(loc);
+      }
+
+      // Show map marker number on the card
       const card_to_append = `
          <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
            <div class = "issueContainer">
@@ -65,10 +74,9 @@ const search =  (query, searchFilter, option) => {
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                <img class="thumbnail center" src="${ issue.imagePath }">
                </div>
-               
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                  <div>
-                 <h4 class="title">${issue.title}</h4>
+                 <h4 class="title">${loc_labels[loc]} - ${issue.title}</h4>
                  </div>
                  <div class="address">
                    <p class="city">${issue.city},</p>
@@ -90,7 +98,7 @@ const search =  (query, searchFilter, option) => {
         locations[loc] += card_to_append;
       } else {
         // New location, first extend the map boundary
-        bounds.extend(loc);
+        // bounds.extend(loc);
         // Create a new entry for the location dict
         locations[loc] = card_to_append;
         // Create a maker for the location
@@ -105,6 +113,7 @@ const search =  (query, searchFilter, option) => {
           $('#resultsRow').html(locations[loc]);
         });
       }
+      // console.log(bounds);
       // map.fitBounds(bounds);
 
       $('#resultsRow').append(card_to_append);
@@ -138,14 +147,14 @@ const loadData = function(e){
     if(filter.toLowerCase() == "city or zip" && !isNaN(value)) {
       if(!zipcode.test(value)) {
         $('#searchBar').addClass('is-invalid text-danger');
-        $('#error-message').html('Invlid Zip Code');
+        $('#error-message').html('Invalid Zip Code');
       } else {
         $('#searchBar').removeClass('is-invalid text-danger');
         $('#error-message').html('');
       }
     } else {
       $('#searchBar').removeClass('is-invalid text-danger');
-      $('#error-message').html('');      
+      $('#error-message').html('');
     }
     if($('#searchBar').hasClass('is-invalid')) {
       $('#searchButton').prop('disabled', true);
@@ -158,7 +167,7 @@ const loadData = function(e){
 $( "document" ).ready( function() {
   $("#searchButton").on( 'click', loadData);
   $("#searchBar").keyup(loadData);
-  search("", filter, 1); 
+  search("", filter, 1);
 });
 
 

@@ -1,3 +1,10 @@
+/**
+ * ================================= newIssue.js ===================================
+ * Responsible for validating user input, converting from address to LongLat append
+ * submit issue create form to back end.
+ *
+ * CONTRIBUTORS: Lily Linh Lan
+ */
 submitIssue = function() {
   console.log("IM IN THE CLICK FUNCTION");
   const address = $("#lgFormStreet").val() + ' ' + $("#lgFormCity").val() + ' ' + $("#lgFormState").val() + ' ' + $("#lgFormZipcode").val();
@@ -27,35 +34,10 @@ submitIssue = function() {
       console.log(title);
       console.log(category);
 
-      // let issueObject = {
-      //   title: title,
-      //   description: description,
-      //   category: category,
-      //   streetAddress: streetAddress,
-      //   city: city,
-      //   state: state,
-      //   zipcode: zipcode,
-      //   // file: file,
-      //   lat:location.lat(), 
-      //   long:location.lng()
-      // };
-
-      // $.ajax({
-      //   type: 'POST',
-      //   url: '/issue/create',
-      //   data: issueObject,
-      //   success: function( results ) {
-      //     console.log("Successful Ajax Call");
-      //   },
-      //   error: function() {
-      //     console.log("Error Ajax Call");
-      //   }
-      // });
-      
       // Set hidden input for Lng/Lat in the form
       $("#lgFormLng").val(location.lng());
       $("#lgFormLat").val(location.lat());
-      
+
       // Now ready to submit form if no error
       if ($("#error").val().length === 0) {
         $("#formIssue").submit();
@@ -82,7 +64,7 @@ submitIssue = function() {
   if (description.length < 10) {
     $("#error").append("Please add at least 10 characters for issue description <br />");
   }
-  
+
 
 
   const category = $("#lgFormCategory").val();

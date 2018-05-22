@@ -2,6 +2,7 @@
  * ============================ addComment.js ===================================
  * As the name suggests this file is responsible for adding new comment to the databse.
  *
+ * CONTRIBUTORS: Lily Linh Lan
  */
 
 const database = require('../index');

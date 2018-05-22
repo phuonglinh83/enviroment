@@ -1,6 +1,8 @@
 /**
  * ============================ getComments.js ===================================
  * This file is responsible for getting comments on an issue from the database.
+ *
+ * CONTRIBUTORS: Lily Linh Lan
  */
 
 const database = require('../index');

@@ -1,6 +1,8 @@
 /**
  * ============================ getComment.js ===================================
  * This file is responsible for getting a comment by its id from the database.
+ *
+ * CONTRIBUTORS: Lily Linh Lan
  */
 
 const database = require('../index');

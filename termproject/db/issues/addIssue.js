@@ -1,8 +1,8 @@
 /**
  * ============================ addIssue.js ===================================
  * As the name suggests this file is responsible for adding new issues to the databse.
- * 
- * CONTRIBUTORS: Gerren Penaloza
+ *
+ * CONTRIBUTORS: Gerren Penaloza, Lily Linh Lan
  */
 
 const database = require('../index');
@@ -29,7 +29,7 @@ const addIssue = issueObject => {
   issueObject[ "month" ] = MONTH;
   issueObject[ "day" ] = DAY;
   issueObject[ "year" ] = YEAR;
-  
+
   issueObject[ "updatedAt" ] = UPDATED_AT;
   const VALUES = [ issueObject.category_id,
     issueObject.user_id,
