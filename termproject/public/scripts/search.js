@@ -63,7 +63,7 @@ const search =  (query, searchFilter, option) => {
            <div class = "issueContainer">
              <a onmouseover="moveMapFocous(${issue.latitude }, ${issue.longtitude})" class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                 <img class="thumbnail center" height="100%" width="auto" src="${ thumbnail }">
+               <img class="thumbnail center" src="${ issue.imagePath }">
                </div>
                
                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
