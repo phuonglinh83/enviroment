@@ -30,6 +30,15 @@ const search =  (query, searchFilter, option) => {
     // bounds to fit all markers into the map
     var bounds = new google.maps.LatLngBounds();
 
+    window.moveMapFocous = function (newLat,newLng){
+      map.setCenter({
+        lat : newLat,
+        lng : newLng,
+        zoom: 19,
+        gestureHandling: 'cooperative'
+      });
+    }
+
     if(option != 1) {
       if(!data.success)
         $('#resultsCount').html("0 results found. But here are the recents posts.");
@@ -49,23 +58,32 @@ const search =  (query, searchFilter, option) => {
         loc_labels[loc] = index++;
       }
 
-      let card_to_append = `
-      <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
-        <div class = "issueContainer">
-          <a class="row" id="rowOverload" href="/issue/${issue.issue_id}">
-            <div class="col-lg-4 col-md-4 col-sm-4">
-              <img class="thumbnail center" src="${ issue.imagePath }">
-            </div>
-            <div class="col-lg-8 col-md-8 col-sm-8">
-              <b>${issue.title}</b>
-              <br>${issue.city}, ${issue.state}<br><br>
-              <i>Category: ${issue.type}</i><br>
-              <i>Status: Unresolved</i>
-            </div>
-          </a>
-        </div>
-      </div>
-    `
+      const card_to_append = `
+         <div class="container-fluid col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 2px;">
+           <div class = "issueContainer">
+             <a onmouseover="moveMapFocous(${issue.latitude }, ${issue.longtitude})" class="row" id="rowOverload" target="_blank" href="/issue/${issue.issue_id}">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                 <img class="thumbnail center" height="100%" width="auto" src="${ thumbnail }">
+               </div>
+               
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                 <div>
+                 <h4 class="title">${issue.title}</h4>
+                 </div>
+                 <div class="address">
+                   <p class="city">${issue.city},</p>
+                   <p class="state">${issue.state}</p>
+                 </div>
+                 <div class="issueInfo col-lg-12">
+                   <p class="category">Category: ${issue.type}</p>
+                   <p class="status">Status: ${issue.issue_status}</p>
+                 </div>
+
+               </div>
+             </a>
+           </div>
+         </div>
+       `;
 
       if (loc in locations) {
         // Existing location, just append issue content to the corresponding entry in the dict
@@ -87,7 +105,7 @@ const search =  (query, searchFilter, option) => {
           $('#resultsRow').html(locations[loc]);
         });
       }
-      map.fitBounds(bounds);
+      // map.fitBounds(bounds);
 
       $('#resultsRow').append(card_to_append);
     });
