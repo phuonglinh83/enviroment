@@ -325,14 +325,12 @@ padding-left: 0px;
       h3.title{
         display: inline-block;
         text-decoration: none;
-
       }
-      #googleMap {
+      /* #googleMap {
         z-index: 1000;
-      }
+      } */
       #googleMapContainer {
         padding: 0px;
-
       }
       #resultsCount {
         padding-top: 5px;
