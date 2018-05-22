@@ -31,6 +31,7 @@
     list-style-type: none;
   }
 </Style>
+<!--  -->
 <script src="/scripts/filters.js"></script>
 
 <div class="container-fluid">
@@ -55,14 +56,13 @@
     
   <script src="/scripts/search.js"></script>
 
+
+  <!-- Author: Gary Straub
+    Local script that when run changes the size constraints of the staticContainer
+  this is what allows the webpage to stay in one fixewd page at any given time. 
+i have tried to build it in such a way that the code will only run when the browser is changing size -->
   <script>
-
-
-
-
-
-      window.addEventListener("resize", myFunction);
-      
+      window.addEventListener("resize", myFunction);      
       var x = 0;
       function myFunction() {
         var x = window.matchMedia("(max-width: 991px)");
